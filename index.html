@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Of Eldoria</title>
+    <title>World Of Aetheris</title>
     <link rel="icon" href="img/AB.jpg" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 
     <!-- Input Form -->
     <div id="inputForm" class="text-center bg-transparent py-3">
-        <p class="fw-bold text-light fs-3">WELCOME TO THE WORLD OF <span class="fw-bold text-info">ELDORIA</span></p>
+        <p class="fw-bold text-light fs-3">WELCOME TO THE WORLD OF <span class="fw-bold text-info">AETHERIS</span></p>
         <input type="text" class="form-control bg-transparent text-light my-2 text-center" id="nameInput"
             placeholder="Enter Your Name" />
         <div class="row">
@@ -38,13 +38,16 @@
             <!-- Character Info -->
             <div class="col-12 col-md-6">
                 <p class="text-light"><strong>Name:</strong> <span id="charName"></span></p>
+                <p class="text-light"><strong>Age:</strong> <span id="charAge"></span></p>
+                <p class="text-light"><strong>Level:</strong> <span id="charLev"></span></p>
                 <p class="text-light"><strong>Race:</strong> <span id="charRace"></span></p>
                 <p class="text-light"><strong>Role:</strong> <span id="charRole"></span></p>
+                
             </div>
-            <div class="col-12 col-md-6">
-                <p class="text-light"><strong>Level:</strong> <span id="charLev"></span></p>
-                <p class="text-light"><strong>Guild:</strong> <span id="charGuild"></span></p>
-                <p class="text-light"><strong>Region:</strong> <span id="charRegion"></span></p>
+            <div class="col-12 col-md-6">        
+                <p class="text-light"><strong>Region:</strong> <span id="charRegion"></span></p>        
+                <p class="text-light"><strong>Guild:</strong> <span id="charGuild"></span></p>                
+                <p class="text-light"><strong>Faction:</strong> <span id="charFaction"></span></p>
             </div>
         </div>
         
@@ -56,8 +59,12 @@
                 <p class="text-light"><strong>Strength:</strong> <span id="charStrength"></span></p>
                 <p class="text-light"><strong>Health:</strong> <span id="charHealth"></span></p>
                 <p class="text-light"><strong>Dexterity:</strong> <span id="charDexterity"></span></p>
+                <!-- Added Special Powers Display -->
                 <p class="text-light" id="divinePower" style="display:none;"><strong>Divine Power:</strong> <span id="charDivinePower"></span></p>
                 <p class="text-light" id="darkEnergy" style="display:none;"><strong>Dark Energy:</strong> <span id="charDarkEnergy"></span></p>
+                <p class="text-light" id="elementalPower" style="display:none;"><strong>Elemental Power:</strong> <span id="charElementalPower"></span></p>
+                <p class="text-light" id="draconicPower" style="display:none;"><strong>Draconic Power:</strong> <span id="charDraconicPower"></span></p>
+                <p class="text-light" id="stealthPower" style="display:none;"><strong>Stealth Power:</strong> <span id="charStealthPower"></span></p>
             </div>
             <div class="col">
                 <p class="text-light"><strong>Mana:</strong> <span id="charMana"></span></p>
@@ -82,7 +89,7 @@
 
     <!-- Footer -->
     <footer class="text-center text-light mt-4 position-absolute bottom-0 w-100">
-        <p>Made with Love by WahyuYogo & Natsume Aoii</p>
+        <p>Fantasy 2.0 by NatsumeAoii</p>
         <p>&copy; 2024</p>
     </footer>
 
