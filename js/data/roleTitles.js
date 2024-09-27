@@ -1,4 +1,4 @@
-export const roleTitles = {
+export const titles = {
     //Higest Tier Roles
     "Archmage": [
         "Master of Arcane Mysteries", "Keeper of the Eternal Flame", "Grand Weaver of Spells", 
