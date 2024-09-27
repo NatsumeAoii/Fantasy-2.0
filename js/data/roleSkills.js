@@ -1,442 +1,1042 @@
 export const roleSkills = {
-    "Knight": [
-        "Sword Mastery", "Shield Mastery", "Mounted Combat", "War Cry", "Heavy Armor", "Tactical Strategy", 
-        "Battle Charge", "Shield Bash", "Combat Reflexes", "Defensive Stance", "Sword Block", "Battlefield Awareness", 
-        "Parry", "Shield Slam", "Armor Reinforcement", "Toughness", "Sword Precision", "Holy Vow", "Defender's Resolve", 
-        "Battle Endurance", "Martial Training", "Siege Tactics", "Iron Will", "Resilience", "Battle Banner"
+    //Higest Tier Role
+    "Archmage": [
+        "Arcane Mastery", "Mana Surge", "Elemental Affinity", "Spell Focus", "Mystic Shield", 
+        "Fireball", "Chain Lightning", "Arcane Explosion", "Mana Drain", "Teleportation", 
+        "Spellcraft", "Temporal Distortion", "Arcane Ward", "Summon Familiar", "Meteor Shower", 
+        "Time Freeze", "Elemental Mastery", "Mana Barrier", "Astral Projection", "Dimensional Rift", 
+        "Mind Control", "Mana Overflow", "Arcane Insight", "Magic Amplification", "Soulfire", 
+        "Reality Bending", "Gravitational Warp", "Mana Absorption", "Celestial Convergence", "Omniscience"
     ],
-    "Mage": [
-        "Fireball", "Ice Lance", "Arcane Explosion", "Mana Shield", "Teleportation", "Summon Familiar", 
-        "Lightning Bolt", "Spellbook Mastery", "Frost Nova", "Energy Shield", "Meteor Shower", "Arcane Missile", 
-        "Polymorph", "Mana Regeneration", "Chain Lightning", "Illusion Casting", "Mystic Sight", "Elemental Control", 
-        "Magic Ward", "Dispel Magic", "Teleportation Mastery", "Mana Focus", "Lightning Chain", "Mystic Barrier", 
-        "Ritual Casting"
+    "Warlord": [
+        "War Cry", "Battle Tactics", "Siege Mastery", "Cleave", "Weapon Mastery", 
+        "Charge", "Battle Shout", "Iron Resolve", "Bloodlust", "Shield Breaker", 
+        "Tactical Precision", "Overwhelm", "War Banner", "Terrify", "Combat Frenzy", 
+        "Rally Troops", "Warrior's Instinct", "Intimidation", "Martial Domination", "Executioner's Strike", 
+        "Unyielding Will", "Whirlwind Strike", "Shield Crush", "Endless Assault", "Dominion Over War", 
+        "Crushing Blow", "Tyrant’s Rule", "Tactical Genius", "Conqueror's Aura", "Battlefield Commander"
     ],
-    "Rogue": [
-        "Backstab", "Pickpocket", "Stealth", "Dual Wield", "Vanish", "Dagger Mastery", "Poison Craft", 
-        "Lockpicking", "Shadow Step", "Ambush", "Evasion", "Sneak Attack", "Trap Detection", "Quick Reflexes", 
-        "Critical Strike", "Disguise", "Silent Kill", "Agility Training", "Acrobatics", "Pick Lock", 
-        "Smoke Bomb", "Blind", "Paralytic Strike", "Shadow Cloak", "Evade"
+    "High Paladin": [
+        "Holy Strike", "Divine Shield", "Blessed Armor", "Sacred Vow", "Smite Evil", 
+        "Aura of Courage", "Healing Hands", "Consecration", "Blessing of Might", "Righteous Wrath", 
+        "Judgment", "Shield of Faith", "Holy Light", "Devotion", "Divine Smite", 
+        "Crusader's Charge", "Angelic Intervention", "Divine Insight", "Lay on Hands", "Guardian's Oath", 
+        "Sanctified Ground", "Light's Blessing", "Purify", "Radiant Charge", "Avenging Wrath", 
+        "Celestial Radiance", "Wrath of the Gods", "Holy Crusade", "Angelic Wings", "Last Bastion"
     ],
-    "Archer": [
-        "Bow Mastery", "Eagle Eye", "Piercing Shot", "Arrow Rain", "Camouflage", "Rapid Shot", "Trick Shot", 
-        "Long Shot", "Steady Aim", "Multi-Shot", "Critical Aim", "Tracking", "Sniper's Focus", "Wind Resistance", 
-        "Explosive Arrow", "Volley", "Poisoned Arrow", "Quick Reload", "Silencing Shot", "Sharp Shooter", 
-        "Arrow Crafting", "Keen Senses", "Trap Setting", "Entangling Arrow", "Enhanced Senses"
+    "Faceless King": [
+        "Shadow Command", "Oblivion's Grasp", "Formless Step", "Mind Shroud", "Cloak of the Abyss", 
+        "Phantom Presence", "Soul Drain", "Command the Unseen", "Shroud of Silence", "Whispers of Madness", 
+        "Faceless Dominion", "Eternal Darkness", "Phase Shift", "Nightmare Weaving", "Veil of Dread", 
+        "Shadow Mastery", "Terror Incarnate", "Twisted Realities", "Fearmonger", "Void Control", 
+        "Unseen Strike", "Mind Eclipse", "Mental Fortress", "Dark Pact", "Thousand Faces", 
+        "Soul Corruption", "Shadow Rebirth", "Voidwalker", "Eternal Mask", "Essence of Fear"
     ],
-    "Paladin": [
-        "Holy Light", "Divine Shield", "Blessing of Strength", "Smite", "Lay on Hands", "Sacred Ground", 
-        "Aura of Protection", "Holy Vengeance", "Judgement", "Exorcism", "Purify", "Crusader Strike", 
-        "Holy Flame", "Sanctuary", "Hammer of Justice", "Guardian Spirit", "Celestial Shield", "Consecrate", 
-        "Holy Weapon", "Divine Protection", "Aura of Courage", "Light's Grace", "Devotion Aura", "Heaven's Wrath", 
-        "Shield of Faith"
+    "Titan Lord": [
+        "Titanic Strength", "Earthquake Slam", "Colossus Strike", "Mountain Endurance", "Tectonic Shift", 
+        "Worldbreaker", "Giant's Grasp", "Unstoppable Charge", "Earthbind", "Elemental Fury", 
+        "Crush the Weak", "Overpower", "Iron Grip", "Stone Skin", "Seismic Shockwave", 
+        "Thunderous Stomp", "Titanic Roar", "Landquake", "Unyielding Strength", "Avalanche Strike", 
+        "Goliath's Wrath", "Rock Shield", "Elemental Affinity", "Tremor Call", "Crag Eruption", 
+        "Stonebreaker", "Mountain Dominion", "Fortress of Might", "Eternal Strength", "Gaia’s Call"
     ],
-    "Blacksmith": [
-        "Forge Weapons", "Forge Armor", "Smelting", "Weapon Repair", "Armor Repair", "Enhance Blade", 
-        "Metalworking", "Create Tools", "Temper Steel", "Craft Shields", "Sharpen Weapons", "Repair Sundered Armor", 
-        "Hammer Mastery", "Forge Mastery", "Melt Ore", "Precise Hammering", "Create Magical Items", 
-        "Enchantment Crafting", "Weapon Balance", "Custom Armor Design", "Repair Tools", "Heat Resistance", 
-        "Forge Master", "Metal Reinforcement", "Iron Will"
+    "Eclipse Knight": [
+        "Lunar Slash", "Solar Flare", "Eclipse Strike", "Blade of Twilight", "Balance of Light", 
+        "Shadow Step", "Radiant Shield", "Twilight Mastery", "Lunar Guard", "Solar Blast", 
+        "Crescent Strike", "Light and Shadow", "Umbral Parry", "Radiant Charge", "Moonlit Ward", 
+        "Dawn's Wrath", "Midnight's Blade", "Sunfire Slash", "Eclipse Aura", "Nightfall's Edge", 
+        "Celestial Balance", "Dawn and Dusk", "Stellar Shield", "Light’s Embrace", "Shadow Embrace", 
+        "Celestial Convergence", "Radiant Burst", "Twilight Vengeance", "Solar Ascendancy", "Lunar Descent"
     ],
-    "Healer": [
-        "Healing Touch", "Revive", "Cure Poison", "Regeneration", "Purify Disease", "Mana Channeling", 
-        "Greater Heal", "Heal Wounds", "Protective Barrier", "Life Infusion", "Mend Bones", "Blessing of Vitality", 
-        "Restore Strength", "Mass Heal", "Life Ward", "Healing Wave", "Aura of Restoration", "Vital Pulse", 
-        "Sanctify", "Holy Mend", "Lay on Hands", "Radiant Healing", "Protection Ward", "Life Surge", "Energy Transfer"
-    ],
-    "Assassin": [
-        "Assassination", "Death Mark", "Poison Blade", "Silent Takedown", "Shadowstep", "Ambush Mastery", 
-        "Lethal Precision", "Bloodthirst", "Vital Strike", "Garrote", "Shadow Veil", "Night Prowl", "Weak Spot", 
-        "Escape Artist", "Evasion Mastery", "Target Lock", "Silent Strike", "Shadow Cloak", "Master of Deception", 
-        "Quick Strike", "Night Hunter", "Precision Killing", "Enhanced Agility", "Critical Mastery", "Ghost Walk"
-    ],
-    "Saint": [
-        "Holy Blessing", "Divine Shield", "Resurrect", "Celestial Light", "Aura of Peace", "Banish Evil", 
-        "Divine Wrath", "Heal the Fallen", "Sanctify Ground", "Restore Life", "Salvation", "Blessing of Hope", 
-        "Light's Judgement", "Purifying Light", "Guardian Angel", "Miracle Cure", "Divine Aegis", "Light's Embrace", 
-        "Benediction", "Aura of Purity", "Holy Aura", "Blessed Protection", "Light's Radiance", "Divine Wisdom", "Eternal Grace"
-    ],
-    "Tamer": [
-        "Beast Control", "Summon Pet", "Animal Empathy", "Beast Bond", "Wild Call", "Summon Wolf", 
-        "Beast Fury", "Taming Mastery", "Call of the Wild", "Animal Instinct", "Summon Bear", "Beastial Strength", 
-        "Wild Fury", "Command Beasts", "Summon Hawk", "Nature Bond", "Alpha Command", "Predator Instincts", 
-        "Nature's Wrath", "Summon Tiger", "Beast Sense", "Call of the Pack", "Wild Rage", "Summon Serpent", "Tame the Untamed"
+    "Spiritcaller": [
+        "Summon Spirits", "Totem Mastery", "Soulbind", "Ancestral Fury", "Spirit Guide", 
+        "Ghost Step", "Ethereal Chain", "Spectral Touch", "Soul Resonance", "Haunting Echoes", 
+        "Spirit Storm", "Reincarnation", "Phantom Presence", "Spectral Warrior", "Ethereal Projection", 
+        "Communion with Spirits", "Spiritual Infusion", "Haunting Strike", "Soul Weaver", "Phantasmal Blade", 
+        "Ancestors' Blessing", "Ghostly Guardian", "Eternal Rest", "Wailing Winds", "Spirit Ward", 
+        "Spectral Manipulation", "Fury of the Dead", "Necromantic Link", "Restless Souls", "Spirit Realm Mastery"
     ],
     "Necromancer": [
-        "Summon Undead", "Dark Pact", "Bone Shield", "Raise Skeletons", "Life Drain", "Dark Ritual", 
-        "Control the Dead", "Corpse Explosion", "Plague Cloud", "Curse of Decay", "Soul Harvest", "Necrotic Touch", 
-        "Ghoul Frenzy", "Shadow Mastery", "Summon Wraith", "Summon Lich", "Vampiric Touch", "Death Coil", 
-        "Wither Life", "Dark Command", "Summon Bone Golem", "Blood Pact", "Bone Spear", "Soul Reap", "Haunting Visions"
+        "Raise Dead", "Bone Armor", "Life Drain", "Death's Touch", "Summon Skeletons", 
+        "Corpse Explosion", "Dark Pact", "Soul Harvest", "Deathly Aura", "Lich Transformation", 
+        "Wraith Call", "Ghoul Mastery", "Undead Horde", "Plague Strike", "Death Coil", 
+        "Graveborne Strength", "Soul Reaper", "Bone Spear", "Blight", "Eternal Torment", 
+        "Corpse Manipulation", "Death Mark", "Rotting Curse", "Reanimate", "Necrotic Blast", 
+        "Ghastly Strike", "Death Whisper", "Dark Resurrection", "Undying Army", "Master of Decay"
     ],
-    "Unknown": [
-        "Mystic Presence", "Hidden Identity", "Secret Power", "Faded Memory", "Unseen Hand", "Masked Aura", 
-        "Aura Concealment", "Unknown Destiny", "Veil of Shadows", "Mystery Unfold", "Whispered Truth", "Shrouded Path", 
-        "Uncertain Fate", "Fog of War", "Cryptic Vision", "Hidden Talent", "Secret Knowledge", "Flicker of Time", 
-        "Lost Potential", "Pathfinder", "Unknown Strength", "Hidden Resolve", "Unforeseen Force", "Mysterious Aid", "Obscured Purpose"
+    "Stormcaller": [
+        "Summon Storm", "Lightning Strike", "Thunderbolt", "Windfury", "Storm Armor", 
+        "Thunderous Roar", "Hurricane Call", "Chain Lightning", "Tempest Fury", "Wind Slash", 
+        "Cyclone", "Lightning Spear", "Stormshield", "Tornado Mastery", "Thunderstrike", 
+        "Windwalk", "Rain Dance", "Lightning Surge", "Gale Force", "Typhoon Summon", 
+        "Electric Field", "Storm Blast", "Cloud Call", "Lightning Charge", "Tempest Control", 
+        "Storm Barrier", "Winds of Destruction", "Stormrage", "Electric Mastery", "Skybreaker"
     ],
-    "Death Knight": [
-        "Soul Reaver", "Death Strike", "Unholy Aura", "Rune of Frost", "Dark Blade", "Death Grip", 
-        "Plague Strike", "Icebound Fortitude", "Summon Gargoyle", "Death Coil", "Rune of the Fallen", "Lichborne", 
-        "Frozen Weaponry", "Dark Resurrection", "Skeletal Minions", "Pestilence", "Blood Boil", "Scourge Strike", 
-        "Anti-Magic Zone", "Heart Strike", "Blood Shield", "Death’s Embrace", "Defile", "Unholy Might", "Death's Advance"
+    "Runelord": [
+        "Rune Mastery", "Elemental Runes", "Runic Armor", "Rune of Power", "Fire Rune", 
+        "Frost Rune", "Earth Rune", "Lightning Rune", "Runic Shield", "Teleport Rune", 
+        "Mystic Inscription", "Rune of Warding", "Runic Blade", "Rune of Strength", "Rune of Healing", 
+        "Runic Empowerment", "Binding Rune", "Rune of Reflection", "Rune of Speed", "Elemental Mastery", 
+        "Runic Warding", "Rune of Destruction", "Arcane Runes", "Shadow Rune", "Blood Rune", 
+        "Runebound Strike", "Eternal Runes", "Runic Teleport", "Glyph of Control", "Mark of the Runelord"
     ],
-    "Farmer": [
-        "Plow Mastery", "Harvesting", "Animal Husbandry", "Crop Rotation", "Soil Enrichment", "Water Management", 
-        "Seed Selection", "Fertilizer Crafting", "Land Cultivation", "Weather Prediction", "Herbal Knowledge", "Barn Construction", 
-        "Tool Maintenance", "Animal Care", "Wheat Harvest", "Farm Defenses", "Irrigation Mastery", "Composting", 
-        "Mushroom Cultivation", "Beekeeping", "Trapping", "Fence Building", "Herd Management", "Hay Baling", "Pest Control"
+    "Lightbringer": [
+        "Radiant Strike", "Holy Light", "Blessing of the Sun", "Aura of Purity", "Beam of Judgement", 
+        "Light Shield", "Cleansing Flames", "Divine Insight", "Blinding Radiance", "Purification", 
+        "Celestial Wrath", "Beacon of Hope", "Sunfire Blast", "Light of Dawn", "Angelic Wings", 
+        "Divine Intervention", "Radiant Wave", "Illuminating Smite", "Judgement of Light", "Sunburst", 
+        "Blaze of Glory", "Light's Embrace", "Flames of Justice", "Aura of Clarity", "Divine Retribution", 
+        "Heaven’s Wrath", "Solar Flare", "Blessing of Valor", "Shield of Divinity", "Heaven's Judgement"
     ],
-    "Demon King": [
-        "Infernal Command", "Hellfire Blast", "Demonic Minions", "Dark Dominion", "Abyssal Power", "Crushing Presence", 
-        "Soul Imprisonment", "Hellish Aura", "Summon Demon Horde", "Flames of Destruction", "Dark Pact", "Nether Bolt", 
-        "Soul Harvest", "Void Blast", "Unholy Empowerment", "Terror Gaze", "Infernal Surge", "World Breaker", 
-        "Hell's Wrath", "Void Manipulation", "Demonic Regeneration", "Hell Gate", "Cursed Flames", "Shadow Tyrant", "Endless Agony"
+    "Shadowmancer": [
+        "Shadowbolt", "Cloak of Shadows", "Nightfall", "Shadowstep", "Shade Summon", 
+        "Umbral Assault", "Dark Veil", "Soul Leech", "Shadowstrike", "Shadow Wave", 
+        "Void Shift", "Eclipse", "Wraithform", "Shadow Burst", "Fearmonger", 
+        "Nightmare Grip", "Shadows of Dread", "Soul Eater", "Umbral Domination", "Shadow Embrace", 
+        "Phantom Step", "Darkness Incarnate", "Grasp of Night", "Shadow Mark", "Creeping Dread", 
+        "Netherbind", "Spectral Chains", "Dark Mastery", "Dread Wraith", "Cloak of the Night"
     ],
-    "Swordsman": [
-        "Sword Mastery", "Flurry Strike", "Parry", "Precision Slice", "Whirlwind Attack", "Blade Dance", "Riposte", 
-        "Cross Slash", "Sword Flurry", "Armor Piercing", "Sword Discipline", "Duelist’s Strike", "Quickdraw", "Overhead Slash", 
-        "Feint", "Perfect Guard", "Counterstrike", "Sword Barrage", "Heavy Slash", "Master Parry", "Blade Spin", 
-        "Sword Dash", "Piercing Thrust", "Shield Breaker", "Steel Resolve"
+    "Storm Herald": [
+        "Thunderous Charge", "Storm Burst", "Lightning Dash", "Tempest Strike", "Storm Slam", 
+        "Cyclonic Blast", "Lightning Whirlwind", "Electric Surge", "Storm Barrier", "Electric Vortex", 
+        "Cloudform", "Stormrage", "Lightning Spin", "Thunderclap", "Gale Mastery", 
+        "Storm Walk", "Electric Ascendancy", "Chain Lightning", "Wind Shield", "Tempest Shield", 
+        "Hurricane Force", "Lightning Edge", "Stormcaller's Fury", "Thunder Crash", "Tempest Rage", 
+        "Shockwave", "Stormlord's Command", "Cyclone Blade", "Thunderstorm", "Skybreaker"
     ],
-    "Magic Swordsman": [
-        "Elemental Slash", "Mana Infusion", "Arcane Blade", "Runic Strike", "Flame Sword", "Mystic Slash", 
-        "Enchanted Guard", "Frozen Strike", "Arcane Burst", "Sword of Light", "Mana Shield", "Elemental Burst", 
-        "Lightning Blade", "Runic Barrier", "Mystic Edge", "Sword Dance", "Illusionary Blade", "Void Strike", 
-        "Magic Enhancement", "Mystic Guard", "Magical Flurry", "Runeblade Mastery", "Elemental Infusion", "Arcane Surge", "Mana Blade"
+    "Earthshaker": [
+        "Ground Slam", "Tectonic Fury", "Rock Armor", "Seismic Shockwave", "Earthquake", 
+        "Stonewall", "Rumble", "Mountain Strength", "Fissure", "Landslide", 
+        "Crushing Blow", "Stonefist", "Earthbind", "Giant's Grip", "Stone Skin", 
+        "Magma Strike", "Tremor", "Unbreakable Will", "Mountain's Endurance", "Earthward", 
+        "Molten Core", "Crumbling Earth", "Stone Rain", "Earth Guardian", "Magma Wave", 
+        "Quake Mastery", "Crack the Earth", "Volcanic Blast", "Unstoppable Force", "Pillar of the Earth"
     ],
-    "Martial Artist": [
-        "Hand-to-Hand Combat", "Roundhouse Kick", "Pressure Point Strike", "Counter Attack", "Chi Channeling", 
-        "Leg Sweep", "Palm Strike", "Meditative Focus", "High Kick", "Quick Reflexes", "Spinning Kick", 
-        "Dragon Punch", "Iron Fist", "Energy Blast", "Tiger Claw", "Inner Strength", "Martial Prowess", "Steadfast Stance", 
-        "Flowing Strikes", "Eagle Strike", "Kata Mastery", "Silent Step", "Endurance Training", "Nerve Strike", "Warrior's Focus"
+    "Arcane Warden": [
+        "Arcane Shield", "Mana Ward", "Magical Barrier", "Teleportation Mastery", "Energy Drain", 
+        "Ethereal Chains", "Spell Reflection", "Mana Flow", "Astral Shield", "Arcane Burst", 
+        "Blink", "Mana Siphon", "Barrier of Will", "Energy Absorption", "Mana Deflection", 
+        "Arcane Wave", "Energy Field", "Magical Resonance", "Arcane Mastery", "Mystic Pulse", 
+        "Mana Channeling", "Spell Shield", "Arcane Infusion", "Mystic Deflector", "Rune of Defense", 
+        "Mana Shell", "Spell Barricade", "Arcane Fortitude", "Arcane Resistance", "Mystical Deflection"
     ],
-    "Trader": [
-        "Barter Mastery", "Appraisal", "Supply Management", "Gold Hoarding", "Trade Negotiation", "Resource Allocation", 
-        "Price Haggling", "Contract Writing", "Debt Collection", "Merchandise Appraisal", "Market Analysis", "Wealth Accumulation", 
-        "Craftsmanship Evaluation", "Investment Acumen", "Shipping Mastery", "Stockpiling", "Bargain Finder", 
-        "Trade Route Management", "Currency Exchange", "Product Demand", "Merchant's Eye", "Smuggling", "Price Manipulation", 
-        "Tax Evasion", "Item Identification"
+    "Grandmaster Knight": [
+        "Sword Mastery", "Shield Mastery", "Lance Charge", "War Cry", "Iron Wall", 
+        "Defender's Resolve", "Shield Bash", "Unyielding Fortitude", "Parry Mastery", "Sword Precision", 
+        "Mounted Combat", "Battle Reflexes", "Holy Blade", "Valor of the Righteous", "Martial Training", 
+        "Tactical Genius", "Lance Strike", "Defender's Banner", "Shield Crush", "Ironclad Resolve", 
+        "Blade of Justice", "Heaven's Guard", "Sword of Valor", "Sentinel’s Duty", "Warrior’s Oath", 
+        "Battlefield Awareness", "Martial Discipline", "Steel Will", "Sword Barrage", "Indomitable Courage"
     ],
-    "Archmage": [
-        "Arcane Mastery", "Greater Teleport", "Reality Warp", "Planar Travel", "Time Manipulation", "Dimensional Rift", 
-        "Mana Overload", "Mind Control", "Meteor Summon", "Mass Teleportation", "Arcane Tempest", "Essence Drain", 
-        "Mana Storm", "Summon Elementals", "Energy Collapse", "Elemental Fusion", "Void Magic", "Chronomancy", 
-        "Astral Projection", "Planar Binding", "Runic Mastery", "Mana Infusion", "Ethereal Vision", "Conjure Realities", "Ultimate Arcana"
+    "Soulbinder": [
+        "Soul Link", "Spirit Bond", "Soul Infusion", "Essence Drain", "Soulfire", 
+        "Soul Reaver", "Wraithblade", "Spectral Chains", "Spirit Barrier", "Necrotic Strike", 
+        "Spirit Resonance", "Soul Manifestation", "Soul Shield", "Haunted Weapon", "Soulbind", 
+        "Soul Harvest", "Ghostfire", "Ethereal Chains", "Soul Leech", "Soul Cleaver", 
+        "Spirit Warden", "Necrotic Mastery", "Soul Domination", "Essence Absorption", "Soul Sap", 
+        "Phantom Strike", "Spirit Mastery", "Life Force Drain", "Shadow Soul", "Spirit Manifestation"
     ],
-    "Slave": [
-        "Endurance", "Survival Instinct", "Pain Tolerance", "Obedience", "Chain Breaker", "Labor Mastery", 
-        "Silent Resolve", "Fear Resistance", "Forced March", "Escape Tactics", "Work Speed", "Scarred Flesh", 
-        "Mental Fortitude", "Trap Avoidance", "Beggars’ Craft", "Tool Crafting", "Basic Weaponry", "Undercover Survival", 
-        "Rebellion Instinct", "Deception", "Feign Weakness", "Resource Gathering", "Tracking", "Tool Forging", "Animal Taming"
+    "Voidseer": [
+        "Void Bolt", "Void Ripple", "Dark Channeling", "Void Surge", "Void Blast", 
+        "Rift Walk", "Void Mastery", "Shadow Rift", "Void Shield", "Phantom Shift", 
+        "Ethereal Step", "Void Gate", "Reality Tear", "Void Cloak", "Dark Pulse", 
+        "Essence of the Void", "Rift Mastery", "Void Manipulation", "Eternal Darkness", "Rift Collapse", 
+        "Phantom Binding", "Void Energy", "Umbral Rift", "Dark Matter Manipulation", "Void Implosion", 
+        "Void Chain", "Rift Strike", "Reality Warp", "Umbral Cloak", "Endless Abyss"
     ],
-    "Chef": [
-        "Culinary Mastery", "Advanced Seasoning", "Meat Preparation", "Bread Baking", "Potion Brewing", "Herb Infusion", 
-        "Meal Planning", "Stamina Recovery Food", "Energy Boosting Meals", "Exotic Dish Preparation", "Buff Foods", 
-        "Gourmet Cuisine", "Cooking in Extreme Conditions", "Fire Management", "Knife Skills", "Mystic Ingredients", 
-        "Meal Preservation", "Quick Cooking", "Sweet Delicacies", "Mastery of Soups", "Meat Roasting", "Herb Knowledge", 
-        "Alchemy Cooking", "Banquet Preparation", "Secret Spices"
-    ],
-    "Berserker": [
-        "Rage Burst", "Blood Fury", "War Cry", "Weapon Smash", "Unstoppable Charge", "Battle Frenzy", 
-        "Savage Cleave", "Reckless Charge", "Endurance Surge", "Furious Strikes", "Adrenaline Rush", "Rage Recovery", 
-        "Howling Strike", "Crushing Blow", "Rend", "Unyielding Strength", "Rage Storm", "Deathwish", "Relentless Assault", 
-        "Brute Force", "Crimson Blade", "Bloodlust", "Bonebreaker", "Wild Cleave", "Skull Crusher"
-    ],
-    "Bard": [
-        "Song of Courage", "Inspiring Melody", "Healing Harmony", "Soundwave Strike", "Lullaby", "Charming Tune", 
-        "Dance of Battle", "Arcane Notes", "Soothing Melody", "Rousing Anthem", "Sonic Boom", "Tales of Heroes", 
-        "Battle Song", "Hypnotic Melody", "Harmonic Resonance", "Echo of Power", "Mystic Ballad", "Rallying Call", 
-        "Healing Verse", "Song of Protection", "Ode to War", "Dirge of the Fallen", "Lyric of Light", "Whispered Tune", "Symphony of the Brave"
-    ],
-    "Pirate": [
-        "Swordplay", "Gunpowder Knowledge", "Rope Mastery", "Treasure Hunter", "Seamanship", "Cannon Mastery", 
-        "Boarding Tactics", "Pirate Diplomacy", "Ransack", "Plunder", "Sea Navigation", "Ship Repair", 
-        "Dual-Wielding Blades", "Parrot Training", "Cunning Deception", "Sea Shanties", "Rum Knowledge", "Master Navigator", 
-        "Ocean Survival", "Saber Mastery", "Shark Fighting", "Storm Riding", "Bartering", "Disguise as a Merchant", "Black Market Connections"
-    ],
-    "Priest": [
-        "Divine Prayer", "Blessing of Light", "Holy Smite", "Greater Heal", "Mass Resurrection", "Divine Protection", 
-        "Mana Infusion", "Holy Shield", "Exorcism", "Purification", "Aura of Peace", "Sanctuary", 
-        "Banish Undead", "Holy Water Creation", "Life Ward", "Divine Judgment", "Sacred Flame", "Light of Redemption", 
-        "Martyr’s Protection", "Divine Chant", "Protection Aura", "Healing Circle", "Ward of Faith", "Blessed Resolve", "Holy Cleansing"
-    ],
-    "Alchemist": [
-        "Potion Crafting", "Elixir Mastery", "Poison Brewing", "Herbology", "Transmutation", "Mana Potion Creation", 
-        "Elemental Infusion", "Antidote Crafting", "Explosive Concoction", "Alchemical Experimentation", "Herb Identification", 
-        "Stone to Gold", "Alchemy of Life", "Mystic Powder Creation", "Metal Purification", "Philosopher's Stone", 
-        "Alchemy Lab Setup", "Golem Creation", "Potion of Strength", "Potion of Invisibility", "Potion of Agility", 
-        "Potion of Healing", "Energy Elixirs", "Sleep Draught", "Battle Potions"
-    ],
-    "Ranger": [
-        "Bow Mastery", "Animal Tracking", "Camouflage", "Stealth Shot", "Hawk Vision", "Trap Setting", 
-        "Dual Wielding", "Nature Lore", "Arrow Crafting", "Survivalist", "Herb Gathering", "Silent Movement", 
-        "Entangling Shot", "Poison Arrows", "Beast Companion", "Tracking Mastery", "Concealment", "Natural Camouflage", 
-        "Fletching", "Trapping", "Quick Draw", "Trap Disarming", "Wild Instincts", "Hunting Prowess", "Pathfinding"
-    ],
-    "Samurai": [
-        "Katana Mastery", "Iaijutsu Strike", "Meditation", "Focus", "Sword Discipline", "Quickdraw", 
-        "Way of the Warrior", "Honor's Call", "Bushido", "Defensive Stance", "Two-Handed Mastery", "Counterstrike", 
-        "Wind Slash", "Falling Leaf Strike", "Disarm", "Ki Focus", "Samurai Code", "Parry and Riposte", 
-        "Mind over Matter", "Kiai Shout", "Perfect Defense", "Spirit Blade", "Blade Parry", "Steadfast Resolve", "Blinding Speed"
-    ],
-    "Monk": [
-        "Fist Mastery", "Chi Flow", "Iron Palm", "Meditation", "Pressure Point Strike", "Mind over Body", 
-        "Crane Kick", "Wind Walk", "Spiritual Healing", "Unarmed Combat", "Dragon Strike", "Deflect Arrows", 
-        "Whirlwind Kick", "Tiger Stance", "Iron Body", "Serene Mind", "Healing Meditation", "Internal Power", 
-        "Palm Strike", "Chakra Alignment", "Leaping Kick", "Eagle Eye", "Nerve Strike", "Stone Fist", "Harmony of Mind"
-    ],
-    "Vampire Lord": [
-        "Blood Drain", "Night Vision", "Vampiric Regeneration", "Bat Transformation", "Hypnosis", "Shadow Step", 
-        "Summon Bats", "Dark Influence", "Undead Command", "Immortality", "Vampiric Speed", "Blood Curse", 
-        "Dark Aura", "Vampire Bite", "Life Steal", "Cloak of Darkness", "Nightwalker", "Undying Resilience", 
-        "Thrall Command", "Crimson Strike", "Moonlight Empowerment", "Nocturnal Mastery", "Blood Pact", "Undead Resilience", "Vampiric Embrace"
-    ],
-    "Warlock": [
-        "Dark Pact", "Soul Drain", "Demon Summoning", "Cursed Flames", "Shadow Bolt", "Life Tap", 
-        "Chaos Bolt", "Unholy Wrath", "Void Rift", "Summon Imp", "Summon Voidwalker", "Fel Armor", 
-        "Fear", "Curse of Agony", "Rain of Fire", "Infernal Summon", "Demonic Sacrifice", "Shadowfury", 
-        "Doom", "Drain Soul", "Curse of Exhaustion", "Hellfire", "Summon Succubus", "Banish", "Soulstone"
-    ],
-    "Warrior": [
-        "Power Strike", "Shield Block", "Battle Roar", "Charge", "Dual Wield Mastery", "Sword and Board", 
-        "Weapon Mastery", "Defensive Stance", "Whirlwind", "Rage Control", "Reckless Assault", "War Cry", 
-        "Shield Slam", "Berserker Rage", "Cleave", "Taunt", "Enrage", "Shield Wall", "Battle Shout", "Bladestorm", 
-        "Weapon Toss", "Endurance Training", "Weapon Parry", "Sunder Armor", "Battle Hardened"
-    ],
-    "Shaman": [
-        "Totem Mastery", "Elemental Control", "Lightning Bolt", "Earthquake", "Water Healing", "Windfury", 
-        "Fire Nova", "Totemic Call", "Spirit Walk", "Ancestral Healing", "Chain Lightning", "Frost Shock", 
-        "Spirit Wolf", "Lava Burst", "Thunderstorm", "Earthbind", "Stormstrike", "Healing Wave", "Totem of Wrath", 
-        "Earth Shield", "Flame Shock", "Riptide", "Elemental Mastery", "Ancestral Guidance", "Astral Shift"
-    ],
-    "Sorcerer": [
-        "Arcane Blast", "Summon Familiar", "Fireball", "Frostbolt", "Magic Missile", "Polymorph", 
-        "Mana Shield", "Mirror Image", "Arcane Explosion", "Time Warp", "Teleport", "Frost Nova", 
-        "Blizzard", "Flamestrike", "Pyroblast", "Arcane Intellect", "Arcane Power", "Ice Barrier", 
-        "Mana Regen", "Slow Fall", "Counterspell", "Invisibility", "Conjure Food", "Conjure Water", "Meteor"
-    ],
-    "Druid": [
-        "Wild Shape", "Nature's Grasp", "Summon Treants", "Healing Touch", "Wrath", "Starfall", 
-        "Entangling Roots", "Rejuvenation", "Moonfire", "Sunfire", "Cenarion Ward", "Thorns", 
-        "Cyclone", "Swiftmend", "Barkskin", "Wild Growth", "Solar Beam", "Hibernate", "Tree of Life", 
-        "Tranquility", "Regrowth", "Nature’s Swiftness", "Feral Charge", "Typhoon", "Eclipse"
-    ],
-    "Templar": [
-        "Holy Strike", "Divine Intervention", "Aura of Courage", "Smite Evil", "Sacred Shield", "Blessing of Purity", 
-        "Lay on Hands", "Guardian of Faith", "Judgment", "Righteous Wrath", "Sanctified Ground", "Shield of Faith", 
-        "Holy Vow", "Divine Retribution", "Blade of Faith", "Aura of Protection", "Shield Bash", "Crusader’s Fury", 
-        "Blessing of Justice", "Holy Zeal", "Defender of Light", "Holy Empowerment", "Shield of the Righteous", "Devotion", "Vow of Chastity"
-    ],
-    "Gladiator": [
-        "Arena Mastery", "Weapon Throw", "Shield Charge", "Taunting Roar", "Arena Tactics", "Bloodlust", 
-        "Rage Boost", "Berserk Fury", "Dual Weapons", "Crowd Appeal", "Battle Cry", "Savage Strike", 
-        "Unstoppable Force", "Titan Grip", "Blood Drinker", "Battle Hardened", "Shield Slam", "Gladiator's Defense", 
-        "Blade Frenzy", "Combat Endurance", "Arena Champion", "Intimidating Presence", "Power Strike", "Battle Prowess", "Ruthless Strike"
-    ],
-    "Summoner": [
-        "Summon Elemental", "Conjure Familiar", "Control Spirit", "Summon Golem", "Conjure Demon", "Familiar Bond", 
-        "Elemental Infusion", "Mana Transfer", "Conjure Phoenix", "Summon Gargoyle", "Soul Link", "Binding Circle", 
-        "Ritual Summoning", "Summon Imps", "Ethereal Summon", "Spirit Guidance", "Greater Summoning", "Planar Binding", 
-        "Elemental Call", "Master Summoner", "Familiar Sacrifice", "Summon Leviathan", "Conjure Illusion", "Control Entity", "Arcane Binding"
-    ],
-    "Beastmaster": [
-        "Animal Bond", "Tame Beast", "Command Beast", "Call of the Wild", "Summon Pack", "Beast Fury", 
-        "Beast Healing", "Animal Companion", "Hawk’s Eye", "Ferocity", "Wild Charge", "Predator’s Instinct", 
-        "Summon Wolf", "Feral Command", "Mark of the Wild", "Alpha's Call", "Summon Bear", "Summon Eagle", 
-        "Feral Rage", "Beast Kinship", "Beastial Wrath", "Summon Stag", "Animal Empathy", "Beast Whisperer", "Beastial Bond"
-    ],
-    "Witch Hunter": [
-        "Purge Magic", "Holy Flames", "Detect Evil", "Warding Strike", "Divine Mark", "Curse Break", 
-        "Searing Light", "Shield of Faith", "Holy Crossbow", "Inquisition", "Sanctified Weapons", "Witch's Bane", 
-        "Sacred Purge", "Spell Ward", "Blessed Ammo", "Silver Bullets", "Detect Curses", "Divine Retribution", 
-        "Hexbreaker", "Aura of Truth", "Binding Light", "Witch Slayer", "Holy Traps", "Light’s Judgment", "Penance"
-    ],
-    "Duelist": [
-        "Riposte", "Precision Strike", "Fencing Mastery", "Quick Parry", "Sword Dance", "Lunge", 
-        "Counter Thrust", "Disarming Strike", "Defensive Stance", "Sword Flourish", "Piercing Strike", "Blade Dance", 
-        "Feint", "Focused Slash", "Agile Movement", "Quick Draw", "Perfect Parry", "Swift Slash", 
-        "Blade Reflexes", "Graceful Dodge", "Sword Spin", "Challenge", "Unyielding Precision", "Blade Focus", "Evasive Maneuver"
-    ],
-    "Sage": [
-        "Wisdom of the Ages", "Insight", "Prophecy", "Mind’s Eye", "Arcane Wisdom", "Clairvoyance", 
-        "True Sight", "Eldritch Knowledge", "Astral Projection", "Greater Meditation", "Mana Control", "Rune Mastery", 
-        "Magical Insight", "Mystic Focus", "Time Vision", "Soul Sight", "Mystic Shield", "Greater Clairvoyance", 
-        "Soul Perception", "Cosmic Vision", "Wisdom of the Elements", "Prophetic Dream", "Mental Shield", "Planar Knowledge", "Arcane Infusion"
-    ],
-    "Oracle": [
-        "Future Sight", "Prophetic Dream", "Visions of Doom", "Divine Vision", "Fortune Telling", "Mystic Revelation", 
-        "Foretell Catastrophe", "Visionary", "Prophetic Insight", "Seer’s Blessing", "Visions of Hope", "Clairvoyant Strike", 
-        "Mystic Sight", "Premonition", "Revelation", "Foresight", "Past Lives Insight", "Divine Knowledge", 
-        "Omen Reading", "Seer’s Warning", "Prophecy Fulfillment", "True Dream", "Astral Connection", "Destiny Shaping", "Omniscience"
-    ],
-    "Illusionist": [
-        "Mirror Image", "Phantasmal Force", "Mind Trick", "Invisibility", "Cloak of Shadows", "Displacement", 
-        "Phantom Strike", "Hallucination", "Shadow Clone", "Blur", "Spectral Chains", "Mass Hysteria", 
-        "Create Illusions", "Mind Control", "Illusionary Disguise", "Phantasmal Assault", "Ethereal Step", "Deceptive Aura", 
-        "Twist Reality", "Shadow Step", "False Image", "Cloak of Invisibility", "Concealment", "Shifting Shadows", "Mental Mirage"
-    ],
-    "Psychic": [
-        "Telepathy", "Mind Control", "Mental Shield", "Psychic Assault", "Telekinesis", "Astral Projection", 
-        "Clairvoyance", "Mental Barrier", "Mind Blast", "Aura Reading", "Psychic Healing", "Psychic Strike", 
-        "Thought Manipulation", "Precognitive Vision", "Mind Shatter", "Telekinetic Shield", "Mental Grip", "Telepathic Link", 
-        "Mind Barrier", "Mental Drain", "Thought Siphon", "Psychic Scream", "Astral Connection", "Mind Push", "Dreamwalking"
-    ],
-    "Dark Knight": [
-        "Dark Blade", "Shadow Strike", "Death Aura", "Soul Siphon", "Unholy Vow", "Void Armor", 
-        "Dark Cleave", "Dread Presence", "Necrotic Blade", "Undying Will", "Shadow Shield", "Death March", 
-        "Blood Sacrifice", "Grim Resolve", "Void Slash", "Blackened Blade", "Lifedrain Strike", "Doom Aura", 
-        "Soul Corruption", "Dark Pact", "Fallen Knight’s Oath", "Void Step", "Death Grip", "Shadow Barrier", "Abyssal Edge"
-    ],
-    "Inquisitor": [
-        "Purging Light", "Interrogation", "Exorcism", "Divine Fury", "Confession", "Banishment", 
-        "Inquisition’s Judgment", "Cleansing Fire", "Brand of Justice", "Sword of Truth", "Divine Verdict", "Holy Chains", 
-        "Torture", "Confessor's Vow", "Witch Trial", "Unyielding Pursuit", "Fear of God", "Judgment Day", 
-        "Relentless Inquiry", "Sacred Oath", "Writ of Judgment", "Holy Inquisition", "Final Verdict", "Vow of Truth", "Divine Wrath"
-    ],
-    "Scout": [
-        "Stealth Movement", "Eagle Eye", "Trap Detection", "Silent Steps", "Camouflage", "Bow Sniper", 
-        "Critical Shot", "Map Reading", "Tracking", "Ambush", "Terrain Mastery", "Hunter’s Vision", 
-        "Evasion", "Trapping", "Disarm Trap", "Ranger’s Instinct", "Marksmanship", "Flare Shot", 
-        "Silent Attack", "Arrow Crafting", "Quick Reflexes", "Pathfinding", "Survival Instinct", "Silent Arrow", "Mark Target"
-    ],
-    "Lancer": [
-        "Lance Mastery", "Cavalry Charge", "Piercing Thrust", "Shield Bash", "Spear Toss", "Impaling Strike", 
-        "Cavalry Tactics", "Phalanx", "Shield Wall", "Crippling Strike", "Lance Throw", "Mounted Combat", 
-        "Fortress Stance", "Cyclone Strike", "Rapid Charge", "Shield Guard", "Dragon Lance", "Hero’s Charge", 
-        "Impale", "Javelin Mastery", "Polearm Precision", "Thrusting Spear", "Lance Sweep", "Shield Breaker", "Battlefield Awareness"
-    ],
-    "Runesmith": [
-        "Rune Carving", "Elemental Runes", "Mystic Engraving", "Rune Shield", "Summon Runes", "Empower Rune", 
-        "Rune of Protection", "Elemental Infusion", "Arcane Runes", "Rune of Fire", "Rune of Ice", "Rune of Wind", 
-        "Rune of Earth", "Arcane Smithing", "Rune of Thunder", "Weapon Runes", "Enchanted Forge", "Runic Empowerment", 
-        "Ward Engraving", "Runic Restoration", "Rune of Light", "Rune of Darkness", "Runic Focus", "Soul Runes", "Rune of Power"
-    ],
-    "Champion": [
-        "Champion’s Strike", "Battle Roar", "Heroic Presence", "Unbreakable Will", "Defender's Stance", "Champion's Charge", 
-        "Sword of Valor", "Shield of Honor", "Inspiring Shout", "Battlefield Commander", "Hero’s Strength", "Unyielding Courage", 
-        "Champion’s Endurance", "Sword Mastery", "Defender’s Wall", "Glorious Strike", "Indomitable Spirit", "Victory Rush", 
-        "Battle Cry", "Champion’s Resolve", "Champion’s Challenge", "Mighty Blow", "Inspiring Banner", "Heroic Leap", "Victory Stance"
-    ],
-    "Battlemage": [
-        "Arcane Infusion", "Elemental Strike", "Mana Shield", "Flame Blade", "Storm Slash", "Arcane Explosion", 
-        "Frozen Edge", "Lightning Charge", "Spellblade Mastery", "Arcane Discharge", "Blade of Fire", "Frost Strike", 
-        "Arcane Barrage", "Elemental Fusion", "Magic Swordsmanship", "Empowered Weaponry", "Sword of Ice", "Mana Regeneration", 
-        "Enchanted Weapon", "Arcane Power Surge", "Flaming Sword", "Energy Blast", "Elemental Flurry", "Storm of Blades", "Magical Ward"
-    ],
-    "Herbalist": [
-        "Herb Identification", "Potion Brewing", "Healing Poultices", "Poison Neutralization", "Elixir Crafting", "Herbal Knowledge", 
-        "Foraging Expertise", "Plant Preservation", "Nature’s Balm", "Antidote Creation", "Toxin Detection", "Floral Infusion", 
-        "Forest Foraging", "Wild Herb Gathering", "Advanced Herbology", "Potion Enhancement", "Magical Herb Usage", "Tincture Brewing", 
-        "Root Extraction", "Healing Herb Cultivation", "Botanical Studies", "Rare Plant Foraging", "Herbal Salves", "Herb Infusion", "Medicinal Plant Mastery"
-    ],
-    "Enchanter": [
-        "Enchant Weapon", "Magical Infusion", "Spell Scroll Crafting", "Enchant Armor", "Mana Amplification", "Rune Inscription", 
-        "Magic Disenchantment", "Aura of Protection", "Elemental Infusion", "Rune Enhancement", "Arcane Empowerment", "Curse Breaking", 
-        "Weapon Empowerment", "Ring Enchantment", "Blessing of Fortitude", "Mystic Rune Engraving", "Energy Amplifier", "Mana Link", 
-        "Ward Crafting", "Binding Magic", "Soul Enchantment", "Mystic Sigils", "Enchanting Mastery", "Enchant Totem", "Mana Gem Infusion"
-    ],
-    "Seer": [
-        "Foresight", "Divine Visions", "Future Prediction", "Premonition", "Divine Guidance", "Mystic Awareness", 
-        "Reveal Fate", "Prophetic Visions", "Psychic Intuition", "Clairvoyant Sight", "Reveal Hidden Truths", "Astral Vision", 
-        "Mystic Dreams", "Soul Awareness", "Arcane Sensitivity", "Spirit Sight", "Telepathic Insight", "Prophecy Reading", 
-        "Cosmic Knowledge", "Visions of Hope", "Divine Intervention", "Time Vision", "Precognitive Strike", "Foresight Mastery", "Celestial Knowledge"
-    ],
-    "Crusader": [
-        "Holy Wrath", "Divine Intervention", "Crusader’s Charge", "Shield of Faith", "Blessing of Courage", "Smite the Wicked", 
-        "Holy Charge", "Sanctified Strike", "Divine Cleansing", "Blessed Blade", "Aura of Vengeance", "Defender of the Faith", 
-        "Purifying Flames", "Celestial Strike", "Holy Lance", "Armor of Light", "Crusader's Vow", "Martyr’s Blessing", 
-        "Faith’s Retribution", "Unyielding Devotion", "Defender of Justice", "Holy Aegis", "Hammer of Faith", "Blessed Resolve", "Crusader’s Endurance"
-    ],
-    "Warden": [
-        "Nature's Shield", "Entangling Vines", "Thorned Barrier", "Summon Guardians", "Wild Healing", "Nature’s Call", 
-        "Woodland Mastery", "Barkskin", "Beast Taming", "Natural Bond", "Tree Stride", "Summon Ents", 
-        "Root Snare", "Forest Camouflage", "Thorn Strike", "Natural Fortitude", "Earth’s Blessing", "Warden’s Call", 
-        "Summon Forest Spirits", "Nature's Fury", "Wild Companion", "Tree Meld", "Green Shield", "Wrath of the Wild", "Earthbind Totem"
-    ],
-    "Mystic": [
-        "Soul Channeling", "Astral Projection", "Mystic Shield", "Mana Absorption", "Spirit Walk", "Arcane Meditation", 
-        "Astral Shield", "Mystic Blast", "Mana Regeneration", "Spirit Infusion", "Soul Sight", "Mystic Barrier", 
-        "Ethereal Focus", "Spirit Bond", "Channel Mana", "Arcane Balance", "Mystical Insight", "Mystic Storm", 
-        "Spirit Energy", "Celestial Guidance", "Mana Burst", "Mystic Amplification", "Astral Healing", "Arcane Resonance", "Mana Overflow"
-    ],
-    "Dragon Rider": [
-        "Dragon Bond", "Flame Breath", "Winged Assault", "Draconic Charge", "Aerial Combat", "Sky Mastery", 
-        "Draconic Roar", "Dragon's Fury", "Fire Resistance", "Dragon's Scale Armor", "Summon Dragon", "Draconic Strike", 
-        "Aerial Maneuvers", "Flame Whirlwind", "Dragon’s Shield", "Firestorm", "Soaring Charge", "Wing Gust", 
-        "Dragon's Might", "Summon Dragonling", "Fire Breath Mastery", "Winged Protector", "Draconic Empowerment", "Storm of Flames", "Aerial Domination"
+    "Abyssal Sage": [
+        "Abyssal Chain", "Dark Knowledge", "Forbidden Power", "Call of the Abyss", "Eternal Darkness", 
+        "Shadow Mastery", "Summon Wraith", "Dark Vortex", "Abyssal Grasp", "Soul Entropy", 
+        "Nether Storm", "Dark Summoning", "Chaos Infusion", "Void Knowledge", "Dread Bolt", 
+        "Wail of the Damned", "Entropy Shield", "Abyssal Explosion", "Chaos Channeling", "Soul Drain", 
+        "Abyssal Bind", "Entropy Burst", "Eternal Corruption", "Phantom Coil", "Voidstorm", 
+        "Soul Consumption", "Essence of Dread", "Wraith Mastery", "Shadow Entropy", "Dark Will"
     ],
     "Elementalist": [
-        "Summon Fire Elemental", "Summon Water Elemental", "Elemental Control", "Earthquake", "Lightning Storm", "Fireball", 
-        "Ice Storm", "Wind Fury", "Elemental Fusion", "Chain Lightning", "Lava Burst", "Summon Storm Elemental", 
-        "Elemental Barrier", "Stone Shield", "Blizzard", "Summon Earth Elemental", "Flame Wave", "Lightning Bolt", 
-        "Frost Nova", "Molten Strike", "Tornado", "Summon Air Elemental", "Volcanic Eruption", "Summon Elemental Army", "Elemental Mastery"
+        "Elemental Mastery", "Fireball", "Frost Nova", "Lightning Bolt", "Earth Spike", 
+        "Flame Wave", "Ice Barrier", "Lightning Surge", "Earthquake", "Water Manipulation", 
+        "Storm of Fire", "Elemental Surge", "Elemental Binding", "Firestorm", "Frozen Orb", 
+        "Summon Elementals", "Flame Cyclone", "Ice Spear", "Lightning Storm", "Rock Blast", 
+        "Blazing Nova", "Tidal Wave", "Frozen Touch", "Thunder Crash", "Volcanic Eruption", 
+        "Ice Shard", "Lava Burst", "Wind Fury", "Elemental Fusion", "Elemental Channeling"
     ],
-    "Holy Knight": [
-        "Holy Light", "Divine Slash", "Judgment Strike", "Blessing of Strength", "Holy Aura", "Sanctified Blade", 
-        "Holy Protection", "Shield of Faith", "Aura of Righteousness", "Crusader Strike", "Guardian’s Shield", "Lay on Hands", 
-        "Divine Intervention", "Sacred Smite", "Sword of Light", "Purifying Light", "Blessed Armor", "Vow of Valor", 
-        "Faithful Defender", "Holy Wrath", "Defender's Bulwark", "Heavenly Strike", "Sanctified Shield", "Aura of Purity", "Sword of Salvation"
+
+    //High Tier Role
+        "Forge Master": [
+        "Hammer Mastery", "Metal Shaping", "Weapon Crafting", "Armor Forging", "Elemental Infusion", 
+        "Flame Control", "Rune Etching", "Heat Resistance", "Molten Strike", "Forge Guardian", 
+        "Smith’s Blessing", "Temper Steel", "Fire Hammer", "Metal Manipulation", "Runic Forging", 
+        "Magmatic Strike", "Weapon Enhancement", "Armor Reinforcement", "Earth’s Embrace", "Crafted Resilience", 
+        "Molten Armor", "Stormforged Weapons", "Blazing Furnace", "Heart of the Forge", "Runic Shielding", 
+        "Stonefist Strike", "Steelshaper", "Blacksmith’s Will", "Ember Infusion", "Forge Master's Blessing"
     ],
-    "Thief": [
-        "Stealth", "Pickpocket", "Backstab", "Lockpicking", "Sneak Attack", "Poison Blade", 
-        "Escape Artist", "Silent Movement", "Trap Disarming", "Dagger Mastery", "Shadow Step", "Throwing Knives", 
-        "Quick Hands", "Agility Training", "Evade", "Critical Strike", "Distraction", "Cloak and Dagger", 
-        "Smoke Bomb", "Pick Lock", "Silent Takedown", "Disguise", "Night Vision", "Deft Fingers", "Ambush"
+    "Blood Knight": [
+        "Bloodrage", "Vampiric Strike", "Blood Drain", "Life Leech", "Dark Vigor", 
+        "Crimson Shield", "Sanguine Aura", "Blood Boil", "Bleed Mastery", "Hemorrhage", 
+        "Blood Pact", "Life Tap", "Sanguine Frenzy", "Soul Siphon", "Bloodforged Armor", 
+        "Crimson Rebirth", "Bloodlust", "Vampiric Grasp", "Crimson Blades", "Dark Restoration", 
+        "Blood Empowerment", "Bloodborne Strength", "Lifeblood Strike", "Red Mist", "Vitality Burst", 
+        "Dark Communion", "Bloodthirst", "Crimson Frenzy", "Hemomancy", "Blood Reaver"
     ],
-    "Jester": [
-        "Trickery", "Illusion Mastery", "Acrobatics", "Distraction", "Feign Death", "Mocking Taunt", 
-        "Pratfall", "Quick Reflexes", "Juggling Blades", "Deception", "Confusion Aura", "Dodge", 
-        "Sleight of Hand", "Misdirection", "Ventriloquism", "Voice Mimicry", "Clown's Agility", 
-        "Throwing Knives", "Mask Crafting", "Improvised Weapons", "Crowd Control", "Serpentine Movement", 
-        "Blinding Powder", "Jester's Laugh", "Tumbling"
+    "Blademaster": [
+        "Blade Mastery", "Sword Precision", "Weapon Parry", "Swift Strike", "Blade Dance", 
+        "Whirlwind Slash", "Dual Wield", "Perfect Parry", "Swordplay", "Blinding Speed", 
+        "Sword Reflection", "Evasive Maneuvers", "Counter Slash", "Blade Barrage", "Piercing Thrust", 
+        "Flawless Execution", "Blade Flurry", "Deflect Arrows", "Serrated Edge", "Blade Storm", 
+        "Lethal Precision", "Sword Kata", "Flowing Strikes", "Weapon Disarm", "Lightning Blade", 
+        "Rapid Slashes", "Cutting Wind", "Blade Resonance", "Steel Serpent", "Swordmaster's Aura"
     ],
-    "Sentinel": [
-        "Guard Stance", "Shield Wall", "Immovable", "Spear Mastery", "Bow Proficiency", "Sentinel's Resolve", 
-        "Shield Bash", "Fortified Position", "Perimeter Awareness", "Grit", "Hold the Line", "Vigilance", 
-        "Trap Detection", "Interception", "Quick Recovery", "Defensive Ward", "Counterstrike", 
-        "Endurance Training", "Guardian's Oath", "Steady Hands", "Harrier", "War Cry", "Bastion Aura", 
-        "Shield Slam", "Tireless Defense"
+    "High Inquisitor": [
+        "Judgement", "Purge Evil", "Holy Inquisition", "Smite Heretic", "Divine Truth", 
+        "Interrogation", "Righteous Fury", "Aura of Truth", "Flames of Purification", "Burning Judgement", 
+        "Exorcism", "Chain of Command", "Holy Wrath", "Banish Undead", "Cleansing Flames", 
+        "Divine Mandate", "Hallowed Light", "Celestial Judgement", "Penance", "Righteous Indignation", 
+        "Interrogator’s Resolve", "Truth Seeker", "Divine Punishment", "Holy Flame", "Judgement Day", 
+        "Martyr’s Vow", "Unyielding Faith", "Soul's Verdict", "Divine Justice", "Sacred Pyre"
     ],
-    "Beastkin": [
-        "Animal Bond", "Feral Claws", "Natural Camouflage", "Scent Tracking", "Beast Transformation", 
-        "Hunting Instinct", "Night Vision", "Pounce", "Howl of the Wild", "Regenerative Hide", 
-        "Pack Tactics", "Wild Strength", "Lunar Empowerment", "Primal Rage", "Claw Slash", "Savage Bite", 
-        "Territorial Instinct", "Beast Sense", "Fury Unleashed", "Natural Armor", "Predator's Leap", 
-        "Beast Speech", "Alpha's Command", "Savage Reflexes", "Untamed Roar"
+    "Iron Lord": [
+        "Iron Grip", "Heavy Armor Mastery", "Iron Wall", "Iron Strike", "Fortified Stance", 
+        "Armor Reinforcement", "Iron Discipline", "Steel Will", "Shield Charge", "Iron Fortress", 
+        "Metallic Resilience", "Unstoppable Force", "Impenetrable Defense", "Heavy Weapon Mastery", "Iron Blood", 
+        "Fortress of Steel", "Unbreakable Spirit", "Iron Resilience", "Hardened Endurance", "Iron Judgment", 
+        "Steel Bastion", "Ironclad Charge", "Metallic Roar", "War Machine", "Indestructible", 
+        "Fortress of Iron", "Iron Resolve", "Unyielding Armor", "Steel Grasp", "Metallic Surge"
     ],
-    "Blade Dancer": [
-        "Dance of Blades", "Twin Sword Mastery", "Flurry of Slashes", "Graceful Evasion", "Blade Storm", 
-        "Precision Strikes", "Whirlwind Dance", "Shadow Step", "Sword Flourish", "Swift Reflexes", 
-        "Parry and Riposte", "Blade Agility", "Acrobatic Strikes", "Death Lotus", "Cutting Wind", 
-        "Dancer's Rhythm", "Steel Tempest", "Dodge and Weave", "Blood Rose Cut", "Storm of Steel", 
-        "Crescent Moon Slash", "Aerial Assault", "Flow of Combat", "Unseen Blade", "Phantom Strikes"
+    "Skullcrusher": [
+        "Crushing Blow", "Warhammer Mastery", "Pulverize", "Bone Shatter", "Earthquake Slam", 
+        "Heavy Strike", "Groundbreaker", "Skull Splitter", "Earth Tremor", "Fist of Fury", 
+        "Power Strike", "Crack the Skull", "Skull Bash", "Earth Rend", "Hammer of Wrath", 
+        "Thunderous Strike", "Bonecrusher", "Unstoppable Force", "Earthbreaker", "Mighty Smash", 
+        "Brutal Force", "Thunderous Blow", "Ground Shatter", "Crushing Wave", "Warhammer Charge", 
+        "Devastation", "Titanic Slam", "Skull Cleaver", "Giant’s Grip", "Hammerfall"
     ],
-    "Blood Mage": [
-        "Blood Magic Mastery", "Hemomancy", "Life Drain", "Blood Shield", "Blood Pact", "Blood Curse", 
-        "Sanguine Ward", "Blood Infusion", "Crimson Surge", "Siphon Vitality", "Bone Splinter", 
-        "Blood Golem Summon", "Sacrificial Magic", "Vampiric Touch", "Blood Boil", "Sanguine Frenzy", 
-        "Blood Binding", "Ritual Sacrifice", "Life Transference", "Blood Rain", "Vessel of Blood", 
-        "Crimson Resurrection", "Blood Warding", "Corrupted Blood", "Vampire’s Gift"
+    "Archdruid": [
+        "Nature’s Call", "Summon Beasts", "Healing Grove", "Thorn Shield", "Forest’s Blessing", 
+        "Nature’s Wrath", "Barkskin", "Summon Treant", "Elemental Confluence", "Earthbound Roots", 
+        "Wild Regrowth", "Spirit of the Forest", "Entangling Vines", "Feral Infusion", "Wrath of Nature", 
+        "Primal Fury", "Grovekeeper’s Gift", "Lifeweaver", "Elemental Mastery", "Summon Spirit Wolf", 
+        "Druidic Circle", "Natural Bond", "Summon Faerie", "Nature’s Protection", "Regeneration", 
+        "Spirit Form", "Earthen Blessing", "Nature's Conduit", "Wildborn Strength", "Grove Guardian"
     ],
-    "Shadow Dancer": [
-        "Shadow Step", "Cloak of Shadows", "Backstab", "Dagger Mastery", "Fade to Black", "Ambush", 
-        "Shadow Meld", "Silent Movement", "Poisoned Blades", "Shadow Strike", "Smoke Bomb", 
-        "Unseen Assassin", "Night Vision", "Lurking in Darkness", "Ghostly Agility", "Shadow Chains", 
-        "Mark of the Hidden", "Infiltration", "Gloom Aura", "Darkness Empowerment", "Phantom Strikes", 
-        "Silhouette Slash", "Dark Veil", "Void Blink", "Silent Takedown"
+    "Shadowblade": [
+        "Shadow Strike", "Blade of Darkness", "Veil of Shadows", "Shadowstep", "Shadow Cloak", 
+        "Backstab", "Dark Precision", "Fade into Shadows", "Umbra Mastery", "Assassin’s Blade", 
+        "Dark Ambush", "Night Slash", "Stealth Mastery", "Shadow Dance", "Shroud of Dusk", 
+        "Dagger Expert", "Shadow Clone", "Nightfall Strike", "Ambush Mastery", "Umbra Shroud", 
+        "Silent Assassin", "Veil of Night", "Dusk Blade", "Dark Arts", "Death from Shadows", 
+        "Cloak of Shadows", "Nightwalker", "Umbra Assault", "Silent Death", "Fade Mastery"
     ],
-    "Rune Priest": [
-        "Rune Mastery", "Ward Crafting", "Rune Engraving", "Rune of Protection", "Mystic Glyphs", 
-        "Sigil of Warding", "Rune of Power", "Holy Runes", "Divine Rune Call", "Runic Blast", 
-        "Runic Empowerment", "Rune of Healing", "Ward of Flames", "Rune of Frost", "Mystic Bindings", 
-        "Runic Circle", "Ward of Purity", "Sigil of Strength", "Ward of the Ancients", "Celestial Runes", 
-        "Sigil of Wisdom", "Runic Infusion", "Binding Runes", "Fate Runes", "Rune of Cleansing"
+    "Runesmith": [
+        "Rune Mastery", "Rune Engraving", "Elemental Runes", "Mystic Inscription", "Runic Shield", 
+        "Fire Rune", "Ice Rune", "Lightning Rune", "Rune of Strength", "Rune of Speed", 
+        "Rune of Power", "Runebound Strike", "Rune of Fortitude", "Rune of Healing", "Arcane Rune", 
+        "Blood Rune", "Shadow Rune", "Earth Rune", "Rune of Protection", "Summon Runestone", 
+        "Empower Runes", "Runic Explosion", "Binding Rune", "Rune of Reflection", "Elemental Imbuement", 
+        "Arcane Inscription", "Frost Rune", "Runic Hammer", "Magnetic Runes", "Mark of the Runesmith"
+    ],
+    "Dreamweaver": [
+        "Dream Manipulation", "Nightmare Control", "Weave Illusions", "Sleep Aura", "Mind Shroud", 
+        "Dream Echoes", "Illusory Strike", "Ethereal Step", "Nightmare Fury", "Phantasmal Assault", 
+        "Dreamwalk", "Weave Nightmares", "Illusionary Vortex", "Sleepwalking", "Shroud of Dreams", 
+        "Lucid Strike", "Mental Fortress", "Dreamweaver's Gift", "Waking Nightmare", "Sleep Imprisonment", 
+        "Mind Control", "Phantom Reflection", "Cloak of Night", "Ethereal Weave", "Dreambind", 
+        "Illusory Chains", "Haunted Dreams", "Lullaby of Madness", "Spectral Dreams", "Shaper of Dreams"
+    ],
+    "Spectral Blade": [
+        "Spectral Strike", "Ethereal Slash", "Blade of the Phantom", "Spirit Sword", "Ghostly Parry", 
+        "Phantom Blade", "Wraith Edge", "Spectral Onslaught", "Ethereal Charge", "Phantom Presence", 
+        "Spirit Cleave", "Wraith Strike", "Spectral Cloak", "Phase Strike", "Shadowed Blade", 
+        "Ethereal Deflection", "Blade of Spirits", "Spectral Guard", "Phantom Slash", "Wraith Dance", 
+        "Ghost Walk", "Phantom Shift", "Eternal Blade", "Ethereal Mastery", "Wraithborn Precision", 
+        "Spirit Blade Mastery", "Cloak of Wraiths", "Spectral Deflection", "Ghostly Fury", "Ethereal Cut"
+    ],
+    "Ashenblade": [
+        "Ashen Strike", "Burning Blade", "Flame Slash", "Blade of Embers", "Inferno Dance", 
+        "Erupting Slash", "Fire Imbuement", "Searing Edge", "Ashen Parry", "Molten Strike", 
+        "Ember Storm", "Burning Precision", "Phoenix Strike", "Ash Cloud", "Lava Blade", 
+        "Incinerating Slash", "Molten Guard", "Scorching Blade", "Ashen Fury", "Blade of Flames", 
+        "Fiery Onslaught", "Burning Wrath", "Blazing Edge", "Flameborn Mastery", "Molten Blade Dance", 
+        "Inferno Guard", "Ashen Aura", "Ember Cleave", "Searing Spirit", "Phoenix Rebirth"
+    ],
+    "Ironbound Champion": [
+        "Iron Slam", "Steel Strike", "Iron Body", "Unbreakable Armor", "Steel Charge", 
+        "Iron Will", "Iron Grip", "Fortified Defense", "Unyielding Assault", "Steel Bash", 
+        "Iron Resilience", "Heavy Strike", "Steel Wall", "Iron Deflection", "Unstoppable Force", 
+        "Steel Mastery", "Ironclad Resolve", "Metallic Endurance", "Crushing Charge", "Iron Block", 
+        "Fortress of Steel", "Metallic Aura", "Iron Guard", "Steel Barricade", "Impenetrable Armor", 
+        "Iron Wrath", "Steel Surge", "Ironfist", "Ironclad Bash", "Steel Tornado"
+    ],
+    "Shapeshifter Master": [
+        "Shapeshift", "Wolf Form", "Bear Form", "Eagle Form", "Serpent Form", 
+        "Panther Shift", "Tree Form", "Water Form", "Wind Form", "Shadow Shift", 
+        "Dragon Form", "Elemental Shift", "Beastmaster", "Primal Shift", "Spirit Form", 
+        "Stone Form", "Demon Form", "Storm Form", "Feral Shift", "Lion Shift", 
+        "Mist Form", "Nature’s Avatar", "Shift Mastery", "Insect Form", "Moonlight Shift", 
+        "Fire Form", "Bloodhound Shift", "Abyssal Shift", "Ghost Form", "Ethereal Shift"
+    ],
+    "Battle Oracle": [
+        "Battle Insight", "Precognitive Strike", "Future Vision", "Prophetic Foresight", "War’s Blessing", 
+        "Clairvoyant Assault", "Divine Prophecy", "Warrior’s Omen", "Fate Mastery", "Omniscient Strike", 
+        "Foresight Guard", "Omen of Battle", "Visionary Tactics", "Future Prediction", "Destiny’s Call", 
+        "Warseer", "Oracle’s Shield", "Blessing of Fate", "Battle Precognition", "Foresight Parry", 
+        "War Oracle’s Strike", "Tactical Prophecy", "Destined Blow", "Vision of Victory", "Prophetic Aura", 
+        "Combat Divination", "Seer’s Wrath", "Blessing of the Oracle", "Foreseen Victory", "Omniscient Fury"
+    ],
+    "Battle Sage": [
+        "Battle Wisdom", "Arcane Combat", "Martial Magic", "Elemental Combat", "Mystic Strike", 
+        "Sage’s Blessing", "Battle Meditation", "War Mage", "Mystic Infusion", "Arcane Assault", 
+        "Elemental Barrage", "Mystic Guard", "Warding Strike", "Arcane Mastery", "Elemental Empowerment", 
+        "Spellblade", "Magic Barrier", "Arcane Blade", "Sage’s Resilience", "War Sage’s Blessing", 
+        "Battlefield Wisdom", "Martial Sage", "Battle Insight", "Spell Combat", "Elemental Infusion", 
+        "Mystic Cleave", "Arcane Warding", "Sage's Strike", "Arcane Savant", "Mystic Warfare"
+    ],
+    "Darkblade": [
+        "Dark Slash", "Shadow Cut", "Blade of Night", "Nightfall Strike", "Cloak of Darkness", 
+        "Shadow Infusion", "Umbra Blade", "Veil of Night", "Dark Power", "Blade of Shadows", 
+        "Eclipse Slash", "Nightblade Mastery", "Dusk Strike", "Midnight Blade", "Cloak of Dread", 
+        "Shadow Fury", "Umbral Precision", "Nightstep", "Darkened Edge", "Blackened Parry", 
+        "Phantom Slash", "Shadow Walk", "Twilight Blade", "Shadow Cleave", "Duskfall Parry", 
+        "Death’s Whisper", "Blade of the Abyss", "Creeping Shadows", "Veil of the Abyss", "Dark Fury"
+    ],
+    "Stormbringer": [
+        "Summon Lightning", "Thunderstrike", "Stormcaller", "Lightning Blast", "Thunderclap", 
+        "Cyclone Summon", "Storm Armor", "Tempest Strike", "Electric Surge", "Windfury", 
+        "Lightning Wave", "Storm Burst", "Chain Lightning", "Thunderous Charge", "Lightning Rod", 
+        "Tempest Mastery", "Hurricane Summon", "Gale Force", "Lightning Whirlwind", "Tempest Barrier", 
+        "Thunderstorm", "Stormrage", "Electric Overload", "Storm Nova", "Winds of Destruction", 
+        "Storm Lord's Command", "Electric Field", "Tempest Slash", "Lightning Shield", "Stormwalker"
+    ],
+    "Flame Adept": [
+        "Fireball", "Flame Strike", "Burning Hands", "Searing Wave", "Blazing Aura", 
+        "Inferno Burst", "Lava Surge", "Flame Wave", "Firestorm", "Incineration", 
+        "Pyroblast", "Magma Strike", "Flame Wall", "Flame Mastery", "Searing Heat", 
+        "Blazing Wrath", "Lava Eruption", "Infernal Blaze", "Molten Armor", "Flame Control", 
+        "Phoenix Fire", "Firestorm Rage", "Scorching Wave", "Magma Blast", "Fire Affinity", 
+        "Infernal Surge", "Flame Wreath", "Blazing Fury", "Heatwave", "Searing Touch"
+    ],
+    "Sword Saint": [
+        "Sword Mastery", "Blade Storm", "Holy Blade", "Sword Parry", "Divine Strike", 
+        "Sword Dance", "Radiant Slash", "Cleansing Strike", "Spirit Blade", "Sword of the Heavens", 
+        "Blade of Light", "Blade of Judgment", "Heavenly Parry", "Sword of Valor", "Flashing Blade", 
+        "Sword Barrage", "Sword of the Saint", "Celestial Slash", "Radiant Blade", "Saintly Precision", 
+        "Sword of Truth", "Cleansing Blade", "Sword of Faith", "Blessed Parry", "Heavenly Assault", 
+        "Divine Swordsmanship", "Sword of Purity", "Blade of Revelation", "Sword of the Ancients", "Blessed Strike"
+    ],
+
+    //Mid Tier Roles
+        "Ranger": [
+        "Bow Mastery", "Tracking", "Animal Companion", "Stealth", "Camouflage", 
+        "Hawkeye", "Quick Shot", "Trap Setting", "Nature's Call", "Arrow Storm", 
+        "Multi-Shot", "Hunting Expertise", "Scout's Speed", "Poison Arrow", "Silent Step", 
+        "Nature Bond", "Critical Shot", "Survival Instinct", "Snare Trap", "Swift Footwork", 
+        "Wilderness Lore", "Disengage", "Beast Sense", "Evasion", "Nature’s Mark", 
+        "Trick Shot", "Wolf Companion", "Piercing Shot", "Forage", "Wild Resilience"
+    ],
+    "Bladedancer": [
+        "Dual Blade Mastery", "Blade Dance", "Flurry of Strikes", "Dodge Roll", "Quick Reflexes", 
+        "Swift Slash", "Spinning Slash", "Blade Parry", "Lethal Precision", "Blade Ward", 
+        "Dance of Blades", "Swordplay", "Shadow Step", "Blade Vortex", "Graceful Movement", 
+        "Critical Strike", "Precision Strikes", "Wind Dance", "Rapid Slashes", "Whirlwind Dance", 
+        "Cleave", "Blade Rush", "Backflip", "Crimson Slash", "Quick Step", 
+        "Evasive Spin", "Blade Shield", "Riposte", "Deadly Ballet", "Dagger Toss"
+    ],
+    "Ironclad": [
+        "Shield Mastery", "Heavy Armor Mastery", "Defender’s Will", "Iron Defense", "Armor Plating", 
+        "Shield Bash", "Fortified Stance", "Iron Resolve", "Armor Crush", "Steel Fist", 
+        "Shield Slam", "Battle Endurance", "Steel Barrier", "Reinforced Armor", "Defensive Stance", 
+        "Warrior’s Guard", "Armor Expertise", "Fortress Stance", "Toughness", "Iron Aura", 
+        "Shield Wall", "Heavy Block", "Warrior’s Fortitude", "Unyielding Endurance", "Titan’s Will", 
+        "Reinforce", "Steel Guard", "Impact Block", "Iron Will", "Vanguard Charge"
     ],
     "Hexblade": [
-        "Hex Mastery", "Cursed Blade", "Shadow Enchantments", "Hexing Strike", "Witch's Curse", 
-        "Soul Reaver", "Dark Pact", "Eldritch Power", "Doom Blade", "Corrupting Blade", "Hex Ward", 
-        "Infernal Strike", "Shadow Infusion", "Arcane Blade Dance", "Fell Wind", "Hex Armor", 
-        "Spectral Blades", "Cursed Mark", "Phantom Slash", "Blade of Dread", "Witchfire", "Blackened Blade", 
-        "Blade of Souls", "Fate's Edge", "Void Warding"
+        "Hex Mastery", "Dark Pact", "Curse Blade", "Life Drain", "Dark Magic", 
+        "Shadow Strike", "Blade of Curses", "Soul Leech", "Hexed Slash", "Cursed Barrage", 
+        "Life Tap", "Dark Slash", "Curse of Weakness", "Hexbind", "Shadow Imbue", 
+        "Necrotic Strike", "Soul Drain", "Hex Ward", "Fell Blade", "Shadow Cloak", 
+        "Eldritch Ward", "Curse of Decay", "Dark Infusion", "Hex of Vengeance", "Soul Rend", 
+        "Blade of Shadows", "Cursed Blade Dance", "Spectral Blade", "Void Slash", "Hex Breaker"
+    ],
+    "Stonebreaker": [
+        "Earth Smash", "Hammer Mastery", "Crushing Blow", "Tremor Strike", "Rock Fist", 
+        "Stone Stomp", "Seismic Shock", "Crush Armor", "Ground Pound", "Heavy Swing", 
+        "Boulder Toss", "Earthquake", "Shattering Strike", "Stone Grip", "Stomp of Giants", 
+        "Rock Solid", "Stone Armor", "Landslide", "Fissure", "Stone Wall", 
+        "Shatter Earth", "Titan’s Strength", "Mighty Swing", "Earthquake Slam", "Heavy Strike", 
+        "Groundbreaker", "Rock Slam", "Hammerfall", "Earthshatter", "Mountain Smash"
+    ],
+    "Rockwarden": [
+        "Stone Shield", "Earth Mastery", "Rock Barrier", "Summon Earth Elemental", "Stone Skin", 
+        "Fortress of Stone", "Earthbound Roots", "Rock Toss", "Petrify", "Stone Wall", 
+        "Rock Spike", "Mountain’s Blessing", "Earthen Protection", "Earthquake Slam", "Grounded Strength", 
+        "Crumble Earth", "Fortified Stone", "Rock Pillar", "Earthbind", "Mountain Resilience", 
+        "Stone Armor", "Summon Boulders", "Crag Form", "Stonefist Punch", "Unyielding Earth", 
+        "Rockslide", "Titanic Fortitude", "Bedrock Endurance", "Earth Call", "Mountain's Strength"
+    ],
+    "Warlock": [
+        "Shadow Bolt", "Dark Pact", "Demonic Summon", "Life Tap", "Drain Soul", 
+        "Chaos Bolt", "Soul Link", "Fear", "Curse of Agony", "Shadowflame", 
+        "Hellfire", "Doom", "Summon Infernal", "Summon Imp", "Felhunter Mastery", 
+        "Corruption", "Unholy Power", "Demonic Empowerment", "Demon Skin", "Haunt", 
+        "Seed of Corruption", "Drain Life", "Dreadstalkers", "Soulfire", "Dark Energy", 
+        "Demonic Presence", "Unleash Terror", "Infernal Rain", "Ritual of Doom", "Shadow Embrace"
+    ],
+    "Shieldmaster": [
+        "Shield Mastery", "Deflect Arrows", "Shield Bash", "Guardian’s Stand", "Defensive Stance", 
+        "Iron Wall", "Shield Block", "Counterstrike", "Battle Shield", "Vanguard Charge", 
+        "Shield Wall", "Fortify", "Shield Crush", "Tactical Block", "Reinforced Shield", 
+        "Bash and Guard", "Armor of Steel", "Defender’s Will", "Iron Barricade", "Shield Charge", 
+        "Wall of Defense", "Aegis of Protection", "Shield Parry", "Barrier of Strength", "Impact Guard", 
+        "Fortress of Iron", "Guarding Strike", "Shield Slam", "Steel Safeguard", "Defender’s Pride"
+    ],
+    "Spirit Weaver": [
+        "Spirit Call", "Soul Weaving", "Spirit Bond", "Phantom Touch", "Spectral Shield", 
+        "Ghost Walk", "Summon Spirit Beast", "Wraith Strike", "Haunting Echo", "Phantom Blade", 
+        "Spirit Ward", "Soul Infusion", "Haunting Strike", "Ghostly Visions", "Ethereal Form", 
+        "Spirit Surge", "Spectral Chains", "Phantasmal Strike", "Spirit Infusion", "Ethereal Chain", 
+        "Soul Ward", "Spectral Manipulation", "Wailing Spirits", "Summon Wraith", "Ghost Step", 
+        "Spirit Bonding", "Ethereal Infusion", "Summon Spectral Guardian", "Haunting Screech", "Soul Link"
+    ],
+    "Forest Sentinel": [
+        "Summon Treants", "Nature's Blessing", "Forest Guardian", "Barkskin", "Thorn Shield", 
+        "Root Grasp", "Summon Animal Companion", "Vine Trap", "Feral Strike", "Forest Shroud", 
+        "Nature's Gift", "Entangle", "Sylvan Guardian", "Forest Walk", "Vine Whip", 
+        "Nature’s Call", "Root Bind", "Forest Step", "Treeform", "Natural Fury", 
+        "Thorn Barrage", "Animal Bond", "Summon Dryad", "Nature's Grasp", "Root Slam", 
+        "Branch Strike", "Bramble Shield", "Animal Kinship", "Sylvan Might", "Verdant Touch"
+    ],
+    "Arcane Archer": [
+        "Arcane Shot", "Magic Arrow", "Enchanted Bow", "Rapid Shot", "Magic Imbuement", 
+        "Elemental Arrows", "Summon Arrows", "Arcane Precision", "Multishot", "Magic Volley", 
+        "Piercing Arrow", "Flame Arrow", "Frost Shot", "Lightning Arrow", "Arrow Storm", 
+        "Arcane Barrage", "Spectral Arrow", "Soul Arrow", "Binding Shot", "Arcane Vision", 
+        "Magic String", "Arcane Trap", "Arcane Pierce", "Summon Quiver", "Energy Shot", 
+        "Spellbound Arrow", "Piercing Rain", "Arcane Barricade", "Flaming Volley", "Mystic Arrow"
+    ],
+    "Cave Warden": [
+        "Cave Shield", "Stonefist Strike", "Stalagmite Summon", "Tremor Smash", "Cave Guardian", 
+        "Rocky Resilience", "Fissure Slam", "Echoing Roar", "Stone Barrier", "Bat Swarm", 
+        "Summon Stone Minions", "Stalactite Toss", "Cave Tremor", "Echoing Howl", "Rock Throw", 
+        "Shale Armor", "Summon Crystal Golem", "Cave Slam", "Stone Spikes", "Crumble Defense", 
+        "Tunnel Vision", "Bat Screech", "Rocky Armor", "Stone Spike Barrage", "Tremor Punch", 
+        "Stalagmite Thrust", "Stony Grasp", "Summon Stone Wyrm", "Earth Echo", "Shale Wall"
+    ],
+    "Mystic Knight": [
+        "Mystic Strike", "Arcane Blade", "Rune of Power", "Elemental Blade", "Mystic Aura", 
+        "Magic Blade Barrage", "Rune Shield", "Enchanted Blade", "Arcane Infusion", "Blade of Ice", 
+        "Blade of Fire", "Mystic Ward", "Arcane Empowerment", "Rune of Frost", "Blade Dance", 
+        "Enchanted Armor", "Spellstrike", "Elemental Strike", "Mana Shield", "Mystic Focus", 
+        "Runes of Power", "Mystic Parry", "Mystic Charge", "Arcane Ward", "Rune of Energy", 
+        "Blade of Thunder", "Elemental Burst", "Mystic Guard", "Blade of Light", "Rune of Strength"
+    ],
+    "Infernal Assassin": [
+        "Infernal Strike", "Flame Dagger", "Hellfire Slash", "Demonic Imbuement", "Infernal Shroud", 
+        "Fire Step", "Dagger of Flames", "Hellfire Cloak", "Infernal Dash", "Shadow Flame", 
+        "Fire Imbuement", "Burning Speed", "Demonic Precision", "Infernal Burst", "Blade of Fire", 
+        "Shadow Cloak", "Ember Strike", "Searing Blade", "Flame Step", "Infernal Precision", 
+        "Blazing Strikes", "Hellfire Blink", "Infernal Step", "Flame Cloak", "Hellfire Barrage", 
+        "Infernal Stab", "Flame Cloak", "Searing Daggers", "Demonic Strike", "Infernal Barrage"
+    ],
+    "Divine Champion": [
+        "Divine Strike", "Holy Blade", "Smite Evil", "Righteous Fury", "Divine Protection", 
+        "Holy Light", "Sacred Ground", "Shield of Faith", "Holy Wrath", "Aura of Courage", 
+        "Blessing of Might", "Divine Shield", "Holy Charge", "Lay on Hands", "Celestial Smite", 
+        "Sanctified Strike", "Holy Vow", "Light’s Blessing", "Holy Judgement", "Crusader’s Aura", 
+        "Wrath of Heaven", "Sanctified Ground", "Guardian's Oath", "Divine Aura", "Holy Justice", 
+        "Angel’s Wrath", "Heavenly Blessing", "Celestial Might", "Defender of the Light", "Radiant Smite"
+    ],
+    "Illusionist": [
+        "Create Illusion", "Invisibility", "Mirror Image", "Phantasmal Strike", "Illusory Wall", 
+        "Phantom Blade", "Displacement", "Shadow Clone", "Mind Trick", "Mass Illusion", 
+        "Hall of Mirrors", "Illusionary Step", "Shifting Reality", "Mind Maze", "Illusory Flame", 
+        "Cloak of Deception", "Spectral Chains", "Ghostly Images", "Illusory Chains", "Phantasmal Grasp", 
+        "Spectral Strike", "Reality Warp", "Shadow Cloak", "Illusory Reflection", "Phantom Defense", 
+        "Mirror Barrage", "Phantasmal Presence", "Vanishing Step", "Illusory Storm", "Shimmering Blade"
+    ],
+    "Totem Warden": [
+        "Summon Totem", "Totem of Power", "Earth Totem", "Fire Totem", "Water Totem", 
+        "Air Totem", "Elemental Ward", "Spirit Totem", "Totem Mastery", "Totem of Strength", 
+        "Stone Totem", "Healing Totem", "Mana Totem", "Totem of Protection", "Totem of Fury", 
+        "Storm Totem", "Frost Totem", "Inferno Totem", "Wind Totem", "Life Totem", 
+        "Spirit Bond Totem", "Totem Infusion", "Mystic Totem", "Totem of Vigor", "Totem of Thunder", 
+        "Astral Totem", "Lunar Totem", "Totem of Warding", "Nature Totem", "Sun Totem"
+    ],
+    "Sun Priest": [
+        "Sunstrike", "Solar Flare", "Blessing of the Sun", "Solar Beam", "Divine Light", 
+        "Sun’s Embrace", "Celestial Radiance", "Solar Shield", "Blazing Light", "Sunfire", 
+        "Ray of Hope", "Sunburst", "Light of Dawn", "Divine Radiance", "Cleansing Flames", 
+        "Healing Light", "Radiant Shield", "Flames of the Sun", "Solar Vow", "Radiant Strike", 
+        "Sunfire Blast", "Beacon of Light", "Holy Sunburst", "Celestial Shield", "Flame of Hope", 
+        "Solar Blessing", "Radiant Blessing", "Sunfire Aura", "Solar Wrath", "Ray of Salvation"
+    ],
+    "Moon Sage": [
+        "Lunar Blessing", "Moonlight Slash", "Crescent Strike", "Lunar Shield", "Eclipse", 
+        "Blessing of the Moon", "Moonfire", "Lunar Beam", "Moonlight Aura", "Moon’s Reflection", 
+        "Lunar Phase", "Crescent Wave", "Lunar Strike", "Moonlit Defense", "Nightfall", 
+        "Lunar Ward", "Lunar Surge", "Celestial Guard", "Moonlight Ward", "Eclipse Blade", 
+        "Starry Night", "Crescent Barrier", "Lunar Invocation", "Moon’s Glow", "Lunar Pulse", 
+        "Moonfire Blessing", "Crescent Shield", "Blessing of Night", "Lunar Precision", "Moonlight Storm"
+    ],
+    "Frost Mage": [
+        "Frostbolt", "Ice Nova", "Frozen Armor", "Glacial Spike", "Frost Nova", 
+        "Summon Ice Elemental", "Cone of Cold", "Frozen Barrier", "Icy Veins", "Ice Shard", 
+        "Blizzard", "Ice Storm", "Frostbite", "Cold Snap", "Ice Barrier", 
+        "Frost Channeling", "Glacial Fury", "Ice Wall", "Frozen Blast", "Frozen Touch", 
+        "Summon Frost Elemental", "Shatter", "Snowfall", "Chilling Aura", "Frigid Strike", 
+        "Winter’s Wrath", "Frozen Orb", "Frost Infusion", "Summon Glacial Warden", "Icy Tempest"
+    ],
+    //Low-Mid Tier Roles
+        "Rogue": [
+        "Stealth", "Backstab", "Poison Dagger", "Shadowstep", "Evasion", 
+        "Cloak and Dagger", "Pickpocket", "Ambush", "Vanish", "Sneak Attack", 
+        "Lockpicking", "Blindside", "Grapple", "Quick Hands", "Smoke Bomb", 
+        "Swift Strikes", "Disarm Trap", "Silent Strike", "Shadow Cloak", "Feint", 
+        "Kidney Shot", "Sap", "Cutthroat", "Garrote", "Fleet Footed", 
+        "Shadow Dance", "Parry", "Slip Away", "Blinding Powder", "Deadly Precision"
+    ],
+    "Pyromancer": [
+        "Fireball", "Flame Wave", "Pyroblast", "Searing Flames", "Burning Aura", 
+        "Lava Surge", "Inferno Blast", "Fire Shield", "Flame Nova", "Ignite", 
+        "Burning Hands", "Molten Armor", "Firestorm", "Flame Burst", "Lava Eruption", 
+        "Blazing Heat", "Flame Conjuration", "Ember Control", "Molten Fury", "Scorch", 
+        "Blazing Inferno", "Combustion", "Flame Mastery", "Molten Strike", "Flame Control", 
+        "Phoenix Flame", "Flame Lash", "Searing Inferno", "Ignition Strike", "Pyrokinetic Strike"
+    ],
+    "Battle Druid": [
+        "Nature Strike", "Summon Spirit Wolf", "Earthquake", "Barkskin", "Regrowth", 
+        "Thorn Armor", "Wild Frenzy", "Bear Form", "Primal Strike", "Feral Instincts", 
+        "Summon Treant", "Bramble Shield", "Wrath of Nature", "Shapeshift", "Summon Beast", 
+        "Feral Lunge", "Spirit of the Wild", "Grovekeeper’s Blessing", "Nature’s Fury", "Primal Roar", 
+        "Spirit Bond", "Rebirth", "Summon Bear", "Nature's Call", "Summon Lynx", 
+        "Earthen Wrath", "Wolf’s Bite", "Nature’s Shield", "Shapeshifter’s Wrath", "Feral Spirit"
+    ],
+    "Seer": [
+        "Precognition", "Future Sight", "Mind Vision", "Prophetic Strike", "Foresight", 
+        "Mind Read", "Clairvoyance", "Scrying", "Vision of the Future", "Mental Clarity", 
+        "Prophetic Aura", "Future Sight", "Vision of Doom", "Truth Revealed", "Warding Sight", 
+        "See the Unseen", "Mind Pierce", "Omniscient Strike", "Eye of the Seer", "Inner Vision", 
+        "Divine Sight", "Mind Sense", "Psychic Barrier", "Premonition", "Eye of Fate", 
+        "Mental Fortitude", "See Beyond", "Vision of Hope", "Clairvoyant Guard", "Prophetic Shield"
+    ],
+    "Rift Mage": [
+        "Rift Tear", "Summon Void", "Warp Reality", "Void Blast", "Rift Strike", 
+        "Teleport", "Void Mastery", "Portal Creation", "Blink", "Voidwalk", 
+        "Dimensional Rift", "Ethereal Shift", "Tear in Reality", "Phase Shift", "Reality Warp", 
+        "Void Burst", "Rift Pierce", "Shadow Rift", "Phase Through", "Void Lance", 
+        "Dimensional Shift", "Shadow Warp", "Temporal Rift", "Ethereal Cloak", "Portal Warp", 
+        "Voidstep", "Reality Shred", "Summon Rift Elemental", "Blinkstrike", "Tear the Veil"
+    ],
+    "Windrider": [
+        "Summon Wind", "Cyclone Strike", "Windfury", "Gale Force", "Wind Wall", 
+        "Zephyr Dash", "Wind Walk", "Whirlwind", "Cyclone Burst", "Air Shield", 
+        "Summon Gale", "Tempest Mastery", "Wind Shield", "Storm Rider", "Hurricane Slam", 
+        "Wind Cloak", "Summon Air Elemental", "Tornado Strike", "Gust of Wind", "Air Slash", 
+        "Winged Strike", "Zephyr’s Grace", "Wind Rush", "Gale Slash", "Hurricane Call", 
+        "Air Mastery", "Cyclone Guard", "Wind Aura", "Storm Surge", "Zephyr Blessing"
+    ],
+    "Beastmaster": [
+        "Summon Wolf", "Beast Control", "Tame Beast", "Savage Strike", "Wild Roar", 
+        "Summon Bear", "Pack Leader", "Summon Lion", "Beast Bond", "Nature’s Wrath", 
+        "Feral Companion", "Animal Instincts", "Summon Sabertooth", "Wild Bond", "Call of the Wild", 
+        "Summon Tiger", "Beast Affinity", "Summon Serpent", "Primal Fury", "Wild Charge", 
+        "Animal Spirit", "Summon Hawk", "Summon Stag", "Savage Slash", "Feral Fury", 
+        "Wild Pack", "Summon Falcon", "Summon Crocodile", "Feral Spirit", "Primal Strike"
+    ],
+    "Shadow Infiltrator": [
+        "Stealth Mastery", "Shadowstep", "Assassin’s Strike", "Silent Kill", "Cloak of Shadows", 
+        "Vanish", "Infiltration", "Shadow Cloak", "Ambush Mastery", "Deadly Precision", 
+        "Backstab", "Shadow Clone", "Hidden Blade", "Sneak Attack", "Shadow Meld", 
+        "Dark Pursuit", "Silent Footsteps", "Veil of Night", "Ghostly Step", "Cloak of Silence", 
+        "Silent Blade", "Gloom Stalker", "Veil of Shadows", "Night Prowler", "Silent Takedown", 
+        "Shadow Strike", "Poisoned Blade", "Gloom Cloak", "Silent Step", "Veil of Darkness"
+    ],
+    "Stoneguard": [
+        "Stone Skin", "Fortified Shield", "Rock Strike", "Earthen Endurance", "Stonewall", 
+        "Summon Stone Elemental", "Rock Barrier", "Earthquake Slam", "Stalwart Defense", "Granite Grip", 
+        "Shield of Stone", "Stonefist", "Rock Crush", "Stone Deflection", "Earth Barrier", 
+        "Sturdy Armor", "Earthen Might", "Iron Fist", "Rock Smash", "Petrify", 
+        "Unyielding Endurance", "Boulder Toss", "Earthbind", "Stone Mastery", "Groundbreaker", 
+        "Fissure Strike", "Rock Shatter", "Solid Guard", "Crush Armor", "Tremor Smash"
+    ],
+    "Battle Cleric": [
+        "Holy Strike", "Divine Shield", "Blessing of Strength", "Judgement", "Smite", 
+        "Hammer of Faith", "Divine Aura", "Holy Light", "Healing Hands", "Blessing of Protection", 
+        "Hammer of Judgement", "Aura of Faith", "Celestial Smite", "Wrath of the Light", "Lay on Hands", 
+        "Blessing of Might", "Righteous Strike", "Holy Aura", "Divine Wrath", "Celestial Hammer", 
+        "Light of Dawn", "Blessing of Battle", "Divine Strength", "Hammer of Righteousness", "Holy Flame", 
+        "Faith Shield", "Healing Strike", "Light's Embrace", "Blessing of Battle", "Holy Charge"
+    ],
+    "Shifting Blade": [
+        "Blade Shift", "Mimic Weapon", "Adaptive Strike", "Weapon Shift", "Shifting Slash", 
+        "Weapon Mastery", "Blade Illusion", "Mirror Blade", "Shifting Edge", "Dual Shift", 
+        "Shifting Parry", "Adaptive Weaponry", "Illusion Strike", "Weapon Reflection", "Flicker Slash", 
+        "Multi-Weapon Mastery", "Phantom Blade", "Sword of Deception", "Blade of Trickery", "Shifting Stance", 
+        "Mirror Slash", "Shifting Dance", "Weapon Shift Mastery", "Quick Shift", "Flickering Blade", 
+        "Mimicry", "Ghost Blade", "Shifting Cut", "Rapid Shift", "Blade of the Trickster"
+    ],
+    "Veilblade": [
+        "Veil of Shadows", "Shadow Strike", "Nightfall", "Cloak of Shadows", "Blade of Dusk", 
+        "Phantom Slash", "Dark Veil", "Shrouded Strike", "Shadowstep", "Veil of Night", 
+        "Silent Blade", "Ghostly Edge", "Blade of Deception", "Night Strike", "Cloak of Darkness", 
+        "Umbral Cut", "Nightstalker", "Veil of Silence", "Dusk Blade", "Dark Assassin", 
+        "Shaded Slash", "Silent Stalker", "Veil Dancer", "Shadow Embrace", "Night's Edge", 
+        "Cloak of Dread", "Phantom Edge", "Ghostblade", "Dusk Striker", "Shroud of Death"
+    ],
+    "Battle Mystic": [
+        "Mystic Bolt", "Arcane Barrage", "Elemental Ward", "Battle Meditation", "Arcane Blast", 
+        "Mana Shield", "Elemental Burst", "Mystic Strike", "Mystic Infusion", "Arcane Strike", 
+        "Mana Burst", "Mystic Barrier", "Elemental Surge", "Arcane Fortitude", "Mana Charge", 
+        "Mystic Fury", "Arcane Surge", "Mystic Shield", "Mana Infusion", "Arcane Mastery", 
+        "Mystic Defense", "Mana Ward", "Mystic Storm", "Arcane Power", "Mystic Flurry", 
+        "Mystic Focus", "Elemental Focus", "Mystic Barricade", "Arcane Bolt", "Mystic Force"
+    ],
+    "Battle Priest": [
+        "Holy Smite", "Divine Hammer", "Sanctified Aura", "Righteous Strike", "Healing Wave", 
+        "Divine Protection", "Aura of Faith", "Blessing of Healing", "Judgement of Light", "Sacred Shield", 
+        "Light Infusion", "Heavenly Strike", "Divine Might", "Holy Vengeance", "Blessing of Power", 
+        "Radiant Aura", "Celestial Hammer", "Light's Wrath", "Lay on Hands", "Judgement of Flame", 
+        "Blessing of Wisdom", "Divine Retribution", "Radiant Strike", "Celestial Fury", "Holy Wrath", 
+        "Blessing of Valor", "Divine Inspiration", "Judgement of Purity", "Light's Favor", "Holy Storm"
+    ],
+    "Runeblade": [
+        "Rune Strike", "Rune Imbuement", "Runic Blade", "Rune of Power", "Runic Mastery", 
+        "Blade of Runes", "Rune of Fire", "Rune of Frost", "Rune of Strength", "Rune of Speed", 
+        "Runebound Edge", "Rune of Healing", "Blade of Power", "Rune of Flames", "Rune of Lightning", 
+        "Rune of Defense", "Elemental Rune", "Runic Shield", "Rune of Fortitude", "Arcane Rune", 
+        "Blade Rune", "Runic Slash", "Rune of Shadows", "Runic Infusion", "Rune of Stone", 
+        "Runeblade Mastery", "Rune of Flames", "Rune of the Storm", "Runic Empowerment", "Runebound Slash"
+    ],
+    "Druid": [
+        "Shapeshift", "Barkskin", "Thorn Armor", "Nature’s Touch", "Healing Winds", 
+        "Wild Growth", "Summon Spirit Wolf", "Call of the Wild", "Rebirth", "Feral Roar", 
+        "Summon Treant", "Earthen Grasp", "Thorn Strike", "Summon Faerie", "Grovekeeper’s Blessing", 
+        "Spirit of the Wild", "Summon Bear", "Root Bind", "Wild Regeneration", "Nature's Guardian", 
+        "Feral Infusion", "Summon Wolf", "Nature’s Fury", "Shapeshifter’s Call", "Forest Blessing", 
+        "Regrowth", "Summon Lynx", "Grovekeeper’s Gift", "Earthen Wrath", "Call of the Ancients"
+    ],
+    "Nightmare Binder": [
+        "Nightmare Chains", "Dream Snare", "Bind Soul", "Haunted Echoes", "Soul Link", 
+        "Nightmare Gaze", "Mind Bind", "Phantasmal Grasp", "Soul Drain", "Fear Bind", 
+        "Shadow Chains", "Mental Shackles", "Soul Weaver", "Nightmare Touch", "Phantom Bind", 
+        "Dark Dream", "Fear Strike", "Dream Control", "Mind Seize", "Haunting Strike", 
+        "Soul Rend", "Terror Chains", "Phantom Chains", "Fear Mastery", "Spectral Grasp", 
+        "Haunted Strike", "Mind Link", "Dream Warp", "Soul Ensnare", "Bind Reality"
+    ],
+    "Shadow Hunter": [
+        "Shadow Stalk", "Nightfall Strike", "Ghost Arrow", "Cloak of Night", "Poisoned Dagger", 
+        "Silent Arrow", "Shadow Arrow", "Ambush", "Cloak and Dagger", "Trap Mastery", 
+        "Silent Footsteps", "Nightstalker’s Mark", "Deadly Poison", "Creeping Shadows", "Shadow Shot", 
+        "Shadow Ambush", "Ghostly Step", "Evasive Shot", "Nightfall Cloak", "Blinding Strike", 
+        "Fade into Darkness", "Venom Trap", "Silent Precision", "Quick Shot", "Ambusher's Mark", 
+        "Night Step", "Gloom Shot", "Poison Trap", "Fang Arrow", "Shadow Snare"
+    ],
+    "Elemental Warden": [
+        "Flame Ward", "Frost Ward", "Earth Ward", "Wind Ward", "Elemental Mastery", 
+        "Fire Shield", "Frost Armor", "Stone Barrier", "Windwalk", "Summon Elementals", 
+        "Elemental Infusion", "Elemental Storm", "Summon Fire Elemental", "Summon Water Elemental", "Summon Air Elemental", 
+        "Stone Skin", "Elemental Barrier", "Elemental Blessing", "Fire Ward", "Frost Ward", 
+        "Earth Mastery", "Wind Mastery", "Summon Earth Elemental", "Flame Wreath", "Frost Wave", 
+        "Earthen Guard", "Elemental Protection", "Summon Elemental Guardians", "Frost Breath", "Fire Infusion"
+    ],
+    "Feral Bladesman": [
+        "Savage Strike", "Feral Frenzy", "Beastly Strength", "Feral Charge", "Predator's Strike", 
+        "Wild Swing", "Raging Slash", "Frenzied Blades", "Bloodlust", "Savage Fury", 
+        "Primal Instinct", "Wild Slash", "Berserker Rage", "Feral Focus", "Animal Reflexes", 
+        "Feral Leap", "Beastly Rage", "Savage Onslaught", "Primal Roar", "Predatory Strike", 
+        "Wild Strength", "Savage Precision", "Bloodthirst", "Feral Strike", "Berserk Mastery", 
+        "Wild Charge", "Beastly Fury", "Raging Fury", "Predator's Slash", "Wild Blades"
+    ],
+
+    //Lowest Tier Roles
+        "Fletcher": [
+        "Arrow Crafting", "Bow Repair", "Feathering Arrows", "Precision Cutting", "Wood Selection", 
+        "Shaft Smoothing", "Fletching Mastery", "Barbed Arrow Crafting", "Flight Feather Balancing", "Broadhead Arrow Creation", 
+        "Quick Arrow Production", "Flame Arrow Crafting", "Poison Tip Application", "Longbow Design", "Bowstring Tensioning", 
+        "Arrowhead Forging", "Quiver Reinforcement", "Arrow Efficiency", "Specialty Arrows", "Hollow Shaft Design", 
+        "Balanced Arrow Tips", "Composite Bow Assembly", "Crossbow Bolt Crafting", "Piercing Arrowhead Shaping", "Sturdy Shaft Construction", 
+        "Rapid Craftsmanship", "Wood Hardening", "Long-Range Arrow Crafting", "Arrow Weight Distribution", "Whistling Arrow Crafting"
+    ],
+    "Trader": [
+        "Haggling", "Market Analysis", "Quick Appraisal", "Bargaining", "Logistics Planning", 
+        "Trade Route Knowledge", "Cargo Management", "Barter Expertise", "Merchant's Intuition", "Goods Appraisal", 
+        "Supply Chain Management", "Quick Transactions", "Negotiation Tactics", "Price Manipulation", "Trade Network Expansion", 
+        "Risk Assessment", "Merchant Connections", "Market Diversification", "Warehousing", "Inventory Management", 
+        "Commodity Pricing", "Trade Route Optimization", "Customer Relations", "Credit Systems", "Smuggling Expertise", 
+        "Exotic Goods Knowledge", "Sales Tactics", "High-Demand Item Location", "Business Negotiations", "Long-Distance Trading"
+    ],
+    "Blacksmith": [
+        "Metal Forging", "Anvil Mastery", "Weapon Crafting", "Armor Repair", "Tempering Steel", 
+        "Smelting", "Iron Bending", "Hammer Expertise", "Heat Control", "Blade Sharpening", 
+        "Anvil Techniques", "Metal Polishing", "Mold Casting", "Forge Management", "Crafting Nails", 
+        "Chainmail Construction", "Shield Reinforcement", "Horse Shoe Crafting", "Iron Casting", "Steel Molding", 
+        "Weapon Balancing", "Blacksmithing Endurance", "Soldering Expertise", "Tool Repair", "Custom Blade Design", 
+        "Ingot Casting", "Precision Hammering", "Armor Reinforcement", "Warhammer Crafting", "Axe Head Shaping"
+    ],
+    "Hunter": [
+        "Tracking", "Camouflage", "Bow Mastery", "Setting Traps", "Stealth Movement", 
+        "Animal Identification", "Long-Range Shot", "Skinning", "Animal Behavior", "Trophy Collection", 
+        "Quick Shot", "Scent Masking", "Poison Application", "Field Dressing", "Silent Approach", 
+        "Scout Techniques", "Tracking Spoor", "Wilderness Survival", "Natural Ambushes", "Trap Placement", 
+        "Bow Maintenance", "Foraging", "Firearm Maintenance", "Animal Luring", "Prey Detection", 
+        "Silent Tracking", "Marksmanship", "Hunting Grounds Expertise", "Bow Stringing", "Hide Preparation"
+    ],
+    "Farmer": [
+        "Plowing Fields", "Crop Rotation", "Irrigation Setup", "Animal Husbandry", "Seed Selection", 
+        "Soil Enrichment", "Harvesting Techniques", "Livestock Breeding", "Fertilizer Application", "Pest Control", 
+        "Planting Mastery", "Grain Storage", "Farm Equipment Repair", "Hay Bale Stacking", "Field Irrigation", 
+        "Drought Prevention", "Weather Prediction", "Composting", "Wheat Threshing", "Herb Cultivation", 
+        "Vegetable Growth", "Orchard Care", "Field Layout Planning", "Grazing Management", "Livestock Health", 
+        "Water Management", "Crop Scouting", "Seasonal Farming", "Poultry Management", "Silage Preparation"
+    ],
+    "Herbalist": [
+        "Herb Identification", "Potion Crafting", "Foraging", "Poison Antidotes", "Herbal Remedies", 
+        "Drying Herbs", "Salve Creation", "Tincture Brewing", "Herb Drying", "Medicinal Brew", 
+        "Herb Preservation", "Poultice Creation", "Herbal Tea Blending", "Poison Extraction", "Elixir Brewing", 
+        "Plant Cultivation", "Healing Balm Application", "Wild Herb Knowledge", "Potion Brewing", "Healing Poultices", 
+        "Aromatherapy", "Spice Crafting", "Natural Remedies", "Herb Growing", "Curing Drought-Resistant Herbs", 
+        "Extract Creation", "Plant Preservation", "Root Identification", "Rare Herb Location", "Flower Pressing"
+    ],
+    "Alchemist": [
+        "Potion Brewing", "Elemental Infusion", "Catalyst Usage", "Transmutation", "Distillation", 
+        "Elixir Crafting", "Acid Creation", "Herb Mixing", "Metal Purification", "Herbal Extraction", 
+        "Invisibility Potion", "Firebomb Crafting", "Toxic Gas Creation", "Antidote Mixing", "Magical Substance Brewing", 
+        "Gem Dust Infusion", "Gold Transmutation", "Philosopher's Stone Crafting", "Essence Extraction", "Rare Mineral Usage", 
+        "Explosive Mixture", "Herb Distillation", "Liquid Enchantment", "Poison Neutralization", "Potion Strengthening", 
+        "Crystallization", "Infusion of Power", "Toxin Reduction", "Essence Amplification", "Alchemy Runes"
+    ],
+    "Servant": [
+        "Housekeeping", "Silver Polishing", "Meal Preparation", "Fire Tending", "Laundry Mastery", 
+        "Bedmaking", "Formal Table Setting", "Guest Management", "Tactful Communication", "Basic Tailoring", 
+        "Tea Service", "Room Preparation", "Inventory Control", "Cookware Cleaning", "Guest Diplomacy", 
+        "Firewood Stacking", "Basic Security", "Domestic Maintenance", "Sewing Repairs", "Guest Comfort", 
+        "Polishing Techniques", "Laundry Sorting", "Room Cleaning", "Light Gardening", "Basic First Aid", 
+        "Kitchen Assistance", "Dishwashing", "Window Cleaning", "Bread Baking", "Chandelier Cleaning"
+    ],
+    "Laborer": [
+        "Heavy Lifting", "Stone Breaking", "Wood Cutting", "Fence Building", "Ditch Digging", 
+        "Cart Pushing", "Rock Shifting", "Well Digging", "Mud Clearing", "Sandbag Laying", 
+        "Timber Stacking", "Basic Carpentry", "Scaffolding", "Stone Laying", "Road Paving", 
+        "Basic Masonry", "Dirt Hauling", "Shovel Mastery", "Lumber Transport", "Load Balancing", 
+        "Construction Assistance", "Clearing Rubble", "Foundation Work", "Furnace Tending", "Material Sorting", 
+        "Excavation", "Sod Cutting", "Log Splitting", "Basic Demolition", "Load Securing"
+    ],
+    "Thief": [
+        "Lockpicking", "Pickpocketing", "Sneak Attack", "Silent Movement", "Disarm Traps", 
+        "Invisibility Techniques", "Shadow Meld", "Acrobatics", "Dagger Mastery", "Escape Artistry", 
+        "Silent Assassination", "Stealth Mastery", "Poison Application", "Diversion Tactics", "Silent Infiltration", 
+        "Trap Evasion", "Climbing Mastery", "Misdirection", "Breaking and Entering", "Deception", 
+        "Crowd Blending", "Silent Footsteps", "Night Vision", "Patrol Avoidance", "Casing Targets", 
+        "Unseen Retreat", "Forgery", "Picklock Creation", "Sleight of Hand", "Light Armor Training"
+    ],
+    "Scavenger": [
+        "Item Identification", "Scrap Collecting", "Material Reuse", "Wilderness Survival", "Debris Searching", 
+        "Bone Gathering", "Rubbish Sorting", "Camp Salvaging", "Cloth Mending", "Junk Repurposing", 
+        "Abandoned Site Looting", "Rag Collecting", "Rusty Tool Repair", "Trash Sorting", "Broken Gear Use", 
+        "Foraging", "Metal Salvaging", "Wood Scavenging", "Trap Dismantling", "Old Armor Repurposing", 
+        "Abandoned Weaponry Repair", "Worn Clothing Use", "Basic Trap Setting", "Fire Salvaging", "Tool Reforging", 
+        "Rust Removal", "Supply Caching", "Relic Recovery", "Scrap Metal Forging", "Survival Pack Creation"
+    ],
+    "Barkeep": [
+        "Ale Pouring", "Liquor Mixing", "Mead Brewing", "Bar Cleanliness", "Glass Polishing", 
+        "Mug Handling", "Keg Tapping", "Customer Service", "Dispute Resolution", "Snack Preparation", 
+        "Bar Supply Management", "Drink Restocking", "Storytelling", "Patron Management", "Table Wiping", 
+        "Drink Mixing", "Glass Stacking", "Drink Serving", "Entertainment Arranging", "Beer Cooling", 
+        "Keg Rolling", "Mug Cleaning", "Spill Control", "Fire Tending", "Bartender Jokes", 
+        "Lively Conversation", "Drink Recommendation", "Wine Storage", "Cork Popping", "Patron Greeting"
+    ],
+    "Woodsman": [
+        "Axe Mastery", "Tree Felling", "Kindling Preparation", "Wood Chopping", "Forest Navigation", 
+        "Shelter Building", "Animal Identification", "Basic Hunting", "Timber Stacking", "Wilderness Survival", 
+        "Firewood Collection", "Tracking", "Sawmill Operations", "Axe Sharpening", "Wood Stacking", 
+        "Fire Preparation", "Rope Knotting", "Clearing Brush", "Wood Shaping", "Bark Removal", 
+        "Basic Trapping", "Wilderness Lore", "Camp Setup", "Campfire Building", "Fur Harvesting", 
+        "Log Rolling", "Trail Marking", "Foraging", "Wood Drying", "Basic Navigation"
+    ],
+    "Scout": [
+        "Stealth Movement", "Observation", "Reconnaissance", "Silent Tracking", "Map Marking", 
+        "Trap Detection", "Enemy Counting", "Camouflage", "Quick Retreat", "Spyglass Use", 
+        "Silent Climbing", "Infiltration", "Trail Setting", "Ambush Detection", "Forward Spotting", 
+        "Wilderness Mapping", "Landmark Identification", "Silent Communication", "Signal Usage", "Campsite Detection", 
+        "Trap Setting", "Scout’s Agility", "Shadow Watching", "Bird Calls", "Silent Footwork", 
+        "Silent Messaging", "Enemy Location", "Sentry Spotting", "Patrol Evasion", "Night Vision"
+    ],
+    "Gatherer": [
+        "Foraging", "Mushroom Identification", "Herb Picking", "Berry Collection", "Fruit Harvesting", 
+        "Root Gathering", "Wildflower Identification", "Seed Collection", "Grain Gathering", "Edible Plant Knowledge", 
+        "Poisonous Plant Avoidance", "Vegetable Harvesting", "Orchard Management", "Leaf Collection", "Sap Extraction", 
+        "Nuts Gathering", "Harvest Timing", "Herb Drying", "Wild Grain Identification", "Plant Identification", 
+        "Wildflower Pressing", "Foliage Collection", "Rare Plant Searching", "Field Scouting", "Forest Navigation", 
+        "Herb Bundling", "Seedling Care", "Vegetable Picking", "Natural Crop Identification", "Dew Collection"
+    ],
+    "Mercenary": [
+        "Weapon Mastery", "Tactical Combat", "Contract Negotiation", "Bounty Hunting", "Shield Usage", 
+        "Dual Wielding", "Armor Repair", "Battle Tactics", "Swordsmanship", "Combat Endurance", 
+        "Ambush Tactics", "Heavy Armor Expertise", "Defensive Combat", "Field Combat", "Close Combat", 
+        "Shield Bashing", "Counterattack", "Hand-to-Hand Combat", "Combat Preparation", "Ambush Readiness", 
+        "Spear Mastery", "Scouting Missions", "Sword and Shield Mastery", "Flanking Maneuvers", "Axe Expertise", 
+        "Patrol Techniques", "Battlefield Awareness", "Combat Discipline", "Melee Training", "Defensive Posture"
+    ],
+    "Bandit": [
+        "Ambush Tactics", "Dagger Mastery", "Stealth Movement", "Waylaying", "Roadside Robbery", 
+        "Poison Application", "Bow Sniping", "Silent Kill", "Trap Setting", "Looting", 
+        "Campsite Raiding", "Escape Routes", "Extortion", "Tracking Victims", "Bribery", 
+        "Rough Negotiation", "Silent Retreat", "Backstab", "Robbery Execution", "Intimidation", 
+        "Patrol Avoidance", "Nighttime Movement", "Pickpocketing", "Fence Connections", "Horse Theft", 
+        "Rope Trapping", "Hidden Blade", "Quick Escape", "Map Navigation", "Crossbow Expertise"
+    ],
+    "Caravan Guard": [
+        "Spear Defense", "Caravan Scouting", "Wagon Repair", "Roadside Combat", "Guard Duty", 
+        "Enemy Detection", "Ambush Protection", "Supply Guarding", "Map Knowledge", "Perimeter Check", 
+        "Horse Riding", "Crossbow Defense", "Camp Setup", "Gate Protection", "Caravan Arrangement", 
+        "Night Patrol", "Weapon Quickdraw", "Horse Defense", "Supply Management", "Flank Protection", 
+        "Combat Readiness", "Guard Rotation", "Convoy Navigation", "Surprise Attack Defense", "Signal Use", 
+        "Perimeter Setting", "Combat Formation", "Defense Tactics", "Enemy Count", "Supply Line Guard"
+    ],
+    "Miner": [
+        "Pickaxe Swing", "Ore Extraction", "Tunnel Reinforcement", "Gem Identification", "Stone Cutting", 
+        "Shaft Shoring", "Cave Navigation", "Tunnel Digging", "Coal Harvesting", "Gem Polishing", 
+        "Gold Panning", "Minecart Usage", "Timbering", "Ore Smelting", "Stone Splitting", 
+        "Tunnel Mapping", "Rock Clearance", "Ore Refinement", "Stone Carving", "Rare Mineral Location", 
+        "Minecart Repair", "Lantern Usage", "Diamond Detection", "Silver Vein Knowledge", "Gem Extraction", 
+        "Pressure Support", "Crystallography", "Stone Handling", "Raw Gem Cutting", "Mine Layout Planning"
+    ],
+    "Bounty Hunter": [
+        "Tracking", "Wanted Poster Identification", "Capture Tactics", "Ambush Mastery", "Handcuffing", 
+        "Rope Tying", "Dual Wielding", "Net Throwing", "Bargaining", "Horse Riding", 
+        "Sneak Attack", "Quickdraw", "Swordsmanship", "Infiltration", "Escape Route Blocking", 
+        "Target Restraint", "Crossbow Mastery", "Close Combat", "Stealth Capture", "Spy Network", 
+        "Combat Awareness", "Prisoner Management", "Bribe Negotiation", "Scout Detection", "Melee Combat", 
+        "Trap Setting", "Sword Parrying", "Defensive Maneuvers", "Poison Neutralization", "Foot Chase"
+    ],
+    "Messenger": [
+        "Message Memorization", "Fast Running", "Horse Riding", "Terrain Navigation", "Map Reading", 
+        "Signal Use", "Hidden Message Delivery", "Relay Technique", "Sprint Endurance", "Courier Routes", 
+        "Shortcuts Mastery", "Oral Reporting", "Pathfinding", "Cross-Country Running", "Message Encryption", 
+        "Secret Routes", "Diplomatic Communication", "Missive Delivery", "Route Optimization", "Messenger Diplomacy", 
+        "Hasty Retreat", "Urgent Delivery", "Quick Mounting", "Scroll Handling", "Seal Breaking", 
+        "Horse Endurance", "Package Handling", "Postal Route Knowledge", "Quick Response", "Flag Signaling"
+    ],
+    "Apothecary": [
+        "Herb Grinding", "Potion Mixing", "Remedy Brewing", "Cure Creation", "Poison Antidotes", 
+        "Elixir Crafting", "Tincture Brewing", "Salve Application", "Medicine Making", "Poultice Usage", 
+        "Herb Drying", "Ingredient Foraging", "Potion Preservation", "Wound Cleaning", "Herb Identification", 
+        "Drought Resistance", "Antitoxin Creation", "Potion Strengthening", "Herbal Compresses", "Healing Salve Creation", 
+        "Herb Combination", "Balm Crafting", "Elixir Concentration", "Rare Herb Usage", "Poison Neutralization", 
+        "Extract Brewing", "Medicinal Knowledge", "Healing Draught Crafting", "Herb Preservation", "Herbal Potency Maximization"
+    ],
+    "Sailor": [
+        "Knot Tying", "Sail Hoisting", "Boat Navigation", "Wind Reading", "Anchor Handling", 
+        "Weather Tracking", "Ship Repair", "Rowing Mastery", "Deck Cleaning", "Sail Mending", 
+        "Compass Reading", "Fish Gutting", "Rigging Repair", "Crow’s Nest Scouting", "Ship Steering", 
+        "Docking Maneuvers", "Cargo Loading", "Crew Coordination", "Storm Navigation", "Wave Riding", 
+        "Anchor Casting", "Net Throwing", "Fishing Line Repair", "Boat Balancing", "Waterway Mapping", 
+        "Rudder Repair", "Sailing Tactics", "Weather Sign Interpretation", "Sail Unfurling", "Rope Coiling"
+    ],
+    "Trapmaker": [
+        "Trap Design", "Spring Mechanism", "Tripwire Setting", "Net Trap Construction", "Snare Crafting", 
+        "Hidden Trap Concealment", "Trap Detection", "Pressure Plate Crafting", "Explosive Trap Crafting", "Pit Trap Construction", 
+        "Animal Trap Crafting", "Poison Trap Setting", "Spring Blade Creation", "Trap Trigger Mechanics", "Wire Trap Design", 
+        "Trap Disarmament", "Spike Trap Building", "Remote Trap Activation", "Trap Deception", "Concealed Spring Trap", 
+        "Spike Creation", "Trapdoor Mechanism", "Silent Spring Release", "Multi-Trigger Setup", "Net Trap Strengthening", 
+        "Explosive Charge Setting", "Trap Quick Setup", "Trap Component Crafting", "Bear Trap Crafting", "False Trap Setup"
+    ],
+    "Healer": [
+        "Wound Cleaning", "Bandage Application", "Healing Touch", "Bone Setting", "Herbal Poultice Creation", 
+        "Triage", "Medicine Dispensing", "Diagnosis", "First Aid", "Fever Reduction", 
+        "Bleeding Control", "Splint Application", "Burn Treatment", "Herbal Pain Relief", "Balm Application", 
+        "Herb Knowledge", "Resuscitation Techniques", "Surgery Assistance", "Fracture Support", "Salve Preparation", 
+        "Infection Treatment", "Stitching Wounds", "Disease Detection", "Herbal Remedies", "Blood Clotting Techniques", 
+        "Disease Prevention", "Broken Bone Care", "Patient Comfort", "Herbal Recovery Treatment", "Nutritional Aid"
+    ],
+    "Nomad": [
+        "Tent Pitching", "Wilderness Navigation", "Water Locating", "Campfire Building", "Herb Foraging", 
+        "Animal Tracking", "Survival Skills", "Pack Animal Handling", "Quick Camp Setup", "Cloth Tent Creation", 
+        "Shelter Building", "Herding", "Sandstorm Protection", "Compass Reading", "Water Purification", 
+        "Desert Navigation", "Animal Skinning", "Cold Resistance", "Firewood Gathering", "Trailblazing", 
+        "Basic Hunting", "Terrain Adaptation", "Wind Shelter Construction", "River Navigation", "Food Preservation", 
+        "Cloth Weaving", "Portable Shelter Design", "Nomadic Routes", "Livestock Management", "Campfire Cooking"
+    ],
+    "Woodcarver": [
+        "Wood Shaping", "Sculpting", "Whittling", "Chisel Mastery", "Carving Intricate Designs", 
+        "Timber Selection", "Detailed Engraving", "Relief Carving", "Furniture Crafting", "Tool Sharpening", 
+        "Animal Carving", "Wood Polishing", "Toy Making", "Decorative Carving", "Cane Carving", 
+        "Basic Sculpture Creation", "Intricate Detail Work", "Tree Bark Sculpting", "Woodburning", "Small Figurine Crafting", 
+        "Wood Turning", "Flute Carving", "Table Crafting", "Chair Crafting", "Totem Pole Creation", 
+        "Wood Inlay Design", "Mask Carving", "Wood Block Carving", "Wooden Plaque Creation", "Custom Carving"
+    ],
+    "Sentinel": [
+        "Guard Duty", "Shield Mastery", "Sword and Shield", "Barricade Defense", "Sentry Awareness", 
+        "Fortified Positioning", "Night Patrol", "Gate Defense", "Defensive Line Holding", "Quick Shield Block", 
+        "Weapon Scanning", "Threat Detection", "Shield Bash", "Patrol Techniques", "Sentry's Vigilance", 
+        "Shield Wall Formation", "Barrier Reinforcement", "Bow Deflection", "Armor Strengthening", "Scout Patrol", 
+        "Gate Watching", "Perimeter Defense", "Barricade Holding", "Sword Defense", "Shield Expertise", 
+        "Quick Reaction", "Flank Guarding", "Enemy Scanning", "Hostile Deflection", "Fortress Guarding"
+    ],
+    "Harvester": [
+        "Sickle Mastery", "Scythe Handling", "Crop Cutting", "Plant Gathering", "Grain Separation", 
+        "Sheaf Binding", "Threshing Techniques", "Haystack Building", "Vegetable Harvesting", "Fruit Picking", 
+        "Hand Plowing", "Watering Techniques", "Grain Milling", "Scythe Sharpening", "Crop Storing", 
+        "Hay Bale Stacking", "Crop Drying", "Harvest Scheduling", "Seed Threshing", "Field Clearing", 
+        "Field Preparation", "Tree Harvesting", "Corn Shucking", "Wheat Thrashing", "Seed Sorting", 
+        "Hand Reaping", "Rye Cutting", "Barley Harvesting", "Vegetable Sorting", "Herb Gathering"
+    ],
+    "Outlaw": [
+        "Ambush Setup", "Quick Draw", "Dagger Throwing", "Robbery Tactics", "Stealth Kill", 
+        "Horse Theft", "Escape Mastery", "Crossbow Expertise", "Bribery", "Smuggling", 
+        "Quick Knife Use", "Patrol Avoidance", "Silent Assassination", "Coercion", "Weapon Concealment", 
+        "Heist Planning", "Disguise Mastery", "Roadblock Setup", "Escape Route Mapping", "Extortion", 
+        "Cover Fire", "Hidden Blade", "Fencing Goods", "Contract Work", "Dirty Fighting", 
+        "Spying", "Quick Escape", "Gang Management", "Trap Setting", "Loot Secreting"
+    ],
+    "Innkeeper": [
+        "Guest Management", "Room Preparation", "Meal Service", "Table Setting", "Customer Relations", 
+        "Wine Recommendation", "Supply Stocking", "Fire Tending", "Food Preparation", "Bill Collection", 
+        "Bedmaking", "Chambermaid Management", "Cook Supervision", "Dish Clearing", "Drink Serving", 
+        "Customer Comfort", "Bed Turnover", "Reception Work", "Towel Distribution", "Linen Management", 
+        "Bedding Arrangement", "Room Scheduling", "Breakfast Preparation", "Bar Management", "Room Sanitization", 
+        "Guest Relations", "Booking Management", "Customer Greeting", "Drink Ordering", "Problem Resolution"
+    ],
+    "Stablehand": [
+        "Horse Grooming", "Saddle Repair", "Feeding Horses", "Watering Horses", "Hay Bale Stacking", 
+        "Hoof Care", "Horse Cleaning", "Stall Cleaning", "Tack Adjustment", "Bridle Fixing", 
+        "Saddle Fitting", "Horseshoe Checking", "Rug Removal", "Horse Walking", "Bridle Adjustment", 
+        "Muck Removal", "Grooming Expertise", "Stable Organization", "Horse Conditioning", "Manure Spreading", 
+        "Stable Cleaning", "Feeding Schedule", "Tack Cleaning", "Saddle Oiling", "Carriage Hooking", 
+        "Bridle Reattachment", "Mane Brushing", "Horse Bathing", "Horse Lead Rope Use", "Horse Monitoring"
+    ],
+    "Leatherworker": [
+        "Leather Tanning", "Stitching Leather", "Hide Curing", "Armor Making", "Leather Crafting", 
+        "Boot Crafting", "Leather Engraving", "Leather Carving", "Belt Making", "Hide Cutting", 
+        "Leather Conditioning", "Hide Softening", "Leather Dyeing", "Toolbelt Crafting", "Rivet Insertion", 
+        "Hide Preservation", "Leather Bag Crafting", "Glove Crafting", "Belt Buckle Crafting", "Saddle Making", 
+        "Leather Reinforcement", "Harness Crafting", "Strap Sewing", "Armor Reinforcement", "Hide Polishing", 
+        "Leather Shield Binding", "Leather Sheath Making", "Custom Armor Design", "Leather Shoe Making", "Thick Hide Tanning"
+    ],
+    "Fisherman": [
+        "Net Casting", "Line Throwing", "Bait Selection", "Fish Cleaning", "Hook Sharpening", 
+        "Fish Trapping", "Boat Rowing", "Fishing Rod Maintenance", "Tide Reading", "Water Navigation", 
+        "Fish Gutting", "Fishing Boat Steering", "Anchor Handling", "Catch Storage", "Bait Hooking", 
+        "Fishing Knots", "Fish Filleting", "Weather Observation", "Spear Fishing", "Lure Making", 
+        "Fish Scaling", "Reeling", "Net Repair", "Harpoon Throwing", "Catch Sorting", 
+        "Fishing Techniques", "Tackle Box Organization", "Fish Market Negotiation", "Coastal Navigation", "Fish Skinning"
+    ],
+    "Scribe": [
+        "Calligraphy", "Scroll Copying", "Ink Making", "Penmanship", "Illumination Art", 
+        "Letter Drafting", "Manuscript Binding", "Seal Application", "Translation", "Archival Management", 
+        "Record Keeping", "Parchment Crafting", "Bookbinding", "Legal Documentation", "Quill Sharpening", 
+        "Vellum Preparation", "Scroll Repair", "Historical Transcription", "Contract Writing", "Diplomatic Scribing", 
+        "Wax Seal Creation", "Message Inscription", "Quill Mastery", "Script Translation", "Copying Speed", 
+        "Ink Mixing", "Illumination Crafting", "Deed Writing", "Tome Cataloging", "Text Preservation"
+    ],
+    "Cartographer": [
+        "Map Drawing", "Landmark Identification", "Compass Usage", "Terrain Mapping", "Navigation", 
+        "Geographical Knowledge", "Ink Making", "Surveying", "Protractor Usage", "Charting Seas", 
+        "Grid Marking", "Mountain Range Mapping", "Scale Determination", "City Planning", "Distance Calculation", 
+        "Elevation Marking", "Voyage Charting", "Weather Patterns", "Astronomy Basics", "Map Duplication", 
+        "Map Scaling", "Precise Drawing", "River Mapping", "Coastal Charting", "Village Planning", 
+        "Road Map Design", "Map Annotation", "Desert Mapping", "Forest Mapping", "Underground Mapping"
+    ],
+    "Cook": [
+        "Meal Preparation", "Food Slicing", "Spice Blending", "Soup Making", "Meat Roasting", 
+        "Stew Simmering", "Vegetable Cutting", "Herb Mixing", "Firewood Gathering", "Grill Mastery", 
+        "Food Garnishing", "Meal Timing", "Bread Baking", "Kitchen Coordination", "Ingredient Measuring", 
+        "Recipe Crafting", "Boiling Techniques", "Pan Frying", "Steak Grilling", "Sauce Crafting", 
+        "Stock Simmering", "Oven Usage", "Table Presentation", "Spice Preservation", "Vegetable Peeling", 
+        "Knife Skills", "Culinary Flair", "Soup Thickening", "Salt Curing", "Roasting Techniques"
+    ],
+    "Artisan": [
+        "Clay Molding", "Craftsmanship", "Wood Carving", "Leatherworking", "Metal Shaping", 
+        "Ceramic Glazing", "Glass Blowing", "Jewelry Making", "Stone Cutting", "Gem Polishing", 
+        "Clay Firing", "Mosaic Crafting", "Pottery Crafting", "Belt Crafting", "Sculpture Creation", 
+        "Metal Engraving", "Textile Weaving", "Bead Crafting", "Leather Tooling", "Custom Jewelry Design", 
+        "Metal Casting", "Glass Etching", "Silver Smithing", "Stone Polishing", "Wood Burning", 
+        "Gem Setting", "Vase Making", "Furniture Creation", "Stained Glass Design", "Basket Weaving"
+    ],
+    "Minstrel": [
+        "Lute Playing", "Songwriting", "Storytelling", "Flute Mastery", "Singing", 
+        "Tambourine Playing", "Crowd Entertainment", "Poetry Recitation", "Ballad Crafting", "Rhythm Mastery", 
+        "Stage Presence", "Tavern Singing", "Folk Song Performance", "Dance Coordination", "Lyric Writing", 
+        "Lyre Playing", "Improvisation", "Poetry Recital", "Dance Jig", "Crowd Engaging", 
+        "Acoustic Performance", "Instrument Maintenance", "Traveling Performance", "Bardic Knowledge", "Tune Crafting", 
+        "Percussion Playing", "Melody Composition", "Choral Singing", "Festival Entertainment", "Street Performance"
+    ],
+    "Tailor": [
+        "Cloth Cutting", "Garment Sewing", "Pattern Drafting", "Button Attachment", "Clothing Repair", 
+        "Embroidery", "Silk Weaving", "Seam Adjustment", "Fabric Dyeing", "Dressmaking", 
+        "Belt Crafting", "Needle Mastery", "Fur Lining", "Seamstress Expertise", "Threading Needles", 
+        "Linen Weaving", "Pouch Crafting", "Textile Crafting", "Custom Tailoring", "Uniform Crafting", 
+        "Leather Stitching", "Embroidery Design", "Pattern Replication", "Textile Creation", "Costume Crafting", 
+        "Fabric Cutting", "Curtain Sewing", "Shoe Repair", "Hat Making", "Cloak Crafting"
+    ],
+    "Shepherd": [
+        "Herding", "Flock Management", "Sheep Shearing", "Wool Harvesting", "Fence Repair", 
+        "Livestock Protection", "Herding Dog Training", "Grazing Management", "Pasture Rotation", "Lambing Assistance", 
+        "Flock Health Monitoring", "Fence Mending", "Wool Carding", "Sheep Feeding", "Sheep Handling", 
+        "Hoof Trimming", "Pasture Clearing", "Lamb Rearing", "Predator Scouting", "Barn Maintenance", 
+        "Sheep Counting", "Wool Sorting", "Pasture Inspection", "Ewe Assistance", "Herding Staff Usage", 
+        "Field Rotation", "Livestock Vaccination", "Fence Construction", "Wool Cleaning", "Sheep Docking"
+    ],
+    "Potter": [
+        "Clay Throwing", "Wheel Spinning", "Pot Shaping", "Kiln Operation", "Glaze Mixing", 
+        "Firing Techniques", "Clay Kneading", "Mold Crafting", "Vase Crafting", "Pottery Painting", 
+        "Ceramic Glazing", "Clay Preparation", "Pot Mold Creation", "Handle Attachment", "Firing Mastery", 
+        "Pot Design", "Pitcher Crafting", "Bowl Crafting", "Ceramic Sculpting", "Stoneware Crafting", 
+        "Slip Decoration", "Plate Crafting", "Clay Kiln Usage", "Ceramic Production", "Slip Application", 
+        "Footring Carving", "Sgraffito Technique", "Pottery Engraving", "Pot Forming", "Clay Hardening"
+    ],
+    "Stone Mason": [
+        "Stone Cutting", "Mortar Mixing", "Wall Building", "Stone Laying", "Archway Construction", 
+        "Granite Carving", "Marble Polishing", "Bricklaying", "Foundation Laying", "Column Building", 
+        "Stone Engraving", "Block Setting", "Chisel Usage", "Stairway Crafting", "Cathedral Construction", 
+        "Stone Mortaring", "Vault Building", "Keystone Placement", "Bridge Crafting", "Limestone Shaping", 
+        "Masonry Arch Construction", "Stone Restoration", "Monument Building", "Paving Stone Laying", "Sculpting Mastery", 
+        "Fortress Wall Crafting", "Chimney Building", "Castle Repair", "Aqueduct Construction", "Carving Details"
+    ],
+    "Baker": [
+        "Dough Kneading", "Bread Baking", "Cake Decorating", "Pastry Crafting", "Oven Management", 
+        "Yeast Cultivation", "Cookie Shaping", "Bread Scoring", "Pie Filling", "Puff Pastry Making", 
+        "Sourdough Preparation", "Crust Creation", "Flour Mixing", "Baking Timing", "Bread Shaping", 
+        "Grain Selection", "Sweet Roll Crafting", "Dough Shaping", "Cake Mixing", "Buttercream Application", 
+        "Flour Sifting", "Cake Rising", "Oven Preheating", "Loaf Formation", "Croissant Crafting", 
+        "Muffin Baking", "Glaze Application", "Scone Crafting", "Flour Blending", "Tart Crust Crafting"
+    ],
+    "Miller": [
+        "Grain Milling", "Windmill Operation", "Grain Grinding", "Sack Filling", "Grain Pouring", 
+        "Millstone Adjustment", "Flour Sifting", "Grain Transportation", "Wheat Crushing", "Millstone Maintenance", 
+        "Belt Repair", "Waterwheel Usage", "Hopper Filling", "Grain Sorting", "Water Flow Regulation", 
+        "Millhouse Management", "Grain Sieving", "Gear Oil Application", "Power Regulation", "Grain Sweeping", 
+        "Rye Milling", "Barley Grinding", "Wheat Flour Processing", "Flour Bagging", "Millstone Sharpening", 
+        "Milling Precision", "Hopper Control", "Water Mill Operation", "Corn Grinding", "Flour Yield Calculation"
+    ],
+    "Pelt Trader": [
+        "Pelt Quality Assessment", "Skinning", "Leather Tanning", "Pelt Preservation", "Fur Cleaning", 
+        "Exotic Fur Identification", "Hide Pricing", "Pelt Stretching", "Leather Curing", "Animal Trapping", 
+        "Pelt Cutting", "Fur Smoothing", "Fur Dyeing", "Exotic Pelt Trading", "Hide Preservation", 
+        "Beast Skinning", "Fur Storing", "Trap Setting", "Pelt Repair", "Wool Processing", 
+        "Pelt Trimming", "Leather Softening", "Hunter Negotiation", "Tannery Management", "Hide Preparation", 
+        "Trap Crafting", "Pelt Negotiation", "Cold Storage Expertise", "Rare Pelt Identification", "Fur Transport"
+    ],
+    "Brewer": [
+        "Mead Brewing", "Barley Selection", "Beer Fermentation", "Ale Tasting", "Keg Tapping", 
+        "Hops Drying", "Barrel Cleaning", "Grain Mashing", "Distillation", "Yeast Culturing", 
+        "Barrel Aging", "Ale Cooling", "Beer Frothing", "Hop Boiling", "Cask Filling", 
+        "Beer Bottling", "Yeast Preservation", "Mead Fermentation", "Keg Sealing", "Distillate Tasting", 
+        "Fermentation Timing", "Kettle Boiling", "Grain Cracking", "Beer Flavoring", "Distillery Maintenance", 
+        "Hop Cultivation", "Beer Storage", "Liquor Aging", "Cask Checking", "Mead Bottling"
+    ],
+    "Gravedigger": [
+        "Grave Digging", "Coffin Lowering", "Tombstone Cleaning", "Burial Ground Preparation", "Crypt Building", 
+        "Shovel Mastery", "Grave Marker Placement", "Vault Digging", "Casket Handling", "Funeral Arrangement", 
+        "Headstone Setting", "Tomb Digging", "Grave Decoration", "Crypt Opening", "Grave Placement Planning", 
+        "Mausoleum Maintenance", "Dirt Packing", "Burial Site Survey", "Grave Plot Mapping", "Mourner Comforting", 
+        "Memorial Preparation", "Crypt Crafting", "Burial Wrapping", "Vault Construction", "Tomb Inspection", 
+        "Grave Protection", "Burial Planning", "Headstone Repair", "Mausoleum Construction", "Coffin Handling"
+    ],
+    "Butcher": [
+        "Meat Cleaving", "Carcass Dressing", "Bone Splitting", "Sausage Making", "Meat Grinding", 
+        "Knife Sharpening", "Steak Cutting", "Rib Sectioning", "Meat Weighing", "Fish Filleting", 
+        "Meat Smoking", "Hide Removal", "Meat Tenderizing", "Blood Draining", "Sinew Removal", 
+        "Meat Hanging", "Fat Rendering", "Beef Sectioning", "Pig Carving", "Meat Packing", 
+        "Chicken Dressing", "Animal Processing", "Steak Trimming", "Meat Jerky Crafting", "Butchery Blade Mastery", 
+        "Animal Gutting", "Pork Cutting", "Knife Mastery", "Tendon Removal", "Venison Carving"
     ]
 };

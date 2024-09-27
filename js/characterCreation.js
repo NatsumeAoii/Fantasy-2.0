@@ -86,7 +86,8 @@ function calculateAttributes(race) {
 
 // Skill and Title Generation based on level - Prevent duplicates
 function generateSkillsAndTitles(role, level) {
-    const characterSkills = new Set();
+    const characterSkills = new Set();  // To store unique skills without ranks
+    const finalSkills = [];  // To store the final skills with ranks
     const characterTitles = new Set();
     const availableSkills = roleSkills[role] || [];
     const availableTitles = titles[role] || [];
@@ -116,40 +117,47 @@ function generateSkillsAndTitles(role, level) {
         maxRank = "Mythic";
     }
 
-    // Randomly generate skills, ensuring no duplicates
+    // Randomly generate skills, ensuring no duplicates (without rank first)
     while (characterSkills.size < numberOfSkills) {
         const skill = getRandomElement(availableSkills);
-        if (!characterSkills.has(skill)) {  // Prevent duplication
-            const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
-            characterSkills.add(`${skill} (Rank ${rank})`);
-        }
+        characterSkills.add(skill);  // Add unique skills to Set
     }
+
+    // Now, assign ranks to the unique skills and store them in finalSkills array
+    characterSkills.forEach(skill => {
+        const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
+        finalSkills.push(`${skill} (Rank ${rank})`);
+    });
 
     // Randomly generate titles, ensuring no duplicates
     while (characterTitles.size < numberOfTitles) {
         const title = getRandomElement(availableTitles);
-        if (!characterTitles.has(title)) {  // Prevent duplication
-            const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
-            characterTitles.add(`${title} (Rank ${rank})`);
-        }
+        const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
+        characterTitles.add(`${title} (Rank ${rank})`);
     }
 
-    return { characterSkills: Array.from(characterSkills), characterTitles: Array.from(characterTitles) };
+    return { characterSkills: finalSkills, characterTitles: Array.from(characterTitles) };
 }
 
-// Random guild assignment based on region
-function getRandomGuild(region) {
+// Random guild assignment based on region and level
+function getRandomGuild(region, level) {
     const guildOptions = raceGuild[region] || ["None"];
-    return Math.random() < 0.5 ? "None" : getRandomElement(guildOptions);
+    if (level >= 50) {
+        return getRandomElement(guildOptions);  // Must have a guild
+    }
+    return Math.random() < 0.5 ? "None" : getRandomElement(guildOptions);  // 50% chance for lower levels
 }
 
-// Random faction assignment based on region
-function getRandomFaction(region) {
+// Random faction assignment based on region and level
+function getRandomFaction(region, level) {
     const factionOptions = Object.entries(factions)
         .filter(([faction, regions]) => regions.includes(region))
         .map(([faction]) => faction);
 
-    return Math.random() < 0.4 ? "None" : getRandomElement(factionOptions);
+    if (level >= 50) {
+        return getRandomElement(factionOptions);  // Must have a faction
+    }
+    return Math.random() < 0.5 ? "None" : getRandomElement(factionOptions);  // 50% chance for lower levels
 }
 
 // UI Update Module - Ensure all stats are properly displayed
@@ -176,7 +184,7 @@ function updateUI(name, role, race, level, age, attributes, guild, region, facti
     charRole.textContent = role;
     charLev.textContent = level;
     charGuild.textContent = guild || "None"; // Ensure "None" if no guild
-    charRegion.textContent = region || "None"; // Ensure "None" if no region
+    charRegion.textContent = region;  // Ensure valid region is always displayed
     charFaction.textContent = faction || "None"; // Ensure "None" if no faction
     charAge.textContent = age;
 
@@ -214,15 +222,13 @@ export function submitName() {
         const age = getRandomAge(level);
         const attributes = calculateAttributes(race);
         
-        // Ensure a valid region is assigned
+        // Select a region from the raceRegion based on the assigned race
         const region = getRandomElement(raceRegion[race]);
-        if (!region) {
-            alert("No valid region found for this race.");
-            return;
-        }
 
-        const guild = getRandomGuild(region);  // 50% chance for guild to be "None"
-        const faction = getRandomFaction(region) || "None";  // 40% chance for faction to be "None"
+        // Guild and faction assignments depend on the character's level
+        const guild = getRandomGuild(region, level);  
+        const faction = getRandomFaction(region, level);  
+
         const { characterSkills, characterTitles } = generateSkillsAndTitles(role, level);
 
         updateUI(name, role, race, level, age, attributes, guild, region, faction, characterSkills, characterTitles);
