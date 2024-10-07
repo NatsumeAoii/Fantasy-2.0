@@ -1,27 +1,20 @@
-// Improved random utility functions
+// Get a random element from an array
 export function getRandomElement(arr) {
-    if (!Array.isArray(arr) || arr.length === 0) {
-        if (process.env.NODE_ENV !== 'production') {
-            console.error("Invalid array for random element selection:", arr);
-        }
-        return null;  // Return null instead of throwing an error
+    // Make sure the array is valid and has elements
+    if (arr && arr.length > 0) {
+        return arr[Math.floor(Math.random() * arr.length)];
     }
-    return arr[Math.floor(Math.random() * arr.length)];
+    // Return undefined if the array is invalid or empty
+    return undefined;
 }
 
+// Get a random number between min and max (inclusive)
 export function getRandomNumber(min, max) {
-    if (typeof min !== 'number' || typeof max !== 'number' || min > max) {
-        throw new Error("Invalid min/max for random number generation");
-    }
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 // Random selection with weights
 export function getWeightedRandomElement(items, weights) {
-    if (items.length !== weights.length || items.length === 0) {
-        throw new Error("Items and weights must be of equal length and non-zero");
-    }
-    
     const totalWeight = weights.reduce((acc, weight) => acc + weight, 0);
     const random = Math.random() * totalWeight;
 
@@ -35,17 +28,9 @@ export function getWeightedRandomElement(items, weights) {
     return items[items.length - 1];
 }
 
-// Get random elements with exclusion
+// Get multiple random elements from an array, excluding specified items
 export function getRandomElements(arr, count, exclude = []) {
-    if (!Array.isArray(arr) || arr.length === 0) {
-        throw new Error("Invalid array for random element selection");
-    }
-    
     const availableItems = arr.filter(item => !exclude.includes(item));
-    if (availableItems.length < count) {
-        throw new Error("Not enough elements to select from");
-    }
-
     const selectedItems = new Set();
     while (selectedItems.size < count) {
         selectedItems.add(getRandomElement(availableItems));
@@ -53,7 +38,7 @@ export function getRandomElements(arr, count, exclude = []) {
     return Array.from(selectedItems);
 }
 
-// Fisher-Yates shuffle algorithm
+// Shuffle an array in place (Fisher-Yates shuffle)
 export function shuffleArray(arr) {
     for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

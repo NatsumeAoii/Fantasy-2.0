@@ -9,13 +9,19 @@ import { roles } from './data/roles.js';
 import { roleSkills } from './data/roleSkills.js';
 import { titles } from './data/roleTitles.js';
 
-// Random level generation with specified chances
-function getRandomLevel() {
-    const random = Math.random();
-    if (random < 0.7) return getRandomNumber(1, 50);  // 70% chance
-    else if (random < 0.9) return getRandomNumber(50, 80);  // 20% chance
-    else if (random < 0.98) return getRandomNumber(80, 95);  // 8% chance
-    else return getRandomNumber(95, 100);  // 2% chance
+// Random level generation with specified chances and optional powerful flag
+function getRandomLevel(powerful = false) {
+    if (powerful) {
+        // If the character is marked as powerful, 10% chance for level 50-80, otherwise 80-100
+        return Math.random() < 0.1 ? getRandomNumber(50, 80) : getRandomNumber(80, 100);
+    } else {
+        // Standard level generation logic
+        const random = Math.random();
+        if (random < 0.85) return getRandomNumber(1, 50);  // 70% chance for level 1-50
+        else if (random < 0.95) return getRandomNumber(50, 80);  // 20% chance for level 50-80
+        else if (random < 0.98) return getRandomNumber(80, 95);  // 8% chance for level 80-95
+        else return getRandomNumber(95, 100);  // 2% chance for level 95-100
+    }
 }
 
 // Random age assignment based on level
@@ -86,18 +92,19 @@ function calculateAttributes(race) {
 
 // Skill and Title Generation based on level - Prevent duplicates
 function generateSkillsAndTitles(role, level) {
-    const characterSkills = new Set();  // To store unique skills without ranks
+    const characterSkills = new Set();  // To store unique base skills
     const finalSkills = [];  // To store the final skills with ranks
-    const characterTitles = new Set();
+    const characterTitles = new Set();  // To store unique base titles
+    const finalTitles = [];  // To store the final titles with ranks
     const availableSkills = roleSkills[role] || [];
     const availableTitles = titles[role] || [];
 
     let minRank, maxRank, numberOfSkills, numberOfTitles;
 
-    // Skill and title generation based on level
+    // Determine the number of skills and titles based on level
     if (level <= 25) {
         numberOfSkills = getRandomNumber(2, 5);
-        numberOfTitles = getRandomNumber(1, 2);  // Titles should be based on lower levels
+        numberOfTitles = getRandomNumber(1, 2);
         minRank = "F";
         maxRank = "SSS";
     } else if (level <= 50) {
@@ -117,27 +124,33 @@ function generateSkillsAndTitles(role, level) {
         maxRank = "Mythic";
     }
 
-    // Randomly generate skills, ensuring no duplicates (without rank first)
+    // Generate unique skills
     while (characterSkills.size < numberOfSkills) {
         const skill = getRandomElement(availableSkills);
-        characterSkills.add(skill);  // Add unique skills to Set
+        characterSkills.add(skill);  // Ensure the base skill is unique
     }
 
-    // Now, assign ranks to the unique skills and store them in finalSkills array
+    // Assign ranks to unique skills and add to finalSkills array
     characterSkills.forEach(skill => {
         const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
         finalSkills.push(`${skill} (Rank ${rank})`);
     });
 
-    // Randomly generate titles, ensuring no duplicates
+    // Generate unique titles
     while (characterTitles.size < numberOfTitles) {
         const title = getRandomElement(availableTitles);
-        const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
-        characterTitles.add(`${title} (Rank ${rank})`);
+        characterTitles.add(title);  // Ensure the base title is unique
     }
 
-    return { characterSkills: finalSkills, characterTitles: Array.from(characterTitles) };
+    // Assign ranks to unique titles and add to finalTitles array
+    characterTitles.forEach(title => {
+        const rank = getRandomElement(ranks.slice(ranks.indexOf(minRank), ranks.indexOf(maxRank) + 1));
+        finalTitles.push(`${title} (Rank ${rank})`);
+    });
+
+    return { characterSkills: finalSkills, characterTitles: finalTitles };
 }
+
 
 // Random guild assignment based on region and level
 function getRandomGuild(region, level) {
@@ -213,66 +226,71 @@ function updateUI(name, role, race, level, age, attributes, guild, region, facti
     });
 }
 
-// Main character creation function
-export function submitName() {
+// Main character creation function adapted to use powerful flag
+export function submitName(powerful = false) {
     const name = document.getElementById("nameInput").value;
     if (name) {
-        const { race, role } = assignRoleAndRace();  // Now uses updated logic
-        const level = getRandomLevel();
+        const { race, role } = assignRoleAndRace();
+        const level = getRandomLevel(powerful);  // Pass the powerful flag
         const age = getRandomAge(level);
         const attributes = calculateAttributes(race);
-        
-        // Select a region from the raceRegion based on the assigned race
         const region = getRandomElement(raceRegion[race]);
-
-        // Guild and faction assignments depend on the character's level
-        const guild = getRandomGuild(region, level);  
-        const faction = getRandomFaction(region, level);  
-
+        const guild = getRandomGuild(region, level);
+        const faction = getRandomFaction(region, level);
         const { characterSkills, characterTitles } = generateSkillsAndTitles(role, level);
-
         updateUI(name, role, race, level, age, attributes, guild, region, faction, characterSkills, characterTitles);
         displaySpecialPowers(role, race);
+
+        // Hide input form and display character info
         document.getElementById("inputForm").style.display = "none";
         document.getElementById("characterDisplay").style.display = "block";
+        
+        // Show the Restart button
+        const restartBtn = document.getElementById("restartBtn");
+        restartBtn.style.display = "block";
+        restartBtn.addEventListener("click", () => {
+            window.location.reload();  // Reload the page on Restart
+        });
     } else {
         alert("Please enter a name.");
     }
 }
 
-// Divine and Dark Energy Display Module with added powers for other roles and races
-function displaySpecialPowers(role, race) {
+function displaySpecialPowers(role, race, level) {
+    let minPower = level < 50 ? 10 : 50;
+    let maxPower = 100;
+
     if (["Healer", "Paladin", "Saint", "Priest", "Holy Knight", "Templar", "Crusader"].includes(role) ||
         ["Aasimar", "Seraph", "Valkyrie", "Nephilim", "Deva"].includes(race)) {
-        const divinePower = getRandomNumber(50, 100);
+        const divinePower = getRandomNumber(minPower, maxPower);
         document.getElementById("charDivinePower").textContent = divinePower;
         document.getElementById("divinePower").style.display = "block";
     }
 
     if (["Necromancer", "Unknown", "Death Knight", "Demon King", "Vampire Lord", "Dark Knight", "Warlock"].includes(role) ||
         ["Demon", "Vampire", "Tiefling", "Cambion", "Rakshasa", "Oni", "Incubus"].includes(race)) {
-        const darkEnergy = getRandomNumber(50, 100);
+        const darkEnergy = getRandomNumber(minPower, maxPower);
         document.getElementById("charDarkEnergy").textContent = darkEnergy;
         document.getElementById("darkEnergy").style.display = "block";
     }
 
     if (["Druid", "Elementalist", "Shaman", "Ranger", "Beastmaster"].includes(role) ||
         ["Fae", "Dryad", "Sylph", "Fairy", "Spirit", "Nymph", "Pixie", "Centaur"].includes(race)) {
-        const elementalPower = getRandomNumber(50, 100);
+        const elementalPower = getRandomNumber(minPower, maxPower);
         document.getElementById("charElementalPower").textContent = elementalPower;
         document.getElementById("elementalPower").style.display = "block";
     }
 
     if (["Dragon Rider", "Rune Priest", "Magic Swordsman", "Battlemage"].includes(role) ||
         ["Draconic", "Lamia", "Naga", "Lizardfolk", "Wyvernfolk", "Half-Dragon"].includes(race)) {
-        const draconicPower = getRandomNumber(50, 100);
+        const draconicPower = getRandomNumber(minPower, maxPower);
         document.getElementById("charDraconicPower").textContent = draconicPower;
         document.getElementById("draconicPower").style.display = "block";
     }
 
     if (["Rogue", "Assassin", "Scout", "Thief", "Shadow Dancer"].includes(role) ||
         ["Doppelganger", "Shapeshifter", "Changeling", "Werewolf", "Lupine", "Feline"].includes(race)) {
-        const stealthPower = getRandomNumber(50, 100);
+        const stealthPower = getRandomNumber(minPower, maxPower);
         document.getElementById("charStealthPower").textContent = stealthPower;
         document.getElementById("stealthPower").style.display = "block";
     }
