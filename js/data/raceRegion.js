@@ -1,4 +1,4 @@
-export const raceRegion = { 
+export const racesRegion = {
     // Human and Half-Breeds
     "Human": [
         "Eldorath Kingdom", "Arkenford Meadows", "Suncrest Hills", "Wyrmbark Glade", "Morghast Bog",
@@ -35,199 +35,263 @@ export const raceRegion = {
 
     // Elves and Related
     "Elf": [
-        "Ithandril Keep", "Silverthorn Vale", "Starbloom Fields", "Everlight Glade", "Moonshadow Grove",
-        "Sunveil", "Leafhaven", "Whisperwind", "Greenbough", "Elandor"
+        "Silvermoon", "Starfall", "Glimmerwood", "Moonlight Vale", "Mistspire",
+        "Elderbough", "Sunshimmer", "Dawncrest", "Sylvathorn", "Emberglade"
     ],
     "Dark Elf": [
-        "Nyrannis Hold", "Shadowthorn Fields", "Bloodveil Meadows", "Nightbloom Grove", "Ebonfang Swamp",
-        "Duskrise", "Shadefall", "Grimthorn", "Wraithspire", "Veilguard"
+        "Shadowspire", "Obsidian Hollow", "Dreadmire", "Blackthorn Reach", "Nethercrest",
+        "Voidhaven", "Nightfang", "Cavernhelm", "Duskwind", "Ebonshroud"
     ],
     "Frost Elf": [
-        "Icecrown Bastion", "Snowbloom Vale", "Frostveil Fields", "Winterbark Forest", "Frostbite Swamp",
-        "Glacierreach", "Coldshadow", "Frostmire", "Winterspire", "Snowthorn"
+        "Icewind Peaks", "Snowfall Hollow", "Glaciershade", "Wintercrest", "Frostglimmer",
+        "Coldwhisper", "Shiverfrost", "Iceshadow", "Snowmantle", "Glacierreach"
     ],
     "Shadow Elf": [
-        "Umbrathar Keep", "Darksong Vale", "Gloomveil Plains", "Shadebark Woods", "Nightveil Swamp",
-        "Moonrise", "Shadehollow", "Veilreach", "Duskglen", "Shadowsong"
+        "Twilightkeep", "Shadowfen", "Nocturnus Hollow", "Gloomsreach", "Ebonwood",
+        "Darkfell", "Phantomspire", "Midnight Vale", "Duskwhisper", "Wraithmoor"
     ],
     "Wood Elf": [
-        "Thornhaven Castle", "Greenlight Meadows", "Sylvandale Fields", "Ironroot Grove", "Bramblesworn Swamp",
-        "Leafshade", "Thornwillow", "Oakensong", "Wildgrove", "Fernfall"
+        "Sylvanroot", "Whisperbough", "Wildgrove", "Timberglade", "Verdanthal",
+        "Greenheart", "Leafdell", "Glimmerwild", "Forestshade", "Sunwillow"
     ],
     "High Elf": [
-        "Aetherion Spire", "Brightsun Fields", "Goldcrest Plains", "Glowingleaf Grove", "Radiantmire",
-        "Solandor", "Gleamsong", "Aurorafall", "Lumincrest", "Dawnspire"
+        "Everbright", "Sunblaze Reach", "Crystalspike", "Goldleaf Heights", "Starlight Peak",
+        "Aurorafall", "Luminousforge", "Glendewood", "Celestia", "Twilightspire"
     ],
     "Sea Elf": [
-        "Tidalspire Keep", "Wavemist Vale", "Seashell Plains", "Coralbloom Grove", "Brinefen Swamp",
-        "Oceansong", "Seavine", "Brightwave", "Tideglow", "Reeftide"
+        "Coralhaven", "Saltwhisper Isle", "Shoreline Bay", "Tidecaller Reef", "Seabreeze Haven",
+        "Wavecrest", "Shellgrove", "Tideglimmer", "Deepwater Keep", "Stormsurf"
     ],
     "Sun Elf": [
-        "Solarith Keep", "Suncrest Meadows", "Lightbloom Fields", "Brightwood Grove", "Blazefen Swamp",
-        "Dawnsong", "Flareglade", "Aurorasun", "Gleamfall", "Sunspire"
+        "Sunspire", "Goldenleaf", "Solarae", "Solaris Plains", "Dawnwhisper",
+        "Lightbloom", "Sunflare", "Lumiere", "Solshade", "Auroramar"
     ],
     "Moon Elf": [
-        "Moonglade Spire", "Starglow Plains", "Shimmerbloom Meadows", "Glowbark Grove", "Moonveil Fen",
-        "Lunaris", "Shadespire", "Silvernight", "Dreamveil", "Nightcrest"
+        "Moonshade", "Silverveil", "Lunaris Grove", "Nightshine", "Moonfall",
+        "Glimmermoon", "Starbloom", "Duskshade", "Mistdawn", "Lunathorn"
+    ],
+    "Half-Elf": [
+        "Calatheron Keep", "Briarwind Vale", "Starlisle Plains", "Gloomhollow Grove", "Twilightfen",
+        "Silvershadow", "Thornveil", "Hearthglen", "Virenreach", "Starhelm"
     ],
 
     // Dwarves and Related
     "Dwarf": [
-        "Ironhelm Keep", "Stoneforge Vale", "Anvilthorn Meadows", "Greybark Grove", "Ironmire Swamp",
-        "Forgecrest", "Stonefury", "Brimrock", "Ironspire", "Deepstone"
+        "Ironhold Keep", "Hammerforge", "Stonehearth", "Deepdelve", "Boulderfall",
+        "Thundermount", "Runestone", "Stonewatch", "Grimfrost", "Elderforge"
     ],
     "Gnome": [
-        "Cogspire Keep", "Sprocketvale", "Brassbloom Meadows", "Whirltree Woods", "Foggear Swamp",
-        "Tinkertop", "Gearspark", "Whistlespring", "Bronzebough", "Copperveil"
+        "Glimmerdale", "Whistlespring", "Tinkerhill", "Cogwheel Keep", "Steamgrove",
+        "Fizzyforge", "Sparkwhistle", "Tinkertown", "Cogspur", "Ironwhirl"
     ],
     "Halfling": [
-        "Hilltop Haven", "Goldenmead Fields", "Verdanplains", "Mossbloom Woods", "Brambleshadow Marsh",
-        "Shadewood", "Fernhill", "Willowcrest", "Birchveil", "Greencliff"
+        "Greenmeadow", "Riverbend", "Brightbrook", "Amberleaf", "Breezeborough",
+        "Stonemill", "Willowglen", "Whisperhill", "Meadowfoot", "Woodstone"
     ],
     "Duergar": [
-        "Darkforge Citadel", "Grimrock Fields", "Blackore Plains", "Underroot Woods", "Deepspire Swamp",
-        "Ironshadow", "Obsidianhold", "Cavernthorn", "Grimspire", "Blackcrest"
+        "Dreadforge", "Darkfrost", "Grimstone", "Twilighthold", "Ironshroud",
+        "Blackspire", "Grimforge", "Doomspire", "Obsidianwell", "Ironfang"
     ],
 
     // Orcs and Goblinoids
     "Orc": [
-        "Boneclaw Citadel", "Grimfang Plains", "Scarhide Meadows", "Rotthorn Grove", "Blightroot Swamp",
-        "Skullbane", "Fleshfall", "Ironfang", "Darkclaw", "Gravetide"
+        "Bloodfang Ridge", "Trollskull Plain", "Grimjaw Hold", "Doomfang Vale", "Darkblood Pass",
+        "Ironfang Cliffs", "Worgfang", "Drakeshadow", "Blightcrag", "Bloodfire"
     ],
     "Goblin": [
-        "Rotspire Hold", "Tanglethorn Fields", "Blightbloom Meadows", "Bogfang Grove", "Mudroot Swamp",
-        "Grimtooth", "Filthclaw", "Slimefang", "Greenrot", "Festerspike"
+        "Greenshade", "Cavespire", "Rustfold", "Shroomvale", "Funguswallow",
+        "Grubfall", "Sootgrip", "Hollowtip", "Gritmoor", "Slimebrook"
     ],
     "Hobgoblin": [
-        "Ironfang Fortress", "Bloodpike Fields", "Hollowthorn Farms", "Darkbriar Woods", "Venombog Swamp",
-        "Blighthorn", "Grimscar", "Crimsonfang", "Ashfang", "Hollowclaw"
+        "Ironlash Keep", "Bloodspike", "Doomhold", "Gorefang", "Redclaw",
+        "Krogar's Reach", "Tuskflame", "Ashenfang", "Grimblade", "Fangspire"
     ],
     "Kobold": [
-        "Flamefang Hold", "Ashbloom Fields", "Sootveil Farms", "Cinderbark Woods", "Lavaspine Swamp",
-        "Emberclaw", "Scorchscale", "Flameshade", "Smolderfang", "Ashfang"
+        "Kobold's Hollow", "Cavesmash", "Fangstone", "Graveclaw", "Scaledwarren",
+        "Pitfang", "Brimstone Caves", "Lurkingpines", "Cinderfang", "Spireclaw"
     ],
     "Troll": [
-        "Bogfang Keep", "Fleshscale Fields", "Rotthorn Meadows", "Swampbark Woods", "Mireblood Swamp",
-        "Tanglebog", "Fleshgrip", "Venomfang", "Rotmire", "Mudthorn"
+        "Bloodroot Hollow", "Thornwallow", "Mudglen", "Troll's Reach", "Stormfang",
+        "Fleshgnaw", "Grimefury", "Gloomfang", "Wartmark", "Briarfall"
     ],
     "Bugbear": [
-        "Grimrock Fortress", "Blightthorn Fields", "Darkroot Meadows", "Brambleshadow Grove", "Swampthorn",
-        "Fangfall", "Rotspire", "Cragclaw", "Thornfang", "Blightmaw"
+        "Grimjaw Hollow", "Bloodclaw", "Sporefang", "Grimshade", "Nightjaw",
+        "Tuskfall", "Thornbark", "Rockjaw", "Foulfang", "Deepfang"
     ],
 
     // Giants and Behemoths
     "Giant": [
-        "Thunderkeep", "Stormhold Fields", "Skyclaw Meadows", "Stonebark Grove", "Tempestfen Swamp",
-        "Cragspire", "Skystorm", "Rockveil", "Bouldermire", "Stormclaw"
+        "Stormpeak", "Thunderfist", "Giant's Reach", "Blightfall", "Stonehearth Peaks",
+        "Frostcrag", "Mosspeak", "Skyspire", "Ironclash", "Sundergate"
     ],
-    "Ogre": [
-        "Brutefang Fortress", "Mudroot Fields", "Stonefury Meadows", "Fleshthorn Woods", "Tanglefen Swamp",
-        "Bloodclaw", "Mudsnarl", "Grimfang", "Darkmire", "Rotbark"
+    "Half-Giant": [
+        "Stormthrone Bastion", "Grimreach Fields", "Ironhide Meadows", "Blightgrove Woods", "Frostmire Marsh",
+        "Thunderspire", "Stonefury", "Rockfall", "Skylash", "Stormforge"
     ],
     "Minotaur": [
-        "Labyrinth Citadel", "Hornshade Fields", "Stampede Meadows", "Thornspear Grove", "Darkhorn Swamp",
-        "Ironhoof", "Gorespire", "Labyrinthine", "Bloodmane", "Stormhorn"
+        "Labyrinth Hollow", "Horned Hill", "Ironbull Fort", "Thornmaze", "Bloodhorn",
+        "Cavernkeep", "Stonelabyrinth", "Redstone Hold", "Minotaur's Den", "Brimstone Maw"
     ],
     "Cyclops": [
-        "One-Eye Keep", "Bouldercrash Plains", "Stoneveil Meadows", "Greybark Grove", "Fogfang Swamp",
-        "Skullpeak", "Grimstone", "Eyeclaw", "Rockshadow", "Boulderspine"
+        "Cyclopean Peaks", "Stonegaze Mountain", "Eye of the Storm", "Blindsight Falls", "Titan's Roar",
+        "Skullcrag", "Blindsight Caves", "Gigantum", "Eyehelm", "Grimstone"
+    ],
+    "Ogre": [
+        "Blightwallow", "Ironclad Hill", "Stormdrift", "Gnashclaw", "Skullgrim",
+        "Thornclash", "Darkboulder", "Groglash", "Ironfang", "Bloodmoat"
     ],
 
     // Fae and Magical Beings
     "Fairy": [
-        "Glitterspire", "Petalbloom Fields", "Butterfly Vale", "Whisperwind Grove", "Lilymire Swamp",
-        "Petalsong", "Dewdrop", "Glowbranch", "Gossamer", "Bloomveil"
+        "Glimmerwhisper", "Frostmoth Glade", "Shimmerstone", "Pixiedell", "Moonpetal Grove",
+        "Whispershine", "Starfall Wood", "Crystalbloom", "Wildflower Hollow", "Elderbloom"
     ],
     "Fae": [
-        "Faerune", "Moonpetal Vale", "Glimmersong Fields", "Starbloom Grove", "Shadowfen Swamp",
-        "Whisperveil", "Silverbloom", "Twilightthorn", "Brightpetal", "Glimmervale"
+        "Faewood Bastion", "Petalwhisper Fields", "Lunaris Plains", "Glimmergrove", "Starlight Fen",
+        "Whisperwing", "Dewspark", "Thornpetal", "Moonveil", "Lilyreach"
     ],
     "Sylph": [
-        "Windsong Spire", "Breezebloom Fields", "Whistlebranch Farms", "Skybark Woods", "Mistrise Swamp",
-        "Stormcrest", "Airwhisper", "Whirlwind", "Cloudreach", "Tempestspire"
+        "Windcrest", "Zephyrfield", "Skydream Grove", "Windwhisper", "Cloudveil",
+        "Stormcall", "Breezeveil", "Flutterwood", "Wingspan", "Aetherwind"
     ],
     "Dryad": [
-        "Treeheart Keep", "Oakenshade Meadows", "Greentide Plains", "Deepbark Grove", "Briarfen Swamp",
-        "Everroot", "Leafveil", "Whisperbranch", "Thornsong", "Brambleshade"
+        "Treebloom", "Barkheart", "Elderwood", "Sylvathorn", "Wildgrove",
+        "Oakspire", "Moonbloom", "Shadewood", "Greenthorn", "Lifetree"
     ],
     "Spirit": [
-        "Wraithspire", "Phantombloom Fields", "Ghostlight Meadows", "Shadesoul Grove", "Soulveil Swamp",
-        "Hauntedveil", "Spectralwing", "Etherealcrest", "Grimveil", "Shadowbloom"
+        "Mistvale", "Ethereal Glade", "Soulmist", "Spiritwood", "Veilstone",
+        "Wraithfrost", "Phantomreach", "Dreadstone", "Emberveil", "Ghostfire"
+    ],
+    "Nymph": [
+        "Moonlily Grove", "Clearwater Marsh", "Springtide", "Sylvanlight", "Fernshade",
+        "Crystalcreek", "Dreamflow", "Rosewhisper", "Shiningbrook", "Starpetal"
+    ],
+    "Pixie": [
+        "Twilightgrove", "Shimmerveil", "Glimmerleaf", "Brightwhisper", "Windlight",
+        "Luminous Meadow", "Petalwind", "Glowheart", "Springdream", "Feylight"
+    ],
+    "Satyr": [
+        "Frogspring", "Hollowglade", "Wildhorn", "Brambleroot", "Thornmoor",
+        "Greenhorn", "Glitterbark", "Pinecliff", "Hearthwild", "Lushroot"
+    ],
+    "Faun": [
+        "Whisperhorn", "Brambleshadow", "Foresthearth", "Sylvanleaf", "Gladevale",
+        "Glimmerhoof", "Leafwhisper", "Pineshade", "Hornvale", "Moongrove"
     ],
 
     // Draconic and Reptilian
     "Draconic": [
-        "Dragonskull Citadel", "Flamebloom Fields", "Scorchscale Meadows", "Emberbark Woods", "Lavaspire Swamp",
-        "Crimsonclaw", "Flamestalker", "Cinderfang", "Ashfall", "Embershard"
+        "Wyrmstone", "Drake's Peak", "Embercrag", "Firefang", "Ashenspire",
+        "Stoneflame", "Drakeshadow", "Moltenspire", "Scorchcliff", "Wyrmfall"
     ],
     "Lamia": [
-        "Serpentscale Keep", "Venomthorn Fields", "Fangbloom Farms", "Twistingvine Grove", "Viperbog Swamp",
-        "Serpentclaw", "Vipersong", "Fangbloom", "Venomtide", "Snakeshadow"
+        "Serpent's Coil", "Venomspire", "Slitherfall", "Snakewood", "Viperthorn",
+        "Cave of Fangs", "Sunfang", "Toxicrise", "Fangstrike", "Serpent's Rise"
     ],
     "Naga": [
-        "Coilfang Spire", "Venomtide Fields", "Fangscale Farms", "Twiningroot Woods", "Mirespine Swamp",
-        "Serpentshadow", "Venomspire", "Tidebloom", "Scalespire", "Fangsong"
+        "The Naga Pools", "Venomcrest", "Scalewood", "Lake of Serpents", "Snakeskin Marsh",
+        "Serpent's Reach", "Fanglake", "Emeraldcoil", "Glimmerscale", "Twilightfen"
     ],
     "Lizardfolk": [
-        "Scaleborn Keep", "Mudscale Fields", "Bogroot Meadows", "Swampclaw Grove", "Venomthorn Swamp",
-        "Fangscale", "Swampbite", "Mudfang", "Scalewatch", "Bogshadow"
+        "Swampscale", "Gloomfenn", "Riverside Marsh", "Crocodile Pass", "Siltstone",
+        "Fangswell", "Venomreach", "Thornswamp", "Bogscale", "Mossback"
+    ],
+    "Half-Dragon": [
+        "Emberfall Keep", "Scorchedwind Fields", "Moltenclaw Plains", "Blazebough Woods", "Lavaspire Marsh",
+        "Ashencrest", "Flamestalk", "Cinderwatch", "Crimsonveil", "Firesong"
+    ],
+    "Wyvernfolk": [
+        "Skyfang Ridge", "Stormflight Peaks", "Ashenclaw", "Wyrmrest", "Dragoncrest",
+        "Thunderjaw", "Flamespine", "Stormspire", "Graveclaw", "Ragingstorm"
     ],
 
     // Beastfolk
     "Werewolf": [
-        "Moonfang Keep", "Howling Plains", "Clawshadow Meadows", "Nightshade Woods", "Bloodmire Swamp",
-        "Wolfsong", "Lunarclaw", "Darkfang", "Furveil", "Moonveil"
+        "Moonfang", "Darkhowl", "Silvergrove", "Lupinehold", "Howlingwood",
+        "Frostmoon", "Grimfang", "Bloodpaw", "Wolfsbane", "Nightwhisper"
     ],
     "Lupine": [
-        "Wolfcrest Keep", "Snowfang Fields", "Greyhowl Meadows", "Howlbark Woods", "Frostfen Swamp",
-        "Clawspire", "Nightwatch", "Fangbloom", "Silverpaw", "Furcrest"
+        "Moonfall", "Silverhowl", "Shadowslough", "Hollowfang", "Wildclaw",
+        "Frostfang", "Nightfang", "Sablemoon", "Whisperwood", "Howlwatch"
     ],
     "Feline": [
-        "Prowlthorn Spire", "Clawstrider Fields", "Tigershadow Meadows", "Jungleclaw Woods", "Stripesworn Marsh",
-        "Leopardsong", "Fangwhisper", "Prowler's End", "Tigershard", "Nightclaw"
+        "Cat's Hollow", "Whiskerwood", "Goldenpaw", "Leopardgrove", "Pouncestone",
+        "Jaggedtail", "Sableclaw", "Leopardfang", "Lionsreach", "Cat's Reach"
     ],
     "Centaur": [
-        "Hoofcrest Keep", "Thundergallop Plains", "Wildhoof Meadows", "Gallopthorn Woods", "Mudhoof Marsh",
-        "Stampecrest", "Swiftfoot", "Brightmane", "Thunderhoof", "Hornveil"
+        "Hoofcliff", "Gleamingstone", "Gallopgrove", "Runewood", "Thunderspire",
+        "Wildstride", "Windspur", "Hoofvale", "Steedreach", "Gallopfall"
     ],
     "Sphinx": [
-        "Riddlethorn Spire", "Dunecrest Fields", "Dustveil Farms", "Whispering Sands", "Stormveil Marsh",
-        "Sphinxveil", "Riddlesong", "Sandwhisper", "Mystspire", "Shadowbloom"
+        "Stonehall", "Giza", "Mooncrest", "Savannah's End", "Sandpaws",
+        "Redstone", "Pyramid's Reach", "Sunrise Plateau", "Sphinx Cliffs", "Riddlekeep"
+    ],
+    "Satyr": [
+        "Frogspring", "Hollowglade", "Wildhorn", "Brambleroot", "Thornmoor",
+        "Greenhorn", "Glitterbark", "Pinecliff", "Hearthwild", "Lushroot"
     ],
 
     // Celestials and Infernals
     "Aasimar": [
-        "Heavensong Spire", "Goldenveil Fields", "Sunblossom Meadows", "Brightwing Woods", "Radiantmire Swamp",
-        "Divinespire", "Angelsong", "Aurorawatch", "Lightbloom", "Goldencrest"
-    ],
-    "Tiefling": [
-        "Hellfire Keep", "Cinderveil Fields", "Blightthorn Meadows", "Ashroot Woods", "Burningmire Swamp",
-        "Fiendsong", "Hellclaw", "Scorchspire", "Devil’s Thorn", "Emberveil"
+        "Celestial Haven", "Sunspire Keep", "Lightbloom", "Heaven's Gate", "Stardust Vale",
+        "Astral Path", "Golden Halo", "Seraphim Reach", "Celestial Forest", "Silver Heaven"
     ],
     "Nephilim": [
-        "Skyreach Spire", "Thunderfall Plains", "Stormwatch Meadows", "Skyshadow Grove", "Cloudthorn Swamp",
-        "Lightningsong", "Thunderspire", "Skyveil", "Stormcrest", "Cloudbloom"
+        "Fallen Star Fortress", "Stonegrave", "Moonlit Ruins", "Eclipsed Vale", "Ragnarok Reach",
+        "Abyssal Haven", "Fall's End", "Voidshroud", "Heavensfall", "Lost Horizon"
+    ],
+    "Valkyrie": [
+        "Valhallan Gate", "Wingshadow", "Skybloom", "Frosted Peak", "Heaven's Light",
+        "Dawnwar", "Stormgale", "Shiningwood", "Sunset Hill", "Valhalla"
+    ],
+    "Seraph": [
+        "Heavenfall", "Starlight Vale", "Celestial Garden", "Sunrise Hills", "Elysium Reach",
+        "Moonstar", "Crystal Halo", "Lightspire", "Goldenvale", "Silvercrest"
     ],
     "Djinn": [
-        "Windspire Citadel", "Zephyrveil Fields", "Sirocco Meadows", "Windwhisper Grove", "Desertveil Marsh",
-        "Breezeclaw", "Whirlspire", "Skywhisper", "Cloudspire", "Zephyrsong"
+        "Sands of Time", "Windspire", "Dustfall", "Mirage Oasis", "Heatstorm",
+        "Dustveil", "Fireflame Peak", "Tempest Reach", "Twilight Sands", "Ashwind"
     ],
     "Efreet": [
-        "Flamewrath Spire", "Inferno Fields", "Ashblossom Meadows", "Emberroot Woods", "Lavasoul Swamp",
-        "Blazethorn", "Fireclaw", "Scorchbloom", "Cinderwatch", "Flameveil"
+        "Molten City", "Firestorm", "Blazebloom", "Flamesoul", "Scorched Keep",
+        "Inferno Hold", "Emberdune", "Ashfield", "Firespire", "Cinderbloom"
+    ],
+    "Tiefling": [
+        "Infernal Keep", "Abyssal Haven", "Crimson Vale", "Bloodrock Fortress", "Hellsreach",
+        "Fiendsfall", "Blackened Depths", "Flamehold", "Soulburn", "Infernal Plains"
+    ],
+    "Cambion": [
+        "Darkspire", "Abyssal Hold", "Firescorch", "Shadow Keep", "Night's Edge",
+        "Hellfire", "Cinderstone", "Doomfury", "Blazecliff", "Bloodreach"
+    ],
+    "Incubus": [
+        "Sinsworn Keep", "Pleasure's End", "Shadowvale", "Moonlit Reach", "Twilight Fortress",
+        "Sinner's Path", "Lustgrove", "Crimson Hollow", "Midnight Vale", "Fallen Hold"
+    ],
+    "Oni": [
+        "Darkstone Keep", "Shadowmarch", "Bloodthorn Hold", "Grimjaw Plains", "Fangspire",
+        "Dreadhollow", "Wickedreach", "Ironclaw", "Stormgloom", "Darkfang"
+    ],
+    "Rakshasa": [
+        "Twilight Temple", "Vermilion Spire", "Bloodfang Mountain", "Soulbane Fortress", "Jade Keep",
+        "Scarletreach", "Fiendspire", "Silent Grove", "Nightshade Hollow", "Venomspire"
+    ],
+    "Deva": [
+        "Heaven's Reach", "Luminous Falls", "Celestial Gateway", "Divine Summit", "Lightspire",
+        "Starblessed Vale", "Solacehold", "Holy Forge", "Ethereal Grove", "Golden Sanctuary"
     ],
 
     // Shapeshifters and Doppelgangers
     "Doppelganger": [
-        "Mirrorthorn Keep", "Glassveil Fields", "Shiftingveil Meadows", "Phantomthorn Grove", "Echoingmire Swamp",
-        "Mirageclaw", "Reflectionsong", "Shadespire", "Shadowveil", "Echocrest"
+        "Mirrorfall", "Illusory Hollow", "Shadowspire", "Mimicshade", "Falseheart",
+        "Twilight Veil", "Glimmerforge", "Echo Keep", "Duskspire", "Vanishmire"
     ],
     "Shapeshifter": [
-        "Fluxspire", "Shiftingveil Fields", "Morphveil Meadows", "Mistbark Woods", "Veilmist Swamp",
-        "Whispershade", "Echoingveil", "Shadowwhisper", "Dreambloom", "Shadeveil"
+        "Wraithwood", "Changing Vale", "Fleeting Shade", "Whisperbend", "Shifter's Grove",
+        "Silvermask Hollow", "Elderform", "Mimic's Rest", "Moonveil", "Shapewood"
     ],
     "Changeling": [
-        "Illusionspire", "Mistspring Fields", "Shadesong Meadows", "Twilightveil Grove", "Whisperfen Swamp",
-        "Illusionwatch", "Veilshadow", "Dreamveil", "Whispershade", "Shadesong"
+        "Flickerfell", "Shifting Glade", "Mimicdale", "Hollowfield", "Elderfade",
+        "Glimmerlight", "Wanderbloom", "Mistveil", "Moonshadow", "Feytouch"
     ]
 };

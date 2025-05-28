@@ -1,94 +1,135 @@
-// main.js
+document.addEventListener('keydown', (e) => {
+    const forbiddenKeys = ['F12', 'u', 'U', 'I', 'J'];
+    if (e.key === 'F12' || (e.ctrlKey && forbiddenKeys.includes(e.key))) {
+        e.preventDefault();
+        alert('Developer tools are disabled.');
+        window.location.reload();
+    }
+});
+
+// Anti-inspection warnings
+console.warn('%cWARNING!', 'color: red; font-size: 50px;', 'Inspecting this is prohibited.');
+console.log('Actions are being monitored.');
+
+(function preventDevTools() {
+    const devtools = () => {};
+    devtools.toString = () => 'You are not allowed to inspect this!';
+    Object.defineProperty(window, 'devtools', {
+        get: () => {
+            console.warn('%cSTOP!', 'color: red; font-size: 50px;');
+            return devtools;
+        },
+    });
+})();
+
+// Importing the character creation logic
 import { submitName } from './characterCreation.js';
 
-function handleStart() {
-    const nameInput = document.getElementById('nameInput').value.trim();
-    if (!nameInput) {
-        console.error('No name entered'); // Log to console for debugging
-        alert('Please enter a name before starting.'); // Alert user
-        return; // Stop execution
+// Cache frequently used DOM elements for performance
+const nameInput = document.getElementById('nameInput');
+const submitButton = document.getElementById('submitBtn');
+const restartButton = document.getElementById('restartBtn');
+const exportButton = document.getElementById('exportBtn');
+const characterDisplay = document.getElementById('characterDisplay');
+
+// Helper function to reset the form
+const resetForm = () => {
+    nameInput.value = '';
+    characterDisplay.style.display = 'none';
+    restartButton.style.display = 'none';
+    submitButton.textContent = 'Start';
+    submitButton.disabled = false;
+};
+
+// Handle the start action
+const handleStart = () => {
+    const name = nameInput.value.trim();
+
+    if (!name) {
+        alert('Please enter a name before starting.');
+        nameInput.focus();
+        return;
     }
 
-    const submitButton = document.getElementById('submitBtn');
     submitButton.textContent = 'Loading...';
     submitButton.disabled = true;
 
+    // Simulate loading with a random delay
+    const randomDelay = Math.random() * 2000 + 10; // Between 10ms and 2000ms
     setTimeout(() => {
-        submitName(); // This will now only execute if name is provided
-        document.getElementById('characterDisplay').style.display = 'block';
-        document.getElementById('restartBtn').style.display = 'block';
-        submitButton.textContent = 'Start';
-        submitButton.disabled = false;
-    }, Math.random() * (2000 - 10) + 10); // Use the randomized delay
-}
+        try {
+            submitName(); // Ensure the region is always generated
+            characterDisplay.style.display = 'block';
+            restartButton.style.display = 'block';
+        } catch (error) {
+            console.error('Error during character creation:', error);
+            alert('An error occurred while generating the character. Please try again.');
+        } finally {
+            submitButton.textContent = 'Start';
+            submitButton.disabled = false;
+        }
+    }, randomDelay);
+};
 
-document.getElementById('submitBtn').addEventListener('click', handleStart);
+// Handle the export action
+const handleExport = () => {
+    const node = characterDisplay;
+    const characterName = nameInput.value.trim().replace(/\s+/g, '-');
+    const fileName = characterName ? `${characterName}-stats.png` : 'character-stats.png';
 
-function logConsoleMessages() {
-    const oldConsoleLog = console.log;
-    console.log = function (message) {
-        oldConsoleLog(message);
-        // Implement logging to server or storage here
+    // Temporarily adjust styles for screenshot
+    const originalStyles = {
+        backgroundImage: node.style.backgroundImage,
+        backgroundSize: node.style.backgroundSize,
+        backgroundPosition: node.style.backgroundPosition,
+        backgroundRepeat: node.style.backgroundRepeat,
+        overflow: node.style.overflow,
+        maxHeight: node.style.maxHeight,
     };
-}
 
-logConsoleMessages();
-
-document.getElementById('submitBtn').addEventListener('click', handleStart);
-
-// Function to handle the restart action
-function handleRestart() {
-    document.getElementById('characterDisplay').style.display = 'none';
-    document.getElementById('restartBtn').style.display = 'none';
-    document.getElementById('nameInput').value = ''; // Clear the input field
-    document.getElementById('submitBtn').textContent = 'Start'; // Reset button text
-    document.getElementById('submitBtn').disabled = false; // Enable button
-}
-
-document.getElementById('exportBtn').addEventListener('click', function() {
-    var node = document.getElementById('characterDisplay');
-
-    // Get the inputted name from the "nameInput" field and replace spaces with hyphens
-    var characterName = document.getElementById('nameInput').value.trim().replace(/\s+/g, '-');
-    var fileName = characterName ? `${characterName}-stats.png` : 'character-stats.png'; // Use inputted name for file
-
-    // Temporarily add the background image and adjust styles for capture
-    node.style.backgroundImage = 'url("img/bg.png")'; // Use the correct path for your background image
-    node.style.backgroundSize = 'cover'; // Ensure the background covers the entire element
-    node.style.backgroundPosition = 'center'; // Center the background image
-    node.style.backgroundRepeat = 'no-repeat'; // Prevent repeating
-
-    // Temporarily adjust the overflow and maxHeight for capturing
+    node.style.backgroundImage = 'url("img/bg.png")';
+    node.style.backgroundSize = 'cover';
+    node.style.backgroundPosition = 'center';
+    node.style.backgroundRepeat = 'no-repeat';
     node.style.overflow = 'visible';
     node.style.maxHeight = 'none';
 
-    // Capture the div and download it as PNG
-    domtoimage.toPng(node)
-        .then(function(dataUrl) {
-            var link = document.createElement('a');
-            link.download = fileName; // Use the dynamically generated file name with hyphens
+    // Use dom-to-image to capture and export the character display as an image
+    domtoimage
+        .toPng(node)
+        .then((dataUrl) => {
+            const link = document.createElement('a');
+            link.download = fileName;
             link.href = dataUrl;
             link.click();
 
             // Revert styles after capture
-            node.style.backgroundImage = ''; // Remove background image
-            node.style.backgroundSize = '';
-            node.style.backgroundPosition = '';
-            node.style.backgroundRepeat = '';
-            node.style.overflow = 'auto';  // Restore original overflow
-            node.style.maxHeight = '70vh';  // Restore original max-height
+            Object.keys(originalStyles).forEach((key) => {
+                node.style[key] = originalStyles[key];
+            });
         })
-        .catch(function(error) {
-            console.error('oops, something went wrong!', error);
+        .catch((error) => {
+            console.error('Export failed:', error);
         });
-});
+};
 
-document.getElementById('restartBtn').addEventListener('click', handleRestart);
+// Log all console messages for monitoring
+const logConsoleMessages = () => {
+    const oldConsoleLog = console.log;
+    console.log = (message) => {
+        oldConsoleLog(message);
+        // Add additional logging to a server or storage here if needed
+    };
+};
+logConsoleMessages();
 
-// Detect 'Enter' key press on name input field
-document.getElementById('nameInput').addEventListener('keypress', function(event) {
+// Event listeners for interactions
+submitButton.addEventListener('click', handleStart);
+restartButton.addEventListener('click', resetForm);
+exportButton.addEventListener('click', handleExport);
+nameInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent the default action to stop from submitting the form
-        handleStart(); // Call the start function
+        event.preventDefault(); // Prevent default form submission
+        handleStart();
     }
 });

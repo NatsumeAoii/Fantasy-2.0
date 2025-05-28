@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(img/bg.png);
+    background-image: url('img/bg.png');
     object-fit: fill;
     height: 100vh;
     display: flex;
@@ -14,7 +14,6 @@ body {
     font-family: Arial, sans-serif;
     padding: 20px;
     overflow: hidden; /* Prevent overall overflow */
-    background-image: url('img/bg.png');
     background-size: cover; /* Ensures the background covers the entire viewport */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Ensures the image doesn't repeat */
@@ -22,7 +21,7 @@ body {
 }
 
 body #inputForm {
-    background: rgba(0, 54, 77, 0.7) !important; /* Use !important to ensure the style is applied */
+    background: rgba(73,94,137,255) !important; /* Softer purple */
 }
 
 #characterDisplay {
@@ -32,18 +31,18 @@ body #inputForm {
     max-height: 70vh; /* Limit the height to prevent overflow */
     overflow-y: auto; /* Enable scrolling when content overflows */
     overflow-x: hidden;
-    border: 2px solid #1a6b60; /* This adds a border */
+    border: 2px solid #9874b8; /* Softer purple border */
     border-radius: 10px; /* Optional: Adds rounded corners */
-    background-color: rgba(0, 54, 77, 0.7); /* Semi-transparent black background */
+    background-color: rgba(144, 96, 180, 0.7); /* Semi-transparent softer purple background */
 }
 
 #inputForm {
     position: relative;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black background */
+    background: rgba(100, 60, 140, 0.5); /* Softer purple */
     padding: 20px;
     border-radius: 10px; /* Rounded corners */
-    border: 2px solid #1a6b60; /* Greenish border */
+    border: 2px solid #9874b8; /* Softer purple border */
 }
 
 /* Scrollbar styles for WebKit browsers (Chrome, Safari, Edge) */
@@ -54,7 +53,7 @@ body #inputForm {
 #inputForm {
     position: relative;
     z-index: 2; /* Ensure the form is not blurred */
-    background: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent box behind the form */
+    background: rgba(100, 60, 140, 0.5); /* Optional: Add a semi-transparent box behind the form */
     padding: 20px;
     border-radius: 10px; /* Optional: Rounded corners for a sleek look */
 }
@@ -64,19 +63,19 @@ body #inputForm {
 }
 
 #characterDisplay::-webkit-scrollbar-thumb {
-    background-color: #3a9185; /* Thumb color */
+    background-color: #47286e; /* Thumb color (lighter purple) */
     border-radius: 10px; /* Rounded corners for the thumb */
     border: 2px solid transparent; /* Padding around the thumb */
 }
 
 #characterDisplay::-webkit-scrollbar-thumb:hover {
-    background-color: #06a590; /* Darker shade on hover */
+    background-color: #a380d0; /* Darker shade on hover */
 }
 
 /* Firefox scrollbar styling */
 #characterDisplay {
     scrollbar-width: thin; /* Thin scrollbar */
-    scrollbar-color: #30b6a4 transparent; /* Scrollbar thumb and track colors */
+    scrollbar-color: #b399d4 transparent; /* Scrollbar thumb and track colors */
 }
 
 /* Optional: Hide the scrollbar in general */
@@ -91,19 +90,18 @@ body #inputForm {
     }
 }
 
-#restartBtn{
-    background-color: rgb(255, 99, 99);
+#restartBtn {
+    background-color: rgb(180, 120, 210); /* Softer purple for buttons */
     border-radius: 10px;
 }
 
-#exportBtn{
-    background-color: rgb(0, 119, 255);
+#exportBtn {
+    background-color: rgb(160, 90, 200); /* Softer purple for buttons */
     border-radius: 10px;
 }
 
 .btn-info {
-    background: rgb(0, 48, 255);
-    background: linear-gradient(90deg, rgb(27, 62, 216) 0%, #20a6ff 100%);
+    background: linear-gradient(90deg, rgb(150, 100, 220) 0%, #b590e0 100%);
     border: none;
 }
 
@@ -112,7 +110,7 @@ body #inputForm {
 }
 
 hr {
-    border-top: 3px double #9CEDFF;
+    border-top: 3px double #d8b6ff; /* Softer purple tone */
 }
 
 /* For small screens, ensure better readability */

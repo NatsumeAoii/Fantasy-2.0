@@ -7,7 +7,8 @@ export const races = [
     "Half-Troll", 
     "Half-Gnome",
     "Half-Dragon",
-    "Half-Fae",  
+    "Half-Fae",      
+    "Half-Orc",
 
     // Elves and Related
     "Elf", 
@@ -33,7 +34,6 @@ export const races = [
     "Hobgoblin", 
     "Kobold", 
     "Troll", 
-    "Half-Orc",
     "Bugbear",    
 
     // Giants and Behemoths
