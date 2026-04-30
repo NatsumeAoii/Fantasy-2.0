@@ -1,0 +1,10 @@
+export { GENERATION_CONSTANTS, MAX_LEVEL } from './generation';
+export { CHARACTER_CONFIG } from './characterConfig';
+export { STATS_CONFIG } from './statsConfig';
+export { INVENTORY_CONFIG } from './inventoryConfig';
+export { IDENTITY_CONFIG } from './identityConfig';
+export { WORLD_CONFIG } from './worldConfig';
+export { MAGIC_CONFIG } from './magicConfig';
+export { MECHANICS_CONFIG } from './mechanicsConfig';
+export { BESTIARY_CONFIG } from './bestiaryConfig';
+export { INVENTORY_EXPANSION_CONFIG } from './inventoryExpansionConfig';
