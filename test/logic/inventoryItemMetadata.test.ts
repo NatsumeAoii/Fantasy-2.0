@@ -4,7 +4,7 @@ import {
   applyItemMechanicModifier,
   getItemDefinitionMetadata,
   selectItemMechanicModifierTier,
-} from '../../src/logic/inventoryItemMetadata'
+} from '../../src/logic/inventory/inventoryItemMetadata'
 
 describe('inventory item mechanic modifiers', () => {
   it('weights low item tiers toward degraded mechanics and high tiers toward enhanced mechanics', () => {

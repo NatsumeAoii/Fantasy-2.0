@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { RankedItem } from '../types';
 import { getRankBadgeClasses, getRankColor, getRankSortOrder, isEliteRank } from '../lib/rankUtils';
@@ -17,14 +17,6 @@ export const TitlesPanel: React.FC<TitlesPanelProps> = ({ titles }) => {
     const [sort, setSort] = useState<'rank' | 'alpha'>('rank');
     const focusTrapRef = useFocusTrap(!!selectedTitle);
 
-    // Keyboard dismiss for modal
-    useEffect(() => {
-        if (!selectedTitle) return;
-        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedTitle(null); };
-        window.addEventListener('keydown', onKey);
-        return () => window.removeEventListener('keydown', onKey);
-    }, [selectedTitle]);
-
     const sortedTitles = useMemo(
         () => [...titles].sort((a, b) => {
             if (sort === 'alpha') return a.name.localeCompare(b.name);
@@ -39,8 +31,8 @@ export const TitlesPanel: React.FC<TitlesPanelProps> = ({ titles }) => {
                 <h3 className="font-serif text-lg text-gold-500">Known Epithets</h3>
                 <div className="flex gap-2">
                     <span className="text-xs uppercase text-text-secondary self-center mr-2">Sort By</span>
-                    <button onClick={() => setSort('rank')} title="Sort epithets by rank" className={`px-3 py-1 text-xs uppercase border rounded ${sort === 'rank' ? 'border-gold-500 text-gold-200' : 'border-transparent text-text-muted'}`}>Rank</button>
-                    <button onClick={() => setSort('alpha')} title="Sort epithets by name" className={`px-3 py-1 text-xs uppercase border rounded ${sort === 'alpha' ? 'border-gold-500 text-gold-200' : 'border-transparent text-text-muted'}`}>Name</button>
+                    <button onClick={() => setSort('rank')} title="Sort epithets by rank" aria-pressed={sort === 'rank'} className={`px-3 py-1 text-xs uppercase border rounded ${sort === 'rank' ? 'border-gold-500 text-gold-200' : 'border-transparent text-text-muted'}`}>Rank</button>
+                    <button onClick={() => setSort('alpha')} title="Sort epithets by name" aria-pressed={sort === 'alpha'} className={`px-3 py-1 text-xs uppercase border rounded ${sort === 'alpha' ? 'border-gold-500 text-gold-200' : 'border-transparent text-text-muted'}`}>Name</button>
                 </div>
             </div>
 
@@ -92,7 +84,7 @@ export const TitlesPanel: React.FC<TitlesPanelProps> = ({ titles }) => {
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in" onClick={() => setSelectedTitle(null)}>
                     <div
                         ref={focusTrapRef}
-                        className="bg-obsidian-900 border border-gold-600/40 rounded-xl p-8 max-w-md w-full relative shadow-glow"
+                        className="cathedral-panel rounded-xl p-8 max-w-md w-full relative"
                         onClick={e => e.stopPropagation()}
                     >
                         <h2 className="text-3xl font-serif font-bold text-gold-100 mb-2">{selectedTitle.name}</h2>
@@ -104,18 +96,20 @@ export const TitlesPanel: React.FC<TitlesPanelProps> = ({ titles }) => {
                             "{selectedTitle.description || `This title is bestowed upon those who have demonstrated the qualities of a true ${selectedTitle.rank} rank entity.`}"
                         </p>
 
-                        <div className="bg-obsidian-800/50 p-4 border border-gold-900/20 rounded">
+                        <div className="rounded-md border border-gold-900/20 bg-obsidian-900/30 p-4">
                             <div className="text-xs font-bold uppercase text-gold-600">Rarity Classification</div>
                             <div className="text-2xl font-bold text-gold-600">{selectedTitle.rank}</div>
                         </div>
 
                         <button
-                            className="absolute top-4 right-4 text-gold-900 hover:text-gold-500 transition-colors text-xl font-bold"
+                            className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-md text-gold-900 hover:bg-white/5 hover:text-gold-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                             onClick={() => setSelectedTitle(null)}
-                            aria-label="Close"
+                            aria-label="Close epithet detail"
                             title="Close epithet detail"
                         >
-                            ✕
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
                         </button>
                     </div>
                 </div>,

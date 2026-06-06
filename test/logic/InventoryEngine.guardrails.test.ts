@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { setSeed } from '../../src/lib'
-import { InventoryEngine } from '../../src/logic/InventoryEngine'
-import { getInventoryCapacity } from '../../src/logic/InventoryMoveEngine'
+import { InventoryEngine } from '../../src/logic/inventory/InventoryEngine'
+import { getInventoryCapacity } from '../../src/logic/inventory/InventoryMoveEngine'
 
 describe('InventoryEngine guardrails', () => {
   it('falls back to a known material when a material group is unavailable', () => {

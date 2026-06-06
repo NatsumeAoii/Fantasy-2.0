@@ -158,7 +158,7 @@ export const StatsPanel: React.FC<StatsPanelProps> = ({ character }) => {
   const innatePowers = Object.entries(character.specialPowers)
 
   return (
-    <div className="space-y-5">
+    <div className="mx-auto w-full max-w-6xl space-y-5 p-4 animate-fade-in md:p-5">
       <header className="border-b border-gold-900/10 pb-4">
         <h2 className="font-serif text-3xl font-bold text-parchment-100">Character Codex</h2>
         <p className="mt-1 text-sm text-text-muted">

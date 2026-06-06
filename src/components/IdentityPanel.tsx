@@ -184,65 +184,81 @@ export const IdentityPanel: React.FC<IdentityPanelProps> = ({ character, embedde
   const [search, setSearch] = useState('')
   const pools = useMemo(() => buildIdentityPanelPools(character), [character])
 
-  const filteredGeneratedBonds = character.identity.bonds.filter((bond) => matchesGeneratedEntry(search, bond))
-  const filteredGeneratedQuirks = character.identity.quirks.filter((quirk) => matchesGeneratedEntry(search, quirk))
-  const filteredGeneratedSecrets = character.identity.secrets.filter((secret) => matchesGeneratedEntry(search, secret))
-  const filteredGeneratedPsychology = character.identity.psychologicalTraits.filter((trait) => matchesGeneratedEntry(search, trait))
+  // Memoize filtered results so they only recompute when search or pools change,
+  // not on every render (e.g. when parent re-renders for unrelated reasons).
+  const filtered = useMemo(() => {
+    const filteredGeneratedBonds = character.identity.bonds.filter((bond) => matchesGeneratedEntry(search, bond))
+    const filteredGeneratedQuirks = character.identity.quirks.filter((quirk) => matchesGeneratedEntry(search, quirk))
+    const filteredGeneratedSecrets = character.identity.secrets.filter((secret) => matchesGeneratedEntry(search, secret))
+    const filteredGeneratedPsychology = character.identity.psychologicalTraits.filter((trait) => matchesGeneratedEntry(search, trait))
 
-  const filteredBonds = pools.bonds.filter((bond) =>
-    matchesSearch(search, bond.name, bond.target, bond.mechanicalEffect, bond.variants.map((variant) => variant.name), bond.variants.map((variant) => variant.desc)),
-  )
-  const filteredQuirks = pools.quirks.filter((quirk) =>
-    matchesSearch(
-      search,
-      quirk.name,
-      quirk.type,
-      quirk.description,
-      quirk.mechanicalEffect,
-      quirk.variants.map((variant) => variant.name),
-      quirk.variants.map((variant) => variant.desc),
-    ),
-  )
-  const filteredSecrets = pools.secrets.filter((secret) =>
-    matchesSearch(
-      search,
-      secret.name,
-      secret.category,
-      secret.severity,
-      secret.description,
-      secret.mechanicalEffect,
-      secret.variants.map((variant) => variant.name),
-      secret.variants.map((variant) => variant.desc),
-    ),
-  )
-  const filteredPsychology = pools.psychologicalTraits.filter((trait) =>
-    matchesSearch(
-      search,
-      trait.name,
-      trait.type,
-      trait.category,
-      trait.trigger,
-      trait.description,
-      trait.mechanicalEffect,
-      trait.variants.map((variant) => variant.name),
-      trait.variants.map((variant) => variant.desc),
-    ),
-  )
+    const filteredBonds = pools.bonds.filter((bond) =>
+      matchesSearch(search, bond.name, bond.target, bond.mechanicalEffect, bond.variants.map((variant) => variant.name), bond.variants.map((variant) => variant.desc)),
+    )
+    const filteredQuirks = pools.quirks.filter((quirk) =>
+      matchesSearch(
+        search,
+        quirk.name,
+        quirk.type,
+        quirk.description,
+        quirk.mechanicalEffect,
+        quirk.variants.map((variant) => variant.name),
+        quirk.variants.map((variant) => variant.desc),
+      ),
+    )
+    const filteredSecrets = pools.secrets.filter((secret) =>
+      matchesSearch(
+        search,
+        secret.name,
+        secret.category,
+        secret.severity,
+        secret.description,
+        secret.mechanicalEffect,
+        secret.variants.map((variant) => variant.name),
+        secret.variants.map((variant) => variant.desc),
+      ),
+    )
+    const filteredPsychology = pools.psychologicalTraits.filter((trait) =>
+      matchesSearch(
+        search,
+        trait.name,
+        trait.type,
+        trait.category,
+        trait.trigger,
+        trait.description,
+        trait.mechanicalEffect,
+        trait.variants.map((variant) => variant.name),
+        trait.variants.map((variant) => variant.desc),
+      ),
+    )
+
+    return {
+      generatedBonds: filteredGeneratedBonds,
+      generatedQuirks: filteredGeneratedQuirks,
+      generatedSecrets: filteredGeneratedSecrets,
+      generatedPsychology: filteredGeneratedPsychology,
+      bonds: filteredBonds,
+      quirks: filteredQuirks,
+      secrets: filteredSecrets,
+      psychology: filteredPsychology,
+    }
+  }, [search, character.identity, pools])
+
   const searchCounts: Record<IdentitySubTab, { shown: number; total: number }> = {
     bonds: {
-      shown: filteredGeneratedBonds.length + filteredBonds.length,
+      shown: filtered.generatedBonds.length + filtered.bonds.length,
       total: character.identity.bonds.length + pools.bonds.length,
     },
     quirks: {
-      shown: filteredGeneratedQuirks.length + filteredQuirks.length,
+      shown: filtered.generatedQuirks.length + filtered.quirks.length,
       total: character.identity.quirks.length + pools.quirks.length,
     },
     secrets: {
-      shown: filteredGeneratedSecrets.length + filteredSecrets.length,
+      shown: filtered.generatedSecrets.length + filtered.secrets.length,
       total: character.identity.secrets.length + pools.secrets.length,
     },
     psychology: {
-      shown: filteredGeneratedPsychology.length + filteredPsychology.length,
+      shown: filtered.generatedPsychology.length + filtered.psychology.length,
       total: character.identity.psychologicalTraits.length + pools.psychologicalTraits.length,
     },
   }
@@ -296,22 +312,22 @@ export const IdentityPanel: React.FC<IdentityPanelProps> = ({ character, embedde
         {activeTab === 'bonds' ? (
           <section className="space-y-4">
             {character.identity.bonds.length > 0 ? (
-              <CategoryDisclosure title="Character Bonds" detail={`${filteredGeneratedBonds.length} shown`} defaultOpen>
-                {filteredGeneratedBonds.length === 0 ? (
+              <CategoryDisclosure title="Character Bonds" detail={`${filtered.generatedBonds.length} shown`} defaultOpen>
+                {filtered.generatedBonds.length === 0 ? (
                   <EmptyState>No character bonds match this search.</EmptyState>
                 ) : (
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                    {filteredGeneratedBonds.map((bond) => <GeneratedEntryCard key={bond.id} entry={bond} />)}
+                    {filtered.generatedBonds.map((bond) => <GeneratedEntryCard key={bond.id} entry={bond} />)}
                   </div>
                 )}
               </CategoryDisclosure>
             ) : null}
-            <CategoryDisclosure title="Known Bonds" detail={`${filteredBonds.length} shown`} defaultOpen={character.identity.bonds.length === 0}>
-              {filteredBonds.length === 0 ? (
+            <CategoryDisclosure title="Known Bonds" detail={`${filtered.bonds.length} shown`} defaultOpen={character.identity.bonds.length === 0}>
+              {filtered.bonds.length === 0 ? (
                 <EmptyState>No bonds match this search.</EmptyState>
               ) : (
                 <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-                  {filteredBonds.map((bond) => <BondCard key={bond.id} bond={bond} />)}
+                  {filtered.bonds.map((bond) => <BondCard key={bond.id} bond={bond} />)}
                 </div>
               )}
             </CategoryDisclosure>
@@ -321,22 +337,22 @@ export const IdentityPanel: React.FC<IdentityPanelProps> = ({ character, embedde
         {activeTab === 'quirks' ? (
           <section className="space-y-4">
             {character.identity.quirks.length > 0 ? (
-              <CategoryDisclosure title="Character Quirks" detail={`${filteredGeneratedQuirks.length} shown`} defaultOpen>
-                {filteredGeneratedQuirks.length === 0 ? (
+              <CategoryDisclosure title="Character Quirks" detail={`${filtered.generatedQuirks.length} shown`} defaultOpen>
+                {filtered.generatedQuirks.length === 0 ? (
                   <EmptyState>No character quirks match this search.</EmptyState>
                 ) : (
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                    {filteredGeneratedQuirks.map((quirk) => <GeneratedEntryCard key={quirk.id} entry={quirk} />)}
+                    {filtered.generatedQuirks.map((quirk) => <GeneratedEntryCard key={quirk.id} entry={quirk} />)}
                   </div>
                 )}
               </CategoryDisclosure>
             ) : null}
-            <CategoryDisclosure title="Known Quirks" detail={`${filteredQuirks.length} shown`} defaultOpen={character.identity.quirks.length === 0}>
-              {filteredQuirks.length === 0 ? (
+            <CategoryDisclosure title="Known Quirks" detail={`${filtered.quirks.length} shown`} defaultOpen={character.identity.quirks.length === 0}>
+              {filtered.quirks.length === 0 ? (
                 <EmptyState>No quirks match this search.</EmptyState>
               ) : (
                 <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-                  {filteredQuirks.map((quirk) => <QuirkCard key={quirk.id} quirk={quirk} />)}
+                  {filtered.quirks.map((quirk) => <QuirkCard key={quirk.id} quirk={quirk} />)}
                 </div>
               )}
             </CategoryDisclosure>
@@ -346,22 +362,22 @@ export const IdentityPanel: React.FC<IdentityPanelProps> = ({ character, embedde
         {activeTab === 'secrets' ? (
           <section className="space-y-4">
             {character.identity.secrets.length > 0 ? (
-              <CategoryDisclosure title="Character Secrets" detail={`${filteredGeneratedSecrets.length} shown`} defaultOpen>
-                {filteredGeneratedSecrets.length === 0 ? (
+              <CategoryDisclosure title="Character Secrets" detail={`${filtered.generatedSecrets.length} shown`} defaultOpen>
+                {filtered.generatedSecrets.length === 0 ? (
                   <EmptyState>No character secrets match this search.</EmptyState>
                 ) : (
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                    {filteredGeneratedSecrets.map((secret) => <GeneratedEntryCard key={secret.id} entry={secret} />)}
+                    {filtered.generatedSecrets.map((secret) => <GeneratedEntryCard key={secret.id} entry={secret} />)}
                   </div>
                 )}
               </CategoryDisclosure>
             ) : null}
-            <CategoryDisclosure title="Known Secrets" detail={`${filteredSecrets.length} shown`} defaultOpen={character.identity.secrets.length === 0}>
-              {filteredSecrets.length === 0 ? (
+            <CategoryDisclosure title="Known Secrets" detail={`${filtered.secrets.length} shown`} defaultOpen={character.identity.secrets.length === 0}>
+              {filtered.secrets.length === 0 ? (
                 <EmptyState>No secrets match this search.</EmptyState>
               ) : (
                 <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-                  {filteredSecrets.map((secret) => <SecretCard key={secret.id} secret={secret} />)}
+                  {filtered.secrets.map((secret) => <SecretCard key={secret.id} secret={secret} />)}
                 </div>
               )}
             </CategoryDisclosure>
@@ -371,22 +387,22 @@ export const IdentityPanel: React.FC<IdentityPanelProps> = ({ character, embedde
         {activeTab === 'psychology' ? (
           <section className="space-y-4">
             {character.identity.psychologicalTraits.length > 0 ? (
-              <CategoryDisclosure title="Character Psychology" detail={`${filteredGeneratedPsychology.length} shown`} defaultOpen>
-                {filteredGeneratedPsychology.length === 0 ? (
+              <CategoryDisclosure title="Character Psychology" detail={`${filtered.generatedPsychology.length} shown`} defaultOpen>
+                {filtered.generatedPsychology.length === 0 ? (
                   <EmptyState>No character psychology matches this search.</EmptyState>
                 ) : (
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-                    {filteredGeneratedPsychology.map((trait) => <GeneratedEntryCard key={trait.id} entry={trait} />)}
+                    {filtered.generatedPsychology.map((trait) => <GeneratedEntryCard key={trait.id} entry={trait} />)}
                   </div>
                 )}
               </CategoryDisclosure>
             ) : null}
-            <CategoryDisclosure title="Psychological Hooks" detail={`${filteredPsychology.length} shown`} defaultOpen={character.identity.psychologicalTraits.length === 0}>
-              {filteredPsychology.length === 0 ? (
+            <CategoryDisclosure title="Psychological Hooks" detail={`${filtered.psychology.length} shown`} defaultOpen={character.identity.psychologicalTraits.length === 0}>
+              {filtered.psychology.length === 0 ? (
                 <EmptyState>No psychological traits match this search.</EmptyState>
               ) : (
                 <div className="grid grid-cols-1 gap-3 xl:grid-cols-2">
-                  {filteredPsychology.map((trait) => <PsychologyCard key={trait.id} trait={trait} />)}
+                  {filtered.psychology.map((trait) => <PsychologyCard key={trait.id} trait={trait} />)}
                 </div>
               )}
             </CategoryDisclosure>

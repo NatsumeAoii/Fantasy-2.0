@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { setSeed } from '../../src/lib'
-import { InventoryEngine } from '../../src/logic/InventoryEngine'
+import { InventoryEngine } from '../../src/logic/inventory/InventoryEngine'
 
 describe('InventoryEngine accessory generation', () => {
   it('fills ear and waist accessory slots on guaranteed accessory loadouts', () => {

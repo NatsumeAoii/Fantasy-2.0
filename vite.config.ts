@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite'
+import { changelogPlugin } from './vite-plugin-changelog'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -11,7 +12,12 @@ export default defineConfig({
       routeFileIgnorePattern: '(buildCharacterDestination|\\.test)',
       disableLogging: false,
     }),
-    react(),
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler', {}]],
+      },
+    }),
+    changelogPlugin(),
   ],
   base: './',
   build: {
@@ -53,9 +59,8 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: [
-      'nice-bats-change.loca.lt',
-      '33ece10029a817.lhr.life'
-    ]
+    // Add your local tunnel hostname here during development (e.g. localtunnel, ngrok).
+    // Do not commit personal tunnel hostnames — they are developer-specific.
+    allowedHosts: []
   }
 })

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { getInventoryMoveFeedbackMessage } from '../../src/logic/inventoryMoveFeedback'
+import { getInventoryMoveFeedbackMessage } from '../../src/logic/inventory/inventoryMoveFeedback'
 
 describe('inventoryMoveFeedback', () => {
   it('explains when removing storage would shrink satchel capacity below needed space', () => {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { ACCESSORIES, ARMORS, CONTAINERS, WEAPONS } from '../../src/data/inventory'
 import { setSeed } from '../../src/lib'
-import { InventoryEngine } from '../../src/logic/InventoryEngine'
+import { InventoryEngine } from '../../src/logic/inventory/InventoryEngine'
 
 describe('InventoryEngine item metadata', () => {
   it('keeps inventory definition metadata on generated equipment', () => {

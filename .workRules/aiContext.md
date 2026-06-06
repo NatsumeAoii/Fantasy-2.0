@@ -10,7 +10,7 @@ This is **Aetheris**, a grim high-fantasy RPG character/inventory generation eng
 
 - **`src/data/`** — Static data files (items, creatures, lore, identity traits). These are hand-curated datasets, not generated at runtime. They feed into procedural generation engines.
 - **`src/config/`** — Runtime configuration (tier ranges, rarity maps, generation probabilities). The **authoritative** source for how data is consumed.
-- **`src/engine/`** — Procedural generation logic that combines data + config to produce characters, inventories, and encounters.
+- **`src/logic/`** — Procedural generation logic that combines data + config to produce characters, inventories, and encounters.
 - **`src/components/`** — React UI components for displaying generated outputs.
 
 ---

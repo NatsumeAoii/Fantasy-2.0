@@ -6,50 +6,16 @@ export interface StackedInventoryItem {
   signature: string
 }
 
-function stableSerialize(value: unknown): string {
-  if (value === null || value === undefined) return 'null'
-  if (Array.isArray(value)) return `[${value.map(stableSerialize).join(',')}]`
-  if (typeof value === 'object') {
-    const entries = Object.entries(value as Record<string, unknown>).sort(([left], [right]) => left.localeCompare(right))
-    return `{${entries.map(([key, nestedValue]) => `${JSON.stringify(key)}:${stableSerialize(nestedValue)}`).join(',')}}`
-  }
-  return JSON.stringify(value)
-}
-
+/**
+ * Generates a stack signature using string concatenation of key fields.
+ * This is significantly faster than the previous recursive stableSerialize approach
+ * because it avoids creating intermediate objects, sorting entries, and JSON.stringify
+ * for each value. Items with identical display-relevant properties stack together.
+ */
 function getStackSignature(item: Item): string {
-  return stableSerialize({
-    defId: item.defId,
-    name: item.name,
-    type: item.type,
-    rarity: item.rarity,
-    icon: item.icon,
-    description: item.description ?? null,
-    grade: item.grade ?? null,
-    tags: item.tags ?? [],
-    value: item.value ?? null,
-    weight: item.weight,
-    capacity: item.capacity ?? null,
-    extraSlots: item.extraSlots ?? null,
-    duration: item.duration ?? null,
-    cooldown: item.cooldown ?? null,
-    mechanicTier: item.mechanicTier ?? null,
-    definitionType: item.definitionType ?? null,
-    equipmentSlot: item.equipmentSlot ?? null,
-    materialGroup: item.materialGroup ?? null,
-    handedness: item.handedness ?? null,
-    validRoles: item.validRoles ?? [],
-    baseDamage: item.baseDamage ?? null,
-    damageType: item.damageType ?? null,
-    attackSpeed: item.attackSpeed ?? null,
-    reach: item.reach ?? null,
-    baseDefense: item.baseDefense ?? null,
-    movementPenalty: item.movementPenalty ?? null,
-    stealthPenalty: item.stealthPenalty ?? null,
-    noiseLevel: item.noiseLevel ?? null,
-    effect: item.effect ?? null,
-    durability: item.durability ?? null,
-    potionStats: item.potionStats ?? null,
-  })
+  // Use pipe delimiter (never appears in item field values) for O(1) string building.
+  // Tags are joined with comma since they're already sorted/short arrays.
+  return `${item.defId}|${item.name}|${item.type}|${item.rarity}|${item.icon}|${item.description ?? ''}|${item.grade ?? ''}|${(item.tags ?? []).join(',')}|${item.value ?? ''}|${item.weight}|${item.capacity ?? ''}|${item.extraSlots ?? ''}|${item.duration ?? ''}|${item.cooldown ?? ''}|${item.mechanicTier ?? ''}|${item.definitionType ?? ''}|${item.equipmentSlot ?? ''}|${item.materialGroup ?? ''}|${item.handedness ?? ''}|${(item.validRoles ?? []).join(',')}|${item.baseDamage ?? ''}|${item.damageType ?? ''}|${item.attackSpeed ?? ''}|${item.reach ?? ''}|${item.baseDefense ?? ''}|${item.movementPenalty ?? ''}|${item.stealthPenalty ?? ''}|${item.noiseLevel ?? ''}|${item.effect ?? ''}|${item.durability ?? ''}|${item.potionStats ? JSON.stringify(item.potionStats) : ''}`
 }
 
 export function stackInventoryItems(backpack: readonly Item[]): StackedInventoryItem[] {

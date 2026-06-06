@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { GeneratedPoolEntry, Inventory, Item } from '../../src/types'
-import { buildInventoryCraftingState } from '../../src/logic/inventoryCrafting'
+import { buildInventoryCraftingState } from '../../src/logic/inventory/inventoryCrafting'
 
 function makeItem(overrides: Partial<Item>): Item {
   return {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { setSeed } from '../../src/lib'
-import { InventoryEngine } from '../../src/logic/InventoryEngine'
+import { InventoryEngine } from '../../src/logic/inventory/InventoryEngine'
 
 describe('InventoryEngine icon resolution', () => {
   it('keeps generated quickslot variant icons tied to their base data id', () => {

@@ -46,3 +46,10 @@ Thumbs.db
 .netlify/
 worktrees/
 .superpowers/
+_legacy/
+
+# Transient development directories
+dev/
+temp/
+tmp/
+scratch/

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { generateCharacter } from '../../src/lib'
-import { InventoryExpansionEngine } from '../../src/logic/InventoryExpansionEngine'
+import { InventoryExpansionEngine } from '../../src/logic/inventory/InventoryExpansionEngine'
 
 describe('InventoryExpansionEngine', () => {
   it('covers non-loadout inventory data as display-ready character context', () => {

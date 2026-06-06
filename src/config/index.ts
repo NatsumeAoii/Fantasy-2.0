@@ -8,3 +8,4 @@ export { MAGIC_CONFIG } from './magicConfig';
 export { MECHANICS_CONFIG } from './mechanicsConfig';
 export { BESTIARY_CONFIG } from './bestiaryConfig';
 export { INVENTORY_EXPANSION_CONFIG } from './inventoryExpansionConfig';
+export type { CountBracket, CountRollBracket, ChanceBracket, TierBracket, LevelBracket } from './bracketTypes';

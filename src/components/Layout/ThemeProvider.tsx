@@ -1,26 +1,18 @@
 import type { PropsWithChildren } from 'react'
 import { useEffect } from 'react'
-import { useLocalStorage } from '../../hooks'
-import { ThemeContext, type AppTheme } from './ThemeContext'
-
-function isAppTheme(value: unknown): value is AppTheme {
-  return value === 'dark' || value === 'light'
-}
+import { usePreferencesStore } from '../../store/preferencesStore'
+import { ThemeContext } from './ThemeContext'
 
 export function ThemeProvider({ children }: PropsWithChildren) {
-  const [theme, setTheme] = useLocalStorage<AppTheme>('theme', 'dark', { validate: isAppTheme, version: 1 })
+  const theme = usePreferencesStore((state) => state.theme)
+  const toggleTheme = usePreferencesStore((state) => state.toggleTheme)
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
   return (
-    <ThemeContext.Provider
-      value={{
-        theme,
-        toggleTheme: () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark')),
-      }}
-    >
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   )

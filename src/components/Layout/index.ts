@@ -1,2 +1,2 @@
-export { ProfileLayout } from './ProfileLayout';
+export { CharacterShell } from './CharacterShell';
 export { TopTabs } from './TopTabs';

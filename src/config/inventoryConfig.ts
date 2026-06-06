@@ -223,38 +223,39 @@ export const INVENTORY_CONFIG = {
 
     // CONTAINER_MODIFIERS — Per-rarity bonuses for container items
     // (backpacks, bags, pouches).
+    // slots: additive bonus on top of the container's base extraSlots.
     CONTAINER_MODIFIERS: {
         COMMON: {
             capacity: { bonusChance: 0.4, positive: { min: 1, max: 5 }, negative: { min: -8, max: -3 } },
-            slots: { min: 1, max: 3 },
+            slots: { min: 3, max: 5 },
         },
         UNCOMMON: {
             capacity: { bonusChance: 0.5, positive: { min: 3, max: 8 }, negative: { min: -5, max: -2 } },
-            slots: { min: 2, max: 4 },
+            slots: { min: 4, max: 6 },
         },
         RARE: {
             capacity: { bonusChance: 0.6, positive: { min: 5, max: 12 }, negative: { min: -3, max: -1 } },
-            slots: { min: 3, max: 5 },
+            slots: { min: 5, max: 7 },
         },
         EPIC: {
             capacity: { bonusChance: 0.75, positive: { min: 8, max: 18 }, negative: { min: -2, max: 0 } },
-            slots: { min: 4, max: 7 },
+            slots: { min: 6, max: 9 },
         },
         LEGENDARY: {
             capacity: { bonusChance: 0.9, positive: { min: 12, max: 25 }, negative: { min: 0, max: 0 } },
-            slots: { min: 6, max: 10 },
+            slots: { min: 8, max: 12 },
         },
         MYTHIC: {
             capacity: { bonusChance: 0.95, positive: { min: 18, max: 35 }, negative: { min: 0, max: 0 } },
-            slots: { min: 8, max: 12 },
+            slots: { min: 10, max: 14 },
         },
         DIVINE: {
             capacity: { bonusChance: 1.0, positive: { min: 25, max: 50 }, negative: { min: 0, max: 0 } },
-            slots: { min: 10, max: 15 },
+            slots: { min: 12, max: 17 },
         },
         ARTIFACT: {
             capacity: { bonusChance: 1.0, positive: { min: 35, max: 75 }, negative: { min: 0, max: 0 } },
-            slots: { min: 12, max: 20 },
+            slots: { min: 14, max: 22 },
         },
     } as Record<string, { capacity: { bonusChance: number; positive: { min: number; max: number }; negative: { min: number; max: number } }; slots: { min: number; max: number } }>,
 

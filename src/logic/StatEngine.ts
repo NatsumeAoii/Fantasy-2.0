@@ -70,9 +70,10 @@ export const StatEngine = {
         return Math.max(0, Math.floor(total));
     },
 
-    calculateDps(combatStats: Stats): Dps {
+    calculateDps(combatStats: Stats, level: number = 1): Dps {
         const { attackPower = 0, magicPower = 0, attackSpeed = 0, critChance = 0, critDamageBonus = 0 } = combatStats;
         const { dps: dpsFormula } = GENERATION_CONSTANTS.STATS.DERIVATION_FORMULAS;
+        const mitConfig = GENERATION_CONSTANTS.STATS.DEFENSE_MITIGATION;
 
         const primaryDamage = Math.max(attackPower, magicPower);
         const baseDamageComponent = (primaryDamage * dpsFormula.dependencies.primaryDamage) + (attackSpeed * dpsFormula.dependencies.attackSpeed);
@@ -84,9 +85,44 @@ export const StatEngine = {
         const centralDps = baseDamageComponent * critMultiplier;
         const dpsVariance = Math.max(1, Math.floor(centralDps * (dpsFormula.variance || 0.2)));
 
+        // Apply defense mitigation to produce effective DPS values.
+        // defense and magicResist from combatStats are passed through the
+        // same object — use the higher of the two as the defender's mitigation.
+        const defense = (combatStats.defense ?? 0);
+        const magicResist = (combatStats.magicResist ?? 0);
+        const effectiveDefense = Math.max(defense, magicResist);
+        const K = mitConfig.K_BASE + level * mitConfig.K_PER_LEVEL;
+        const mitigationFactor = 1 - (effectiveDefense / (effectiveDefense + K));
+
+        // Evasion reduces effective DPS by a miss chance (capped).
+        const evasion = (combatStats.evasion ?? 0);
+        const rawMissChance = evasion / (evasion + K);
+        const missChance = Math.min(rawMissChance, mitConfig.EVASION_MISS_CHANCE_CAP);
+        const hitChance = 1 - missChance;
+
+        const effectiveDps = centralDps * mitigationFactor * hitChance;
+        const effectiveVariance = Math.max(1, Math.floor(dpsVariance * mitigationFactor * hitChance));
+
+        // Sustain reduction: hpRegen and lifesteal reduce net incoming DPS.
+        // High-level characters have more skills, healing abilities, and sustain,
+        // so their effective TTK is longer than raw DPS math suggests.
+        //
+        // hpRegen heals a flat amount per second.
+        // lifesteal heals a fraction of outgoing DPS per second (capped via LIFESTEAL_DPS_FRACTION).
+        // Combined sustain is capped at SUSTAIN_REDUCTION_CAP × effectiveDps so characters
+        // can never regenerate faster than they take damage (infinite TTK).
+        const hpRegen = (combatStats.hpRegen ?? 0);
+        const lifesteal = (combatStats.lifesteal ?? 0);
+        const lifestealHealPerSec = effectiveDps * (lifesteal / 100) * mitConfig.LIFESTEAL_DPS_FRACTION;
+        const rawSustainPerSec = hpRegen + lifestealHealPerSec;
+        const sustainCap = effectiveDps * mitConfig.SUSTAIN_REDUCTION_CAP;
+        const sustainPerSec = Math.min(rawSustainPerSec, sustainCap);
+        const netEffectiveDps = Math.max(1, effectiveDps - sustainPerSec);
+        const netEffectiveVariance = Math.max(1, Math.floor(effectiveVariance * (netEffectiveDps / effectiveDps)));
+
         return {
-            min: Math.max(1, Math.floor(centralDps - dpsVariance)),
-            max: Math.floor(centralDps + dpsVariance),
+            min: Math.max(1, Math.floor(netEffectiveDps - netEffectiveVariance)),
+            max: Math.floor(netEffectiveDps + netEffectiveVariance),
         };
     },
 
@@ -118,7 +154,7 @@ export const StatEngine = {
         }
 
         const fullStatsForDps = { ...baseStats, ...allDerivedStats };
-        const dps = this.calculateDps(fullStatsForDps);
+        const dps = this.calculateDps(fullStatsForDps, level);
 
         const categorizedStats: CategorizedCharactersStats = {
             base: {},

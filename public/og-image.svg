@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0a0a0f"/>
+  <!-- Background grid lines -->
+  <line x1="0" y1="315" x2="1200" y2="315" stroke="#c9a227" stroke-opacity="0.08" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#c9a227" stroke-opacity="0.08" stroke-width="1"/>
+  <!-- Decorative border -->
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="none" stroke="#c9a227" stroke-opacity="0.25" stroke-width="1.5"/>
+  <!-- Title -->
+  <text x="600" y="260" font-family="Georgia, serif" font-size="72" font-weight="700" fill="#e8c547" text-anchor="middle" letter-spacing="4">AETHERIS</text>
+  <text x="600" y="330" font-family="Georgia, serif" font-size="32" fill="#c9a227" text-anchor="middle" letter-spacing="8">CHARACTER FORGE</text>
+  <!-- Tagline -->
+  <text x="600" y="410" font-family="Georgia, serif" font-size="22" fill="#a89060" text-anchor="middle" font-style="italic">Roll a seed. Forge a legend.</text>
+</svg>

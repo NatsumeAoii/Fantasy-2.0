@@ -16,7 +16,7 @@ export function IdentityRail({ character }: IdentityRailProps) {
 
   return (
     <>
-      <div className="cathedral-panel rounded-md p-4 lg:hidden">
+      <div className="cathedral-panel rounded-md p-4 lg:hidden" role="region" aria-label="Character identity">
         <div className="flex items-center gap-4">
           <div className="flex h-14 w-14 items-center justify-center rounded-md border border-gold-500/20 bg-black/30 text-lg font-serif font-bold text-gold-gradient">
             {initials}

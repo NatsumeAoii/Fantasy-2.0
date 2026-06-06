@@ -32,7 +32,7 @@ function StorySection({ backstory }: { backstory: Character['backstory'] | null 
         <h3 className="mb-3 font-serif text-xs uppercase tracking-[0.18em] text-gold-500/70">The Story</h3>
         <div className="space-y-2.5">
           {backstory.paragraphs.map((paragraph, index) => (
-            <p key={index} className="font-serif text-[13px] italic leading-relaxed text-parchment-200/80">
+            <p key={`para-${index}-${paragraph.slice(0, 16)}`} className="font-serif text-[13px] italic leading-relaxed text-parchment-200/80">
               {index === 0 ? `"${replaceSpecialPowerIds(paragraph)}` : replaceSpecialPowerIds(paragraph)}
               {index === backstory.paragraphs.length - 1 ? '"' : ''}
             </p>

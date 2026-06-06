@@ -5,7 +5,7 @@ import {
   canEquipItemToSlot,
   getInventoryCapacity,
   moveInventoryItem,
-} from '../../src/logic/InventoryMoveEngine'
+} from '../../src/logic/inventory/InventoryMoveEngine'
 
 function makeItem(overrides: Partial<Item>): Item {
   return {
@@ -124,7 +124,7 @@ describe('InventoryMoveEngine', () => {
       extraSlots: 6,
       tags: [],
     })
-    const backpackItems = Array.from({ length: 14 }, (_, index) => makeItem({
+    const backpackItems = Array.from({ length: 18 }, (_, index) => makeItem({
       id: `satchel-item-${index}`,
       defId: `satchel-item-${index}`,
       name: `Satchel Item ${index}`,
@@ -149,8 +149,8 @@ describe('InventoryMoveEngine', () => {
     expect(result.reason).toBe('satchel-full')
     expect(result.details).toEqual({
       kind: 'satchel-capacity',
-      capacity: 12,
-      requiredSlots: 15,
+      capacity: 16,
+      requiredSlots: 19,
       overflowSlots: 3,
       removedStorage: [
         {
@@ -180,7 +180,7 @@ describe('InventoryMoveEngine', () => {
       extraSlots: 6,
       tags: [],
     })
-    const fillerItems = Array.from({ length: 12 }, (_, index) => makeItem({
+    const fillerItems = Array.from({ length: 17 }, (_, index) => makeItem({
       id: `satchel-item-${index}`,
       defId: `satchel-item-${index}`,
       name: `Satchel Item ${index}`,
@@ -205,9 +205,9 @@ describe('InventoryMoveEngine', () => {
     expect(result.reason).toBe('satchel-full')
     expect(result.details).toEqual({
       kind: 'satchel-capacity',
-      capacity: 12,
-      requiredSlots: 13,
-      overflowSlots: 1,
+      capacity: 16,
+      requiredSlots: 18,
+      overflowSlots: 2,
       removedStorage: [
         {
           name: 'Scroll Case',
@@ -227,6 +227,6 @@ describe('InventoryMoveEngine', () => {
       extraSlots: 8,
     })
 
-    expect(getInventoryCapacity({ BACK: pack })).toBe(20)
+    expect(getInventoryCapacity({ BACK: pack })).toBe(24)
   })
 })

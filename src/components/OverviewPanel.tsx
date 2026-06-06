@@ -34,6 +34,14 @@ export function OverviewPanel({
     ? replaceSpecialPowerIds(character.backstory.paragraphs[0])
     : null
 
+  const skillLabel = useMemo(() => {
+    const spellCount = character.skills.filter((s) => s.source === 'spell').length
+    const skillCount = character.skills.length - spellCount
+    if (spellCount > 0 && skillCount > 0) return 'Warrior-Mage'
+    if (spellCount > skillCount) return 'Arcane Focus'
+    return 'Battle Ready'
+  }, [character.skills])
+
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 p-4 md:p-5">
       <PanelActionBar
@@ -65,7 +73,7 @@ export function OverviewPanel({
             <span className="ml-1 text-sm text-text-muted">/ {character.stats.resource.mana || 0}</span>
           </div>
           <div className="mt-3 h-1.5 rounded-full bg-mana-bg">
-            <div className="h-full w-full rounded-full bg-mana-bar" />
+            <div className="h-full w-full rounded-full bg-mana-bar animate-pulse-slow" />
           </div>
         </div>
 
@@ -76,7 +84,7 @@ export function OverviewPanel({
             <span className="ml-1 text-sm text-text-muted">/ {character.stats.resource.stamina || 0}</span>
           </div>
           <div className="mt-3 h-1.5 rounded-full bg-stamina-bg">
-            <div className="h-full w-full rounded-full bg-stamina-bar" />
+            <div className="h-full w-full rounded-full bg-stamina-bar animate-pulse-slow" />
           </div>
         </div>
 
@@ -107,7 +115,7 @@ export function OverviewPanel({
         <div className="cathedral-panel flex items-center justify-between rounded-md p-4">
           <div>
             <div className="text-xs uppercase tracking-[0.22em] text-text-secondary">Known Techniques</div>
-            <div className="mt-2 text-xl font-serif text-parchment-100">Battle Ready</div>
+            <div className="mt-2 text-xl font-serif text-parchment-100">{skillLabel}</div>
           </div>
           <div className="text-3xl font-mono text-skill-text">{character.skills.length}</div>
         </div>

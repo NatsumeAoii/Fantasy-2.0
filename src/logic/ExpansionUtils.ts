@@ -3,11 +3,10 @@ import { resolveIconName } from '../data/inventory/icons'
 import type { GeneratedPoolEntry, GeneratedVariant } from '../types'
 import { PoolEngine } from './PoolEngine'
 
-export type CountBracket = { maxLevel: number; count: { min: number; max: number } }
-export type CountRollBracket = CountBracket & { chance: number; fallbackCount: { min: number; max: number } }
-export type ChanceBracket = { maxLevel: number; chance: number }
-export type TierBracket = { maxLevel: number; tiers: readonly number[] }
-export type LevelBracket = { maxLevel: number }
+// Re-export bracket types from their canonical config-level location.
+// Logic engines and consumers that previously imported these from here continue to work.
+export type { CountBracket, CountRollBracket, ChanceBracket, TierBracket, LevelBracket } from '../config/bracketTypes'
+import type { CountBracket, CountRollBracket, ChanceBracket, TierBracket, LevelBracket } from '../config/bracketTypes'
 
 type VariantLike = {
   name: string

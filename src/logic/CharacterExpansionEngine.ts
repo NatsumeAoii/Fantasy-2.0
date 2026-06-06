@@ -1,7 +1,7 @@
 import type { CharacterCore, CharacterExpansions } from '../types'
 import { BestiaryEngine } from './BestiaryEngine'
 import { IdentityEngine } from './IdentityEngine'
-import { InventoryExpansionEngine } from './InventoryExpansionEngine'
+import { InventoryExpansionEngine } from './inventory/InventoryExpansionEngine'
 import { MagicEngine } from './MagicEngine'
 import { MechanicsEngine } from './MechanicsEngine'
 import { WorldEngine } from './WorldEngine'
@@ -53,7 +53,7 @@ export const DEFAULT_EXPANSION_GENERATORS: ExpansionGenerators = {
 }
 
 /** Generates all optional character expansion sections with per-section fallbacks. */
-export function generateCharacterExpansions(
+function generateExpansions(
   character: CharacterCore,
   overrides: Partial<ExpansionGenerators> = {},
 ): CharacterExpansions {
@@ -73,6 +73,12 @@ export function generateCharacterExpansions(
   }
 }
 
+/**
+ * Named export for direct usage in tests and consumers that prefer
+ * function imports over the object pattern.
+ */
+export const generateCharacterExpansions = generateExpansions
+
 export const CharacterExpansionEngine = {
-  generate: generateCharacterExpansions,
+  generate: generateExpansions,
 }

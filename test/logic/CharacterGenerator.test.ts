@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { setSeed } from '../../src/lib'
 import { CharacterGenerator } from '../../src/logic/CharacterGenerator'
-import { getInventoryCapacity } from '../../src/logic/InventoryMoveEngine'
+import { getInventoryCapacity } from '../../src/logic/inventory/InventoryMoveEngine'
 
 describe('CharacterGenerator', () => {
   it('adds generated magic spells to the character skill list', () => {

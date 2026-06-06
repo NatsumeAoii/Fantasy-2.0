@@ -22,7 +22,8 @@ describe('character panel density', () => {
     const inventoryVaultPanel = readFileSync(resolve(process.cwd(), 'src/components/Inventory/InventoryVaultPanel.tsx'), 'utf8')
 
     expect(inventoryPanel).toContain('gap-4 max-w-5xl')
-    expect(inventoryVaultPanel).toContain('lg:w-[18rem] p-4')
+    expect(inventoryVaultPanel).toContain('lg:w-[18rem]')
+    expect(inventoryVaultPanel).toContain('no-scrollbar')
     expect(inventoryPanel).not.toContain('gap-6 max-w-6xl')
     expect(inventoryVaultPanel).not.toContain('lg:w-80 p-6')
   })

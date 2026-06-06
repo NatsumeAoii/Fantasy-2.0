@@ -1,16 +1,24 @@
-import { getRandom } from './randomUtils';
+import { getRandom, isSeededGenerationActive } from './randomUtils';
 
 /**
  * Generates a unique ID string.
- * Uses a 3-tier fallback strategy:
+ *
+ * During SEEDED generation (when a deterministic seed is active), uses the
+ * seeded PRNG to produce repeatable IDs. This is critical for the seed contract:
+ * same seed must produce the exact same character, including item IDs.
+ *
+ * Outside seeded generation, uses a 3-tier fallback strategy:
  *   1. crypto.randomUUID (modern browsers)
  *   2. crypto.getRandomValues UUIDv4 polyfill (older browsers)
- *   3. Seeded PRNG timestamp fallback (SSR / test environments)
- *
- * Tier 3 uses the seeded getRandom() so IDs remain deterministic
- * when a seed is active — matching the behavior callers expect.
+ *   3. Timestamp + PRNG fallback (SSR / test environments)
  */
 export const makeId = (): string => {
+    // When a seed is active, ALL randomness must come from the seeded PRNG
+    // to maintain determinism. crypto.randomUUID would break the seed contract.
+    if (isSeededGenerationActive()) {
+        return seededId();
+    }
+
     if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
         return crypto.randomUUID();
     }
@@ -25,3 +33,19 @@ export const makeId = (): string => {
     // Last-resort fallback (SSR, test runners without crypto)
     return `${Date.now().toString(36)}-${getRandom().toString(36).substring(2, 10)}`;
 };
+
+/**
+ * Generates a deterministic UUID-like ID from the seeded PRNG.
+ * Format: 8-4-4-4-12 hex characters (same shape as UUIDv4).
+ */
+function seededId(): string {
+    const hex = (count: number): string => {
+        let result = '';
+        for (let i = 0; i < count; i++) {
+            result += Math.floor(getRandom() * 16).toString(16);
+        }
+        return result;
+    };
+
+    return `${hex(8)}-${hex(4)}-4${hex(3)}-${(8 + Math.floor(getRandom() * 4)).toString(16)}${hex(3)}-${hex(12)}`;
+}

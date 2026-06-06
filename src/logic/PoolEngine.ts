@@ -86,9 +86,9 @@ export const PoolEngine = {
 
     const available = [...candidates]
     const selected: T[] = []
+    let totalWeight = available.reduce((sum, candidate) => sum + candidate.weight, 0)
 
     while (selected.length < targetCount && available.length > 0) {
-      const totalWeight = available.reduce((sum, candidate) => sum + candidate.weight, 0)
       if (totalWeight <= 0) break
 
       let cursor = getRandom() * totalWeight
@@ -99,6 +99,7 @@ export const PoolEngine = {
 
       const index = selectedIndex >= 0 ? selectedIndex : available.length - 1
       const [candidate] = available.splice(index, 1)
+      totalWeight -= candidate.weight
       selected.push(candidate.item)
     }
 

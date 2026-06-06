@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { getIcon, resolveIconName } from '../../data/inventory/icons';
 import { isItemSlot } from '../../data/inventory/slots';
 import { getRaritySlotClass, getRarityTextClass } from '../../lib/rarityUtils';
-import type { InventoryMoveRequest, InventoryMoveSource, InventoryMoveTarget } from '../../logic/InventoryMoveEngine';
+import type { InventoryMoveRequest, InventoryMoveSource, InventoryMoveTarget } from '../../logic/inventory/InventoryMoveEngine';
 import type { Item } from '../../types';
 import { getItemMechanicalRows, type TooltipRowTone } from './itemTooltipRows';
 import { calculateTooltipPosition, type TooltipPosition } from './tooltipPosition';
@@ -125,7 +125,7 @@ const ItemTooltipContent: React.FC<{
         <div className={`text-xs font-bold mb-1 ${getRarityTextClass(item.rarity) || 'text-parchment-100'}`}>
             {item.name}
         </div>
-        <div className="flex justify-between text-[10px] text-text-muted uppercase tracking-widest mb-2 border-b border-white/10 pb-1">
+        <div className="flex justify-between text-[10px] text-text-muted uppercase tracking-widest mb-2 border-b border-gold-900/20 pb-1">
             <span>{item.type}</span>
             <span>
                 <span className={getRarityTextClass(item.rarity) || ''}>{item.rarity}</span>
@@ -136,7 +136,7 @@ const ItemTooltipContent: React.FC<{
             <div className="text-[11px] text-text-secondary italic">{item.description}</div>
         )}
         {(item.value || item.duration || item.cooldown || item.weight) && (
-            <div className="mt-2 pt-2 border-t border-white/10 text-[10px] space-y-1">
+            <div className="mt-2 pt-2 border-t border-gold-900/20 text-[10px] space-y-1">
                 {item.weight > 0 && (
                     <div className="flex items-center justify-between">
                         <span className="text-text-muted">Weight</span>
@@ -165,7 +165,7 @@ const ItemTooltipContent: React.FC<{
         )}
 
         {detailRows.length > 0 && (
-            <div className="mt-2 pt-2 border-t border-white/10 text-[10px] space-y-1">
+            <div className="mt-2 pt-2 border-t border-gold-900/20 text-[10px] space-y-1">
                 {detailRows.map(row => (
                     <div key={`${row.label}-${row.value}`} className="flex items-start justify-between gap-3">
                         <span className="shrink-0 text-text-muted">{row.label}</span>
@@ -178,7 +178,7 @@ const ItemTooltipContent: React.FC<{
         )}
 
         {(item.capacity !== undefined || item.extraSlots !== undefined) && (
-            <div className="mt-2 pt-2 border-t border-white/10 text-[10px] space-y-1">
+            <div className="mt-2 pt-2 border-t border-gold-900/20 text-[10px] space-y-1">
                 {item.capacity !== undefined && item.capacity !== 0 && (
                     <div className="flex items-center justify-between">
                         <span className="text-text-muted">Weight Limit</span>
@@ -401,7 +401,7 @@ export const InventorySlot: React.FC<InventorySlotProps> = ({
                 {renderIcon(item.icon, 'text-4xl drop-shadow-md')}
                 {quantity > 1 && (
                     <span
-                        className="absolute bottom-0 right-0 px-1 min-w-[18px] text-center text-[10px] font-bold rounded-tl rounded-br bg-surface-1 text-ink border-border border"
+                        className="absolute bottom-0 right-0 px-1 min-w-[18px] text-center text-[10px] font-bold rounded-tl rounded-br bg-obsidian-900 text-parchment-100 border-gold-900/20 border"
                     >
                         x{quantity}
                     </span>
@@ -410,7 +410,7 @@ export const InventorySlot: React.FC<InventorySlotProps> = ({
             {isTooltipVisible && createPortal(
                 <div
                     ref={tooltipRef}
-                    className="fixed w-56 bg-obsidian-900 border border-gold-900/50 p-3 rounded pointer-events-none shadow-xl"
+                    className="fixed w-56 bg-obsidian-900 border border-gold-900/50 p-3 rounded-md pointer-events-none shadow-xl"
                     style={{
                         zIndex: 9999,
                         left: tooltipPos?.left ?? -9999,

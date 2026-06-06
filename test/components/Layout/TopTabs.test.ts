@@ -24,9 +24,9 @@ describe('TopTabs', () => {
     expect(screen.getByRole('tab', { name: 'Overview' })).toHaveAttribute('title', 'Character summary')
     expect(screen.getByRole('tab', { name: 'Atlas' })).toHaveAttribute('title', 'World lore & affiliations')
 
-    await userEvent.click(screen.getByRole('button', { name: 'Open application menu' }))
+    await userEvent.click(screen.getByRole('button', { name: 'Settings and information' }))
 
     expect(screen.getByRole('menuitem', { name: 'Visual Settings' })).toHaveAttribute('title', 'Visual Settings')
-    expect(screen.getByRole('menuitem', { name: 'GitHub Repository' })).toHaveAttribute('title', 'GitHub Repository')
+    expect(screen.getByRole('menuitem', { name: 'GitHub' })).toHaveAttribute('title', 'Open GitHub repository')
   })
 })

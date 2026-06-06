@@ -6,11 +6,11 @@ import {
     type InventoryMoveRequest,
     type InventoryMoveSource,
     type InventoryMoveTarget,
-} from '../../logic/InventoryMoveEngine';
+} from '../../logic/inventory/InventoryMoveEngine';
 import {
     getEquipmentWithoutSlot,
     getSatchelCapacityState,
-} from '../../logic/inventorySatchelState';
+} from '../../logic/inventory/inventorySatchelState';
 import type { Inventory, Item, ItemSlot } from '../../types';
 import { CurrencyDisplay } from './CurrencyDisplay';
 import { InventorySlot } from './InventorySlot';
@@ -131,22 +131,22 @@ export const InventoryVaultPanel: React.FC<InventoryVaultPanelProps> = ({ invent
     };
 
     return (
-        <div className="flex flex-col lg:flex-row gap-4 w-full">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-4 w-full">
             <div className="flex-1 flex flex-col gap-3">
                 <div
-                    className="flex justify-between items-center p-2.5 rounded-lg border bg-surface-1 border-border"
+                    className="flex justify-between items-center p-2.5 rounded-lg border border-gold-900/18 bg-obsidian-900/30"
                 >
                     <CurrencyDisplay currency={inventory.currency} />
-                    <div className="flex items-center gap-2 text-sm font-mono text-ink-muted">
-                        <span aria-hidden="true" className="rounded border border-border px-1.5 py-0.5 text-[10px] font-bold text-ink-muted">WT</span>
+                    <div className="flex items-center gap-2 text-sm font-mono text-text-muted">
+                        <span aria-hidden="true" className="rounded border border-gold-900/20 px-1.5 py-0.5 text-[10px] font-bold text-text-muted">WT</span>
                         <span>
-                            Weight: <span className="text-ink font-bold">{inventory.weight.current}</span> / {inventory.weight.max}
+                            Weight: <span className="text-parchment-100 font-bold">{inventory.weight.current}</span> / {inventory.weight.max}
                         </span>
                     </div>
                 </div>
 
                 <div
-                    className="relative flex flex-col items-center p-4 rounded-lg border bg-surface-2 border-border"
+                    className="relative flex flex-col items-center p-4 rounded-lg border border-gold-900/18 bg-obsidian-900/30"
                 >
                     <div className="relative w-full max-w-sm mx-auto">
                         <div className="absolute inset-0 flex items-center justify-center pointer-events-none" style={{ top: '1rem' }}>
@@ -203,100 +203,102 @@ export const InventoryVaultPanel: React.FC<InventoryVaultPanelProps> = ({ invent
                     </div>
 
                     <div
-                        className="flex mt-3 pt-3 w-full justify-center border-t flex-wrap border-border gap-[var(--inv-quickslot-gap)]"
+                        className="flex mt-3 pt-3 w-full justify-center border-t flex-wrap border-gold-900/12 gap-[var(--inv-quickslot-gap)]"
                     >
                         <div className={`flex flex-col items-center gap-1${getEquip('EAR') ? '' : ' opacity-40'}`}>
                             {renderEquipmentSlot('EAR')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Ear</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Ear</span>
                         </div>
                         <div className={`flex flex-col items-center gap-1${getEquip('WAIST') ? '' : ' opacity-40'}`}>
                             {renderEquipmentSlot('WAIST')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Waist</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Waist</span>
                         </div>
                     </div>
 
                     <div
-                        className="flex mt-3 pt-3 w-full justify-center border-t flex-wrap border-border gap-[var(--inv-quickslot-gap)]"
+                        className="flex mt-3 pt-3 w-full justify-center border-t flex-wrap border-gold-900/12 gap-[var(--inv-quickslot-gap)]"
                     >
                         <div className="flex flex-col items-center gap-1">
                             {renderEquipmentSlot('MAIN_HAND')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Weapon 1</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Weapon 1</span>
                         </div>
                         <div className="flex flex-col items-center gap-1">
                             {renderEquipmentSlot('OFF_HAND')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Weapon 2</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Weapon 2</span>
                         </div>
                         <div className={`flex flex-col items-center gap-1${getEquip('THROWABLE') ? '' : ' opacity-40'}`}>
                             {renderEquipmentSlot('THROWABLE')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Throwable</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Throwable</span>
                         </div>
                         <div className={`flex flex-col items-center gap-1${getEquip('TORCH') ? '' : ' opacity-40'}`}>
                             {renderEquipmentSlot('TORCH')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Torch</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Torch</span>
                         </div>
                         <div className={`flex flex-col items-center gap-1${getEquip('POTION') ? '' : ' opacity-40'}`}>
                             {renderEquipmentSlot('POTION')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Potion</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Potion</span>
                         </div>
                         <div className={`flex flex-col items-center gap-1${getEquip('FOOD') ? '' : ' opacity-40'}`}>
                             {renderEquipmentSlot('FOOD')}
-                            <span className="text-[10px] uppercase tracking-wider text-ink-muted">Food</span>
+                            <span className="text-[10px] uppercase tracking-wider text-text-muted">Food</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div
-                className="lg:w-[18rem] p-4 rounded-lg border overflow-visible bg-surface-2 border-border"
+                className="lg:w-[18rem] flex flex-col p-4 rounded-lg border border-gold-900/18 bg-obsidian-900/30 lg:max-h-[80vh] lg:sticky lg:top-4"
             >
                 <h3
-                    className="text-lg font-serif mb-3 border-b pb-2 text-center flex items-center justify-center gap-2 text-ink border-border"
+                    className="shrink-0 text-lg font-serif mb-3 border-b pb-2 text-center flex items-center justify-center gap-2 text-parchment-100 border-gold-900/12"
                 >
                     Satchel
-                    <span className="text-sm font-mono text-ink-muted">
+                    <span className="text-sm font-mono text-text-muted">
                         ({inventory.backpack.length}/{totalSlots})
                     </span>
                 </h3>
-                <div className="grid grid-cols-4 overflow-visible gap-[var(--inv-satchel-gap)]">
-                    {(() => {
-                        const stackedSlots = stackedBackpack.map(({ item, count, signature }) => {
-                            const source = { type: 'backpack', itemId: item.id } as const;
-                            const target = { type: 'backpack' } as const;
-                            const equipHintLabels = getEquipHintLabels(item);
+                <div className="no-scrollbar min-h-0 flex-1 overflow-y-auto">
+                    <div className="grid grid-cols-4 gap-[var(--inv-satchel-gap)]">
+                        {(() => {
+                            const stackedSlots = stackedBackpack.map(({ item, count, signature }) => {
+                                const source = { type: 'backpack', itemId: item.id } as const;
+                                const target = { type: 'backpack' } as const;
+                                const equipHintLabels = getEquipHintLabels(item);
 
-                            return (
+                                return (
+                                    <InventorySlot
+                                        key={signature}
+                                        item={item}
+                                        quantity={count}
+                                        dragSource={source}
+                                        dropTarget={target}
+                                        isSelected={isSameSource(selectedSource, source)}
+                                        isEquipable={equipHintLabels.length > 0}
+                                        equipHintTitle={equipHintLabels.length > 0 ? `Can equip to ${equipHintLabels.join(', ')}` : undefined}
+                                        tooltipRows={equipHintLabels.length > 0 ? [{
+                                            label: 'Equip Slots',
+                                            value: equipHintLabels.join(', '),
+                                            tone: 'warning',
+                                        }] : undefined}
+                                        onClick={handleActivate(source, target)}
+                                        onMoveItem={handleMoveItem}
+                                    />
+                                );
+                            });
+                            const emptyCount = satchelState.freeSlots;
+                            const emptySlots = Array.from({ length: emptyCount }).map((_, i) => (
                                 <InventorySlot
-                                    key={signature}
-                                    item={item}
-                                    quantity={count}
-                                    dragSource={source}
-                                    dropTarget={target}
-                                    isSelected={isSameSource(selectedSource, source)}
-                                    isEquipable={equipHintLabels.length > 0}
-                                    equipHintTitle={equipHintLabels.length > 0 ? `Can equip to ${equipHintLabels.join(', ')}` : undefined}
-                                    tooltipRows={equipHintLabels.length > 0 ? [{
-                                        label: 'Equip Slots',
-                                        value: equipHintLabels.join(', '),
-                                        tone: 'warning',
-                                    }] : undefined}
-                                    onClick={handleActivate(source, target)}
+                                    key={`empty-${i}`}
+                                    dropTarget={{ type: 'backpack' }}
+                                    ariaLabel="Satchel slot"
+                                    onClick={handleActivate(undefined, { type: 'backpack' })}
                                     onMoveItem={handleMoveItem}
+                                    className="opacity-40"
                                 />
-                            );
-                        });
-                        const emptyCount = satchelState.freeSlots;
-                        const emptySlots = Array.from({ length: emptyCount }).map((_, i) => (
-                            <InventorySlot
-                                key={`empty-${i}`}
-                                dropTarget={{ type: 'backpack' }}
-                                ariaLabel="Satchel slot"
-                                onClick={handleActivate(undefined, { type: 'backpack' })}
-                                onMoveItem={handleMoveItem}
-                                className="opacity-40"
-                            />
-                        ));
-                        return [...stackedSlots, ...emptySlots];
-                    })()}
+                            ));
+                            return [...stackedSlots, ...emptySlots];
+                        })()}
+                    </div>
                 </div>
             </div>
         </div>

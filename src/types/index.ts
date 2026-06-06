@@ -1,4 +1,4 @@
-import type { PotionStats } from '../data/inventory/types'
+import type { PotionStats } from './potionStats'
 
 // Basic Stat Dictionary
 export type Stats = Record<string, number>;

@@ -1,14 +1,10 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { lazy, Suspense, useCallback, useEffect } from 'react'
-import { toast } from 'sonner'
-import { ProfileLayout } from '../components/Layout/ProfileLayout'
+import { createFileRoute } from '@tanstack/react-router'
+import { lazy, Suspense } from 'react'
+import { ErrorBoundary } from '../components/ErrorBoundary'
+import { CharacterShell } from '../components/Layout/CharacterShell'
 import { TopTabs } from '../components/Layout/TopTabs'
 import { OverviewPanel } from '../components/OverviewPanel'
-import { copyToClipboard } from '../lib/clipboard'
-import { exportAsImage } from '../lib/exportImage'
-import type { InventoryMoveRequest } from '../logic/InventoryMoveEngine'
-import { getInventoryMoveFeedbackMessage } from '../logic/inventoryMoveFeedback'
-import { useCharacterStore } from '../store/characterStore'
+import { useCharacterPage } from '../store/useCharacterPage'
 import { normalizeCharacterName, normalizeCharacterSeed } from './buildCharacterDestination'
 
 const StatsPanel = lazy(() => import('../components/StatsPanel').then((m) => ({ default: m.StatsPanel })))
@@ -74,58 +70,20 @@ function CharacterSheet() {
   const { id } = Route.useParams()
   const { name } = Route.useSearch()
   const seed = normalizeCharacterSeed(id)
-  const navigate = useNavigate()
 
-  const character = useCharacterStore((state) => state.character)
-  const activeTab = useCharacterStore((state) => state.activeTab)
-  const isLoading = useCharacterStore((state) => state.isLoading)
-  const generate = useCharacterStore((state) => state.generate)
-  const moveInventoryItem = useCharacterStore((state) => state.moveInventoryItem)
-  const setTab = useCharacterStore((state) => state.setTab)
-  const updateBestiary = useCharacterStore((state) => state.updateBestiary)
-  const reset = useCharacterStore((state) => state.reset)
-  const generationError = useCharacterStore((state) => state.generationError)
-
-  useEffect(() => {
-    void generate(seed, name)
-  }, [seed, name, generate])
-
-  const handleBack = useCallback(() => {
-    reset()
-    navigate({ to: '/' })
-  }, [reset, navigate])
-
-  const handleExport = useCallback(async () => {
-    const element = document.querySelector('[data-character-shell="true"]') as HTMLElement | null
-    if (!element) {
-      toast.error('Export failed: no element to capture.')
-      return
-    }
-
-    toast.promise(exportAsImage(element, character?.name.replace(/ /g, '-').toLowerCase() || 'character'), {
-      loading: 'Inscribing character sheet...',
-      success: 'Character sheet saved!',
-      error: 'Export failed. Try again.',
-    })
-  }, [character?.name])
-
-  const handleShare = useCallback(() => {
-    const url = window.location.href
-    void copyToClipboard(url, 'Link copied to clipboard!', 'Share this destiny with others.')
-  }, [])
-
-  const handleNavigateToLore = useCallback(() => setTab('lore'), [setTab])
-
-  const handleInventoryMove = useCallback((request: InventoryMoveRequest) => {
-    const result = moveInventoryItem(request)
-
-    if (result.status !== 'rejected' || result.reason === 'same-location') {
-      return
-    }
-
-    const message = getInventoryMoveFeedbackMessage(result.reason, result.details)
-    toast.error(message.title, { description: message.description })
-  }, [moveInventoryItem])
+  const {
+    character,
+    activeTab,
+    isLoading,
+    generationError,
+    setTab,
+    updateBestiary,
+    handleBack,
+    handleExport,
+    handleShare,
+    handleNavigateToLore,
+    handleInventoryMove,
+  } = useCharacterPage(seed, name)
 
   if (generationError) {
     return (
@@ -153,58 +111,60 @@ function CharacterSheet() {
   }
 
   return (
-    <ProfileLayout character={character} tabs={<TopTabs activeTab={activeTab} onChange={setTab} onBack={handleBack} />}>
+    <CharacterShell character={character} tabs={<TopTabs activeTab={activeTab} onChange={setTab} onBack={handleBack} />}>
       <main
         id={`panel-${activeTab}`}
         role="tabpanel"
         aria-labelledby={`tab-${activeTab}`}
         className="tab-panel-enter"
       >
-        {activeTab === 'overview' && (
-          <OverviewPanel
-            character={character}
-            onShare={handleShare}
-            onExport={handleExport}
-            onNewCharacter={handleBack}
-            onNavigateToLore={handleNavigateToLore}
-          />
-        )}
+        <ErrorBoundary key={activeTab}>
+          {activeTab === 'overview' && (
+            <OverviewPanel
+              character={character}
+              onShare={handleShare}
+              onExport={handleExport}
+              onNewCharacter={handleBack}
+              onNavigateToLore={handleNavigateToLore}
+            />
+          )}
 
-        <Suspense fallback={<TabSkeleton />}>
-          {activeTab === 'lore' && <LorePanel character={character} />}
-          {activeTab === 'world' && <WorldPanel character={character} />}
-          {activeTab === 'stats' && (
-            <div className="w-full p-4 md:p-5">
-              <StatsPanel character={character} />
-            </div>
-          )}
-          {activeTab === 'skills' && (
-            <div className="w-full p-4 md:p-5">
-              <SkillsPanel
-                skills={character.skills}
-                summon={character.bestiary.summon}
-                summons={character.bestiary.summons}
-              />
-            </div>
-          )}
-          {activeTab === 'inventory' && (
-            <div className="w-full p-4 md:p-5">
-              <InventoryPanel
-                inventory={character.inventory}
-                recipes={character.inventoryContext.recipes}
-                bestiary={character.bestiary}
-                characterProfile={{
-                  level: character.level,
-                  race: character.race,
-                  role: character.role,
-                }}
-                onBestiaryChange={updateBestiary}
-                onMoveItem={handleInventoryMove}
-              />
-            </div>
-          )}
-        </Suspense>
+          <Suspense fallback={<TabSkeleton />}>
+            {activeTab === 'lore' && <LorePanel character={character} />}
+            {activeTab === 'world' && <WorldPanel character={character} />}
+            {activeTab === 'stats' && (
+              <div className="w-full p-4 md:p-5">
+                <StatsPanel character={character} />
+              </div>
+            )}
+            {activeTab === 'skills' && (
+              <div className="w-full p-4 md:p-5">
+                <SkillsPanel
+                  skills={character.skills}
+                  summon={character.bestiary.summon}
+                  summons={character.bestiary.summons}
+                />
+              </div>
+            )}
+            {activeTab === 'inventory' && (
+              <div className="w-full p-4 md:p-5">
+                <InventoryPanel
+                  inventory={character.inventory}
+                  recipes={character.inventoryContext.recipes}
+                  bestiary={character.bestiary}
+                  characterProfile={{
+                    level: character.level,
+                    race: character.race,
+                    role: character.role,
+                  }}
+                  onBestiaryChange={updateBestiary}
+                  onMoveItem={handleInventoryMove}
+                />
+              </div>
+            )}
+          </Suspense>
+        </ErrorBoundary>
       </main>
-    </ProfileLayout>
+    </CharacterShell>
   )
 }

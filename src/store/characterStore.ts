@@ -14,9 +14,10 @@ import {
     type InventoryMoveRejectReason,
     type InventoryMoveRequest,
     type InventoryMoveResult,
-} from '../logic/InventoryMoveEngine'
+} from '../logic/inventory/InventoryMoveEngine'
 import type { Character, GeneratedBestiary } from '../types'
 import type { TabId } from '../components/Layout/TopTabs'
+import { eventBus } from './eventBus'
 
 type StoreInventoryMoveResult =
     | InventoryMoveResult
@@ -59,6 +60,7 @@ const MYSTERIOUS_NAMES = [
 ]
 
 const USER_SAFE_GENERATION_ERROR = 'Character generation failed. Try another seed or reload the forge.'
+const GENERATION_TIMEOUT_MS = 15_000
 let generationRequestId = 0
 
 function reportGenerationError(error: unknown): void {
@@ -103,11 +105,30 @@ export const useCharacterStore = create<CharacterState>()(devtools((set, get) =>
 
         set({ isLoading: true, generationError: null })
 
+        // Timeout guard: if the dynamic import or generation hangs (e.g. CDN
+        // failure, network stall), the loading spinner would spin forever.
+        // After GENERATION_TIMEOUT_MS we surface a user-safe error.
+        // The requestId check ensures a stale timeout doesn't abort a newer generation.
+        const timeoutId = setTimeout(() => {
+            if (requestId !== generationRequestId) return
+            if (useCharacterStore.getState().isLoading) {
+                reportGenerationError(new Error(`Generation timed out after ${GENERATION_TIMEOUT_MS}ms`))
+                set({
+                    character: null,
+                    currentSeed: null,
+                    isLoading: false,
+                    activeTab: 'overview',
+                    generationError: USER_SAFE_GENERATION_ERROR,
+                })
+            }
+        }, GENERATION_TIMEOUT_MS)
+
         try {
             const decodedSeed = safeDecodeUriComponent(normalizedSeed)
             const { generateCharacter } = await import('../lib/generator')
 
             if (requestId !== generationRequestId) {
+                clearTimeout(timeoutId)
                 return
             }
 
@@ -116,6 +137,7 @@ export const useCharacterStore = create<CharacterState>()(devtools((set, get) =>
                 name: finalName,
             })
 
+            clearTimeout(timeoutId)
             set({
                 character: newCharacter,
                 currentSeed: normalizedSeed,
@@ -123,7 +145,17 @@ export const useCharacterStore = create<CharacterState>()(devtools((set, get) =>
                 activeTab: 'overview',
                 generationError: null,
             })
+
+            eventBus.emit({
+                type: 'character:generated',
+                seed: normalizedSeed,
+                name: newCharacter.name,
+                race: newCharacter.race,
+                role: newCharacter.role,
+                level: newCharacter.level,
+            })
         } catch (error) {
+            clearTimeout(timeoutId)
             if (requestId !== generationRequestId) {
                 return
             }
@@ -150,9 +182,30 @@ export const useCharacterStore = create<CharacterState>()(devtools((set, get) =>
             }
         }
 
+        // Resolve item name before the move for event reporting
+        let sourceItemName: string | undefined
+        const { source } = request
+        if (source.type === 'equipment') {
+            sourceItemName = character.inventory.equipment[source.slot]?.name
+        } else {
+            sourceItemName = character.inventory.backpack.find((i) => i.id === source.itemId)?.name
+        }
+
         const result = moveInventoryItem(character, request)
         if (result.status === 'moved') {
-            set({ character: result.character })
+            set({ character: Object.freeze(result.character) })
+            eventBus.emit({
+                type: 'inventory:itemMoved',
+                itemName: sourceItemName ?? 'Unknown',
+                from: request.source.type === 'equipment' ? request.source.slot : 'backpack',
+                to: request.target.type === 'equipment' ? request.target.slot : 'backpack',
+            })
+        } else if (result.reason !== 'same-location') {
+            eventBus.emit({
+                type: 'inventory:moveFailed',
+                reason: result.reason,
+                itemName: sourceItemName,
+            })
         }
         return result
     },
@@ -191,5 +244,6 @@ export const useCharacterStore = create<CharacterState>()(devtools((set, get) =>
             currentSeed: null,
             generationError: null,
         })
+        eventBus.emit({ type: 'character:reset' })
     },
 }), { name: 'CharacterStore' }))

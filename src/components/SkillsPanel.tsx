@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import type { GeneratedPoolEntry, RankedItem } from '../types';
 import { getRankBadgeClasses, getRankColor, getRankSortOrder, isEliteRank } from '../lib/rankUtils';
@@ -106,14 +106,6 @@ export const SkillsPanel: React.FC<SkillsPanelProps> = ({ skills, summon, summon
     const [selectedSkill, setSelectedSkill] = useState<RankedItem | null>(null);
     const [search, setSearch] = useState('');
     const focusTrapRef = useFocusTrap(!!selectedSkill);
-
-    // Keyboard dismiss for modal
-    useEffect(() => {
-        if (!selectedSkill) return;
-        const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelectedSkill(null); };
-        window.addEventListener('keydown', onKey);
-        return () => window.removeEventListener('keydown', onKey);
-    }, [selectedSkill]);
 
     // Sort skills by rank (highest first); memoized to avoid re-sorting on modal open/close.
     const sortedSkills = useMemo(
@@ -236,7 +228,7 @@ export const SkillsPanel: React.FC<SkillsPanelProps> = ({ skills, summon, summon
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in" onClick={() => setSelectedSkill(null)}>
                     <div
                         ref={focusTrapRef}
-                        className="bg-obsidian-900 border border-gold-600/40 rounded-xl p-8 max-w-lg w-full relative shadow-glow"
+                        className="cathedral-panel rounded-xl p-8 max-w-lg w-full relative"
                         onClick={e => e.stopPropagation()}
                     >
                         <h2 className="text-3xl font-serif font-bold text-gold-100 mb-2">{selectedSkill.name}</h2>
@@ -248,7 +240,7 @@ export const SkillsPanel: React.FC<SkillsPanelProps> = ({ skills, summon, summon
                             "{selectedSkill.description || "A technique of great power, etched into the very soul of the wielder."}"
                         </p>
 
-                        <div className="grid grid-cols-2 gap-4 border-t border-gold-900/30 pt-4">
+                        <div className="grid grid-cols-2 gap-4 border-t border-gold-900/20 pt-4">
                             <div>
                                 <div className="text-text-secondary text-xs uppercase tracking-widest">Cost</div>
                                 <div className="text-parchment-100 font-mono text-lg">{selectedSkill.cost || "Unknown"}</div>
@@ -260,12 +252,14 @@ export const SkillsPanel: React.FC<SkillsPanelProps> = ({ skills, summon, summon
                         </div>
 
                         <button
-                            className="absolute top-4 right-4 text-gold-900 hover:text-gold-500 transition-colors text-xl font-bold"
+                            className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-md text-gold-900 hover:bg-white/5 hover:text-gold-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                             onClick={() => setSelectedSkill(null)}
-                            aria-label="Close"
+                            aria-label="Close arcana detail"
                             title="Close arcana detail"
                         >
-                            ✕
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4" aria-hidden="true">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
                         </button>
                     </div>
                 </div>,

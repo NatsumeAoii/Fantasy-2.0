@@ -1,3 +1,26 @@
+import type { CountBracket, LevelBracket } from './bracketTypes'
+
+type RoleWeightRule = {
+  readonly keywords: readonly string[]
+  readonly weight: number
+  readonly [key: string]: unknown
+}
+
+type ExpansionSectionConfig = {
+  readonly COUNT_BY_LEVEL: readonly CountBracket[]
+  readonly [key: string]: unknown
+}
+
+type InventoryExpansionConfigShape = {
+  readonly [section: string]: ExpansionSectionConfig & {
+    readonly ROLE_TYPE_WEIGHTS?: readonly RoleWeightRule[]
+    readonly ROLE_TARGET_WEIGHTS?: readonly RoleWeightRule[]
+    readonly ROLE_CATEGORY_WEIGHTS?: readonly RoleWeightRule[]
+    readonly MAX_RARITY_BY_LEVEL?: readonly (LevelBracket & { readonly rarities: readonly string[] })[]
+    readonly MIN_DIFFICULTY_BY_LEVEL?: readonly (LevelBracket & { readonly difficultyModifiers: readonly number[] })[]
+  }
+}
+
 export const INVENTORY_EXPANSION_CONFIG = {
   CURIOS: {
     COUNT_BY_LEVEL: [
@@ -135,4 +158,4 @@ export const INVENTORY_EXPANSION_CONFIG = {
       { keywords: ['rogue', 'thief', 'assassin', 'artificer'], categories: ['Tool', 'Alchemy'], weight: 2.6 },
     ],
   },
-} as const
+} as const satisfies InventoryExpansionConfigShape

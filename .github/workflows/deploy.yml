@@ -5,8 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
+permissions: {}
 
 concurrency:
   group: pages-${{ github.ref }}
@@ -14,28 +13,37 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           persist-credentials: false
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: 'npm'
           cache-dependency-path: package-lock.json
 
       - name: Install dependencies
+        shell: bash
         run: npm ci
 
       - name: Lint
+        shell: bash
         run: npm run lint
 
+      - name: Test
+        shell: bash
+        run: npm run test
+
       - name: Build
+        shell: bash
         run: npm run build
 
       - name: Configure Pages
@@ -45,10 +53,11 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: './dist'
+          retention-days: 1
 
   deploy:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
       pages: write

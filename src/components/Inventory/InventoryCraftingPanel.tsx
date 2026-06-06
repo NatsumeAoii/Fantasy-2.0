@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 import type { GeneratedPoolEntry, Inventory } from '../../types';
 import {
     buildInventoryCraftingState,
     type InventoryCraftingRecipeState,
-} from '../../logic/inventoryCrafting';
+} from '../../logic/inventory/inventoryCrafting';
 import type { CraftingStation } from '../../data/inventory/recipes';
 
 interface InventoryCraftingPanelProps {
@@ -52,11 +53,28 @@ export const InventoryCraftingPanel: React.FC<InventoryCraftingPanelProps> = ({ 
         setExpandedRecipeId(null);
     };
 
+    const handleCraft = useCallback((state: InventoryCraftingRecipeState) => {
+        if (!state.isCraftable) return;
+
+        const roll = Math.random() * 100;
+        const succeeded = roll >= state.recipe.failureChance;
+
+        if (succeeded) {
+            toast.success(`Crafted ${state.recipe.outputItem} x${state.recipe.outputQuantity}`, {
+                description: `Forged at the ${STATION_LABELS[state.recipe.craftingStation]} in ${formatCraftTime(state.recipe.craftingTime)}.`,
+            });
+        } else {
+            toast.error(`Crafting failed: ${state.recipe.outputItem}`, {
+                description: `The materials were consumed but the attempt faltered. (${state.recipe.failureChance}% failure chance)`,
+            });
+        }
+    }, []);
+
     if (recipeStates.length === 0) {
         return (
-            <div className="rounded-lg border bg-surface-2 border-border p-6 text-center">
-                <h3 className="text-lg font-serif text-ink">Crafting</h3>
-                <p className="mt-2 text-sm text-ink-muted">
+            <div className="rounded-lg border border-gold-900/18 bg-obsidian-900/30 p-6 text-center">
+                <h3 className="text-lg font-serif text-parchment-100">Crafting</h3>
+                <p className="mt-2 text-sm text-text-muted">
                     No known recipes were generated for this character.
                 </p>
             </div>
@@ -66,16 +84,16 @@ export const InventoryCraftingPanel: React.FC<InventoryCraftingPanelProps> = ({ 
     return (
         <div className="flex flex-col gap-3">
             <div className="grid gap-2 md:grid-cols-3">
-                <div className="rounded-md border bg-surface-2 border-border p-2.5">
-                    <div className="text-[9px] uppercase tracking-[0.2em] text-ink-muted">Known Recipes</div>
-                    <div className="mt-1 text-lg font-serif text-ink">{recipeStates.length}</div>
+                <div className="rounded-md border border-gold-900/18 bg-obsidian-900/30 p-2.5">
+                    <div className="text-[9px] uppercase tracking-[0.2em] text-text-muted">Known Recipes</div>
+                    <div className="mt-1 text-lg font-serif text-parchment-100">{recipeStates.length}</div>
                 </div>
-                <div className="rounded-md border bg-surface-2 border-border p-2.5">
-                    <div className="text-[9px] uppercase tracking-[0.2em] text-ink-muted">Ready Now</div>
+                <div className="rounded-md border border-gold-900/18 bg-obsidian-900/30 p-2.5">
+                    <div className="text-[9px] uppercase tracking-[0.2em] text-text-muted">Ready Now</div>
                     <div className="mt-1 text-lg font-serif text-emerald-300">{craftableCount}</div>
                 </div>
-                <div className="rounded-md border bg-surface-2 border-border p-2.5">
-                    <div className="text-[9px] uppercase tracking-[0.2em] text-ink-muted">Blocked</div>
+                <div className="rounded-md border border-gold-900/18 bg-obsidian-900/30 p-2.5">
+                    <div className="text-[9px] uppercase tracking-[0.2em] text-text-muted">Blocked</div>
                     <div className="mt-1 text-lg font-serif text-amber-200">{recipeStates.length - craftableCount}</div>
                 </div>
             </div>
@@ -115,18 +133,18 @@ export const InventoryCraftingPanel: React.FC<InventoryCraftingPanelProps> = ({ 
                             className={`overflow-hidden rounded-md border ${
                                 state.isCraftable
                                     ? 'bg-emerald-500/5 border-emerald-500/25'
-                                    : 'bg-surface-2 border-border'
+                                    : 'bg-obsidian-900/30 border-gold-900/18'
                             }`}
                         >
                             <div className="flex items-start justify-between gap-2 p-2.5">
                                 <div className="min-w-0">
-                                    <span className="block text-[9px] uppercase tracking-[0.2em] text-ink-muted">
+                                    <span className="block text-[9px] uppercase tracking-[0.2em] text-text-muted">
                                         {state.recipe.category}
                                     </span>
-                                    <span id={titleId} className="mt-0.5 block text-sm font-serif font-bold text-ink">
+                                    <span id={titleId} className="mt-0.5 block text-sm font-serif font-bold text-parchment-100">
                                         {state.recipe.outputItem}
                                     </span>
-                                    <span className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[11px] text-ink-muted">
+                                    <span className="mt-1 flex flex-wrap gap-x-2 gap-y-0.5 text-[11px] text-text-muted">
                                         <span>{STATION_LABELS[state.recipe.craftingStation]}</span>
                                         <span>{formatCraftTime(state.recipe.craftingTime)}</span>
                                         <span>x{state.recipe.outputQuantity}</span>
@@ -151,7 +169,7 @@ export const InventoryCraftingPanel: React.FC<InventoryCraftingPanelProps> = ({ 
                                             aria-controls={detailsId}
                                             onClick={() => setExpandedRecipeId(isExpanded ? null : state.recipe.id)}
                                             title={`${isExpanded ? 'Hide details for' : 'Show details for'} ${state.recipe.outputItem}`}
-                                            className="rounded border border-border px-1.5 py-0.5 text-[9px] uppercase tracking-[0.14em] text-ink-muted transition-colors hover:bg-white/5 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+                                            className="rounded border border-gold-900/20 px-1.5 py-0.5 text-[9px] uppercase tracking-[0.14em] text-text-muted transition-colors hover:bg-white/5 hover:text-parchment-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
                                         >
                                             {isExpanded ? 'Hide' : 'Details'}
                                         </button>
@@ -160,11 +178,12 @@ export const InventoryCraftingPanel: React.FC<InventoryCraftingPanelProps> = ({ 
                                         type="button"
                                         aria-label={`Craft ${state.recipe.outputItem}`}
                                         disabled={!state.isCraftable}
+                                        onClick={() => handleCraft(state)}
                                         title={`Craft ${state.recipe.outputItem}`}
                                         className={`rounded border px-2 py-0.5 text-[9px] font-serif font-bold uppercase tracking-[0.16em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 ${
                                             state.isCraftable
                                                 ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-200 hover:bg-emerald-500/25'
-                                                : 'cursor-not-allowed border-border bg-stone-700/40 text-ink-muted opacity-60'
+                                                : 'cursor-not-allowed border-gold-900/20 bg-stone-700/40 text-text-muted opacity-60'
                                         }`}
                                     >
                                         Craft
@@ -173,15 +192,15 @@ export const InventoryCraftingPanel: React.FC<InventoryCraftingPanelProps> = ({ 
                             </div>
 
                             {isExpanded ? (
-                                <div id={detailsId} className="border-t border-border px-3 pb-3 pt-2">
-                                    <p className="text-xs leading-5 text-ink-muted">{state.recipe.description}</p>
+                                <div id={detailsId} className="border-t border-gold-900/12 px-3 pb-3 pt-2">
+                                    <p className="text-xs leading-5 text-text-muted">{state.recipe.description}</p>
 
                                     <div className="mt-2">
-                                        <div className="text-[9px] uppercase tracking-[0.2em] text-ink-muted">Materials</div>
+                                        <div className="text-[9px] uppercase tracking-[0.2em] text-text-muted">Materials</div>
                                         <ul className="mt-1 grid gap-1 sm:grid-cols-2">
                                             {state.materials.map((material) => (
                                                 <li key={material.name} className="flex items-center justify-between gap-2 text-xs">
-                                                    <span className="truncate text-ink">{material.name}</span>
+                                                    <span className="truncate text-parchment-100">{material.name}</span>
                                                     <span className={material.missing === 0 ? 'text-emerald-300' : 'text-amber-200'}>
                                                         {material.available}/{material.required}
                                                     </span>

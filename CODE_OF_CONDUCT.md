@@ -53,4 +53,4 @@ Enforcement decisions should be based on the behavior, its impact, and the risk 
 
 ## Security Reports
 
-Do not publicly disclose exploitable vulnerabilities before maintainers have a reasonable chance to review and fix them. If the repository does not publish a dedicated security contact, contact the maintainer privately through available GitHub channels and include enough detail to reproduce the issue.
+Do not publicly disclose exploitable vulnerabilities before maintainers have a reasonable chance to review and fix them. See [SECURITY.md](SECURITY.md) for the full security policy, reporting process, and expected response timeline.

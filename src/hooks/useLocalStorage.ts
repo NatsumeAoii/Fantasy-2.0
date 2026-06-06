@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type LocalStorageOptions<T> = {
     validate?: (value: unknown) => value is T;
@@ -36,6 +36,17 @@ export function useLocalStorage<T>(
     initialValue: T,
     options?: LocalStorageOptions<T>,
 ): [T, (value: T | ((val: T) => T)) => void] {
+    // Dev-mode key stability check
+    const initialKeyRef = useRef(key);
+    useEffect(() => {
+        if (import.meta.env?.DEV && key !== initialKeyRef.current) {
+            console.warn(
+                `[useLocalStorage] Key changed from "${initialKeyRef.current}" to "${key}". ` +
+                'This hook does not support dynamic keys — state will not re-read from storage.'
+            );
+        }
+    });
+
     const [storedValue, setStoredValue] = useState<T>(() => {
         if (typeof window === 'undefined') {
             return initialValue;

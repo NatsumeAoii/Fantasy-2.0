@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import type { GeneratedBestiary, GeneratedPoolEntry, Inventory } from '../../types';
-import type { InventoryMoveRequest } from '../../logic/InventoryMoveEngine';
+import type { InventoryMoveRequest } from '../../logic/inventory/InventoryMoveEngine';
 import type { BestiaryProfile } from '../../logic/bestiaryCatalog';
 import { usePersistedTab } from '../../hooks/usePersistedTab';
 import { SecondaryTabs, type SecondaryTabItem } from '../ui/SecondaryTabs';

@@ -25,7 +25,7 @@ export function CharacterShell({ character, tabs, children }: CharacterShellProp
         >
           <div
             data-testid="character-content-scroll"
-            className="h-full min-h-0 w-full min-w-0 overflow-y-auto overscroll-contain"
+            className="no-scrollbar h-full min-h-0 w-full min-w-0 overflow-y-auto overscroll-contain"
           >
             {children}
           </div>

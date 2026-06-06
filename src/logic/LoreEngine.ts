@@ -11,6 +11,31 @@ import { RACE_REGIONS, REGION_GUILDS, FACTIONS } from '../data/world';
 const RACE_NAMES = Object.keys(RACES);
 const ROLE_NAMES = Object.keys(ROLES);
 
+// Pre-compute invalid roles per race from unlogicalCombinations (static data).
+// Eliminates per-call Set construction and array filtering.
+const INVALID_ROLES_BY_RACE = new Map<string, Set<string>>();
+for (const combo of unlogicalCombinations) {
+    for (const race of combo.races) {
+        const existing = INVALID_ROLES_BY_RACE.get(race);
+        if (existing) {
+            combo.roles.forEach(role => existing.add(role));
+        } else {
+            INVALID_ROLES_BY_RACE.set(race, new Set(combo.roles));
+        }
+    }
+}
+
+// Pre-compute valid roles per race for O(1) lookup during generation.
+const VALID_ROLES_BY_RACE = new Map<string, string[]>();
+for (const race of RACE_NAMES) {
+    const invalidRoles = INVALID_ROLES_BY_RACE.get(race);
+    if (invalidRoles && invalidRoles.size > 0) {
+        VALID_ROLES_BY_RACE.set(race, ROLE_NAMES.filter(role => !invalidRoles.has(role)));
+    } else {
+        VALID_ROLES_BY_RACE.set(race, ROLE_NAMES);
+    }
+}
+
 function reportLoreWarning(message: string): void {
     if (import.meta.env?.DEV && import.meta.env.MODE !== 'test') {
         console.warn(message);
@@ -19,20 +44,17 @@ function reportLoreWarning(message: string): void {
 
 export const LoreEngine = {
     assignRaceAndRole() {
+        if (RACE_NAMES.length === 0 || ROLE_NAMES.length === 0) {
+            reportLoreWarning('[LoreEngine] RACE_NAMES or ROLE_NAMES is empty — data may have failed to load.');
+            return { race: 'Human', role: 'Warrior' };
+        }
+
         if (getRandom() < GENERATION_CONSTANTS.PROBABILITY.UNLOGICAL_COMBO_BYPASS_CHANCE) {
             return { race: getRandomElement(RACE_NAMES) ?? 'Human', role: getRandomElement(ROLE_NAMES) ?? 'Warrior' };
         }
 
         const race = getRandomElement(RACE_NAMES) ?? 'Human';
-
-        const invalidRoles = new Set<string>();
-        for (const combo of unlogicalCombinations) {
-            if (combo.races.includes(race)) {
-                combo.roles.forEach(role => invalidRoles.add(role));
-            }
-        }
-
-        const validRoles = ROLE_NAMES.filter(role => !invalidRoles.has(role));
+        const validRoles = VALID_ROLES_BY_RACE.get(race) ?? ROLE_NAMES;
 
         if (validRoles.length === 0) {
             reportLoreWarning(`No logical roles found for race: ${race}. Defaulting to random role.`);
